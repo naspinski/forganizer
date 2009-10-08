@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<categories>
+    <category name="video">
+        <extension>.avi</extension>
+        <extension>.mpg</extension>
+        <extension>.wmv</extension>
+    </category>
+    <category name="music">
+        <extension>.mp3</extension>
+        <extension>.wma</extension>
+    </category>
+    <category name="microsoft">
+        <extension>.doc</extension>
+        <extension>.docx</extension>
+        <extension>.xls</extension>
+        <extension>.xlsx</extension>
+    </category>
+    <category name="document">
+        <extension>.doc</extension>
+        <extension>.docx</extension>
+        <extension>.txt</extension>
+    </category>
+</categories>

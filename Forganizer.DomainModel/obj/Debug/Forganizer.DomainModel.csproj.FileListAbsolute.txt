@@ -1,0 +1,5 @@
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.DomainModel\bin\Debug\Forganizer.DomainModel.dll
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.DomainModel\bin\Debug\Forganizer.DomainModel.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.DomainModel\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.DomainModel\obj\Debug\Forganizer.DomainModel.dll
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.DomainModel\obj\Debug\Forganizer.DomainModel.pdb
