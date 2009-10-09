@@ -9,5 +9,6 @@ namespace Forganizer.DomainModel.Abstract
     public interface IFileObjectRepository
     {
         IQueryable<FileObject> FileObjects { get; }
+        IQueryable<FileObject> AllFileObjects { get; }
     }
 }

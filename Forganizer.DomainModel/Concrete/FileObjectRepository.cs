@@ -12,10 +12,15 @@ namespace Forganizer.DomainModel.Concrete
         {
             fileObjectTable = (new DataContext(connectionString)).GetTable<FileObject>();
         }
-        
-        public IQueryable<Forganizer.DomainModel.Entities.FileObject> FileObjects
+
+        public IQueryable<FileObject> FileObjects
         {
-            get { return fileObjectTable; }  
+            get { return fileObjectTable.Where(x => x.Active); }
+        }
+
+        public IQueryable<FileObject> AllFileObjects
+        {
+            get { return fileObjectTable; }
         }
     }
 }

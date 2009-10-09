@@ -17,8 +17,8 @@ namespace Forganizer.Tests.DomainModel
         {
             FileObject file = new FileObject { FilePath = @"C:\some_folder\with a space\file.gif" };
 
-            Assert.AreEqual(".gif", file.FileInfo().Extension);
-            Assert.AreEqual(@"C:\some_folder\with a space", file.FileInfo().DirectoryName);
+            Assert.AreEqual(".gif", file.FileInfo.Extension);
+            Assert.AreEqual(@"C:\some_folder\with a space", file.FileInfo.DirectoryName);
         }
 
         [Test]
@@ -28,8 +28,8 @@ namespace Forganizer.Tests.DomainModel
             file.AddTag("abc");
             file.AddTag("def");
 
-            Assert.IsTrue(file.Tags().Contains("abc"));
-            Assert.IsTrue(file.Tags().Contains("def"));
+            Assert.IsTrue(file.Tags.Contains("abc"));
+            Assert.IsTrue(file.Tags.Contains("def"));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace Forganizer.Tests.DomainModel
         {
             FileObject file = new FileObject { FilePath = @"C:\some_folder\with a space\file.gif" };
 
-            Assert.AreEqual("file.gif", file.FileInfo().Name);
+            Assert.AreEqual("file.gif", file.FileInfo.Name);
         }
     }
 }

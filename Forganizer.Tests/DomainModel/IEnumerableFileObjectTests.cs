@@ -17,14 +17,14 @@ namespace Forganizer.Tests.DomainModel
         {
             IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
 
-            Assert.AreEqual(4, fobs.Tags().Count);
+            Assert.AreEqual(4, fobs.Tags().Count());
             Assert.AreEqual(2, fobs.TagCount("funny"));
             Assert.AreNotEqual(2, fobs.TagCount("non-existant tag"));
             Assert.AreEqual(0, fobs.TagCount("non-existant tag"));
         }
 
         [Test]
-        public void FileObjects_with_tags()
+        public void FileObjects_with_Tags()
         {
             IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
 

@@ -60,6 +60,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -80,8 +81,13 @@
     <Content Include="bin\Forganizer.DomainModel.dll" />
     <Content Include="bin\Forganizer.DomainModel.pdb" />
     <Content Include="bin\Microsoft.Web.Mvc.dll" />
+    <Content Include="Content\Images\bg-body.jpg" />
+    <Content Include="Content\reset.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Files\ExtensionCloud.ascx" />
+    <Content Include="Views\Files\Recent.ascx" />
+    <Content Include="Views\Files\TagCloud.ascx" />
     <Content Include="Views\Home\Dashboard.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\site.css" />

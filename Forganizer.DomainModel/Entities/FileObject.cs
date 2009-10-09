@@ -14,19 +14,22 @@ namespace Forganizer.DomainModel.Entities
     [Table(Name = "FileObjects")]
     public class FileObject
     {
-        public FileObject() { tags = string.Empty; }
+        public FileObject() { TagString = string.Empty; }
 
         [Column(IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert)] public int Id { get; set; }
         [Column] public string FilePath { get; set; }
-        [Column] public string tags { get; private set; }
-        [Column] public DateTime Created { get; set; }
+        [Column(Name="tags")] public string TagString { get; set; }
         [Column] public DateTime Modified { get; set; }
-        
-        public FileInfo FileInfo() { return new FileInfo(FilePath); }
-        public IEnumerable<string> Tags() 
-        { 
-            if (tags.Length == 0) return new List<string>();
-            else return tags.Split(new string[] { Constants.UrlDelimiter }, StringSplitOptions.RemoveEmptyEntries).ToList(); 
+        [Column] public bool Active { get; set; }
+
+        public FileInfo FileInfo { get { return new FileInfo(FilePath); } }
+        public IEnumerable<string> Tags
+        {
+            get
+            {
+                if (TagString.Length == 0) return new List<string>();
+                else return TagString.Split(new string[] { Constants.UrlDelimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
         }
 
         public void AddTags(string tags)
@@ -40,9 +43,9 @@ namespace Forganizer.DomainModel.Entities
         public void AddTag(string tag)
         {
             if (string.IsNullOrEmpty(tag)) throw new FormatException("tag entered is empty");
-            else if (Tags().Contains(tag)) throw new FormatException("duplicate entered [" + tag + "]");
+            else if (Tags.Contains(tag)) throw new FormatException("duplicate entered [" + tag + "]");
             else if (tag.Contains(Constants.UrlDelimiter)) throw new FormatException("'" + Constants.UrlDelimiter + "' is not allowed in a tag");
-            else tags += (tags.Length > 0 ? Constants.UrlDelimiter : "") + tag;
+            else TagString += (TagString.Length > 0 ? Constants.UrlDelimiter : "") + tag;
         }
     }
 }

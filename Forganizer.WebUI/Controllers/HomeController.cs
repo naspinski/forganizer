@@ -10,17 +10,11 @@ namespace Forganizer.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private IFileObjectRepository fileObjectRepository;
-        public HomeController(IFileObjectRepository fileObjectRepository)
-        {
-            this.fileObjectRepository = fileObjectRepository;
-        }
+        public HomeController() { }
 
         public ViewResult Dashboard()
         {
-            var fileObjects = fileObjectRepository.FileObjects.OrderByDescending(x => x.Modified).Take(20);
-            //return View(fileObjectRepository.FileObjects.OrderByDescending(x => x.Modified).Take(20));
-            return View(fileObjects);
+            return View();
         }
     }
 }

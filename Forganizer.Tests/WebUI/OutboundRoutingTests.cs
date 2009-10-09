@@ -52,7 +52,7 @@ namespace Forganizer.Tests.WebUI
         }
 
         [Test]
-        public void Extensions_tags()
+        public void Extensions_Tags()
         {
             Assert.AreEqual("/tags/abc/extensions/def", Utilities.Routing.GetOutboundUrl(new { controller = "Files", action = "List", tags = "abc", extensions = "def" }));
         }

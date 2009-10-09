@@ -11,7 +11,9 @@ namespace Forganizer.DomainModel.Extensions
     {
         public static int TagCount(this IEnumerable<FileObject> fobs, string tag)
         {
-            return fobs.Tags().Where(x => x.Key == tag).FirstOrDefault().Value;
+            try { return fobs.Tags().Where(x => x.Name == tag).FirstOrDefault().Count; }
+            catch (NullReferenceException) { return 0; }
+            catch (Exception ex) { throw ex; }
         }
 
         public static IEnumerable<FileObject> WithTags(this IEnumerable<FileObject> fobs, string tagString, SearchType searchType)
@@ -29,7 +31,7 @@ namespace Forganizer.DomainModel.Extensions
 
         private static IEnumerable<FileObject> WithTag(this IEnumerable<FileObject> fobs, string tag)
         {
-            return fobs.Where(x => x.Tags().Contains(tag));
+            return fobs.Where(x => x.Tags.Contains(tag));
         }
 
         public static IEnumerable<FileObject> WithExtensions(this IEnumerable<FileObject> fobs, string extensionString)
@@ -44,14 +46,36 @@ namespace Forganizer.DomainModel.Extensions
 
         private static IEnumerable<FileObject> WithExtension(this IEnumerable<FileObject> fobs, string extension)
         {
-            return fobs.Where(x => x.FileInfo().Extension == extension);
+            return fobs.Where(x => x.FileInfo.Extension == extension);
         }
 
-        public static Dictionary<string, int> Tags(this IEnumerable<FileObject> fobs)
+        public static IEnumerable<Tag> Extensions(this IEnumerable<FileObject> fobs)
         {
-            Dictionary<string, int> tags = new Dictionary<string,int>();
-            IEnumerable<string> allTags = AllTags(fobs.Select(x => x.Tags()));
-            foreach (string tag in allTags.Distinct()) tags.Add(tag, allTags.Where(x => x == tag).Count());
+            List<Tag> extensions = new List<Tag>();
+            foreach (string ext in fobs.Select(x => x.FileInfo.Extension).Distinct())
+                extensions.Add(new Tag { Name = ext, Count = fobs.Where(x => x.FileInfo.Extension == ext).Count() });
+            extensions = SetSizes(extensions);
+            return extensions;
+        }
+
+        public static IEnumerable<Tag> Tags(this IEnumerable<FileObject> fobs)
+        {
+            List<Tag> tags = new List<Tag>();
+            IEnumerable<string> allTags = AllTags(fobs.Select(x => x.Tags));
+            foreach (string tag in allTags.Distinct())
+                tags.Add(new Tag { Name = tag, Count = allTags.Where(x => x == tag).Count() });// Add(tag, allTags.Where(x => x == tag).Count());
+            tags = SetSizes(tags);
+            return tags;
+        }
+
+        private static List<Tag> SetSizes(List<Tag> tags)
+        {
+            int max = tags.Select(x => x.Count).Max();
+            foreach (Tag tag in tags)
+            {
+                tag.Size = (tag.Count / (decimal)max) * (decimal)Constants.TagMaxSize;
+                if (tag.Size < Constants.TagMinSize) tag.Size = Constants.TagMinSize;
+            }
             return tags;
         }
 
