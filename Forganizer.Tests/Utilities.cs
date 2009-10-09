@@ -67,9 +67,9 @@ namespace Forganizer.Tests
             {
                 FileObject[] fobs = new FileObject[] 
                 { 
-                    new FileObject() { FilePath=@"C:\some_folder\another one\image.jpg" },
-                    new FileObject() { FilePath=@"C:\some_folder\second\another_image.jpg" },
-                    new FileObject() { FilePath=@"C:\some_folder\second\textfile.txt" }
+                    new FileObject() { Id=1, FilePath=@"C:\some_folder\another one\image.jpg", Modified = Convert.ToDateTime("2/2/2001"), Created = Convert.ToDateTime("1/1/2001") },
+                    new FileObject() { Id=2, FilePath=@"C:\some_folder\second\another_image.jpg", Modified = Convert.ToDateTime("3/3/2001"), Created = Convert.ToDateTime("1/1/2001") },
+                    new FileObject() { Id=3, FilePath=@"C:\some_folder\second\textfile.txt", Modified = Convert.ToDateTime("1/1/2001"), Created = Convert.ToDateTime("1/1/2001") }
                 };
 
                 fobs[0].AddTag("funny");

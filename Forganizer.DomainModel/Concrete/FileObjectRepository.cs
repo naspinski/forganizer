@@ -13,7 +13,7 @@ namespace Forganizer.DomainModel.Concrete
             fileObjectTable = (new DataContext(connectionString)).GetTable<FileObject>();
         }
         
-        public IQueryable<FileObject> FileObjects
+        public IQueryable<Forganizer.DomainModel.Entities.FileObject> FileObjects
         {
             get { return fileObjectTable; }  
         }

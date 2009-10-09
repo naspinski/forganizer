@@ -55,9 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityTests.cs" />
-    <Compile Include="InboundRoutingTests.cs" />
-    <Compile Include="OutboundRoutingTests.cs" />
+    <Compile Include="DomainModel\CategoryTests.cs" />
+    <Compile Include="DomainModel\FileObjectTests.cs" />
+    <Compile Include="DomainModel\IEnumerableFileObjectTests.cs" />
+    <Compile Include="WebUI\HomeControllerTests.cs" />
+    <Compile Include="WebUI\InboundRoutingTests.cs" />
+    <Compile Include="WebUI\OutboundRoutingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="UtilitiesTest.cs" />

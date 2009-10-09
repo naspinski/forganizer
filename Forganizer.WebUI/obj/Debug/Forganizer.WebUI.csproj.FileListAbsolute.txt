@@ -3,3 +3,12 @@ C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\bin
 C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.dll
 C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\bin\Forganizer.DomainModel.dll
+C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.WebUI\bin\Forganizer.DomainModel.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\bin\Forganizer.WebUI.dll
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\bin\Forganizer.WebUI.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\bin\Forganizer.DomainModel.dll
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\bin\Forganizer.DomainModel.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.dll
+C:\Documents and Settings\stan.naspinski\Desktop\forganizerSVN\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.pdb
