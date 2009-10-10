@@ -32,7 +32,3 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">
     forganizer
 </asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="Title" runat="server">
-    dashboard
-</asp:Content>

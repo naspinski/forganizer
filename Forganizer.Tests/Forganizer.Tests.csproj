@@ -59,7 +59,6 @@
     <Compile Include="DomainModel\EKeyValuePairStringIntTests.cs" />
     <Compile Include="DomainModel\FileObjectTests.cs" />
     <Compile Include="DomainModel\IEnumerableFileObjectTests.cs" />
-    <Compile Include="DomainModel\TagTests.cs" />
     <Compile Include="WebUI\FilesControllerTests.cs" />
     <Compile Include="WebUI\HomeControllerTests.cs" />
     <Compile Include="WebUI\InboundRoutingTests.cs" />

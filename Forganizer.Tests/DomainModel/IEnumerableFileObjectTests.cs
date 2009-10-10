@@ -12,11 +12,11 @@ namespace Forganizer.Tests.DomainModel
     [TestFixture]
     class IEnumerableFileObjectTests
     {
+        IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
+
         [Test]
         public void Pulling_all_tags_from_an_ienumerable_yields_proper_results()
         {
-            IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
-
             Assert.AreEqual(4, fobs.Tags().Count());
             Assert.AreEqual(2, fobs.TagCount("funny"));
             Assert.AreNotEqual(2, fobs.TagCount("non-existant tag"));
@@ -26,8 +26,6 @@ namespace Forganizer.Tests.DomainModel
         [Test]
         public void FileObjects_with_Tags()
         {
-            IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
-
             Assert.AreEqual(2, fobs.WithTags("funny", SearchType.Or).Count());
             Assert.AreEqual(1, fobs.WithTags("long", SearchType.Or).Count());
             Assert.AreEqual(0, fobs.WithTags("non-existant-tag", SearchType.Or).Count());
@@ -40,8 +38,6 @@ namespace Forganizer.Tests.DomainModel
         [Test]
         public void FileObjects_with_extensions()
         {
-            IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
-
             Assert.AreEqual(0, fobs.WithExtensions(".fake").Count());
             Assert.AreEqual(1, fobs.WithExtensions(".txt" + Constants.UrlDelimiter + ".fake").Count());
             Assert.AreEqual(3, fobs.WithExtensions(".jpg" + Constants.UrlDelimiter + ".txt").Count());

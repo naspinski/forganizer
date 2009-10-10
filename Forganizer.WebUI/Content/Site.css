@@ -5,30 +5,40 @@ body { background-image:url(Images/bg-body.jpg); background-repeat:repeat-x; fon
 a { color:#5C8A36; }
 a:hover { color: #EB7300; }
 
-input[type="submit"] { background: #ddd; border:none; height:1.35em; margin-bottom:1px; }
+input[type="text"] { background:#eee; color:#333; border:none; padding:1px .5%; }
+input[type="submit"] { background: #5C8A36; border:none; color:#fff; font-weight:bold;  }
+input[type="submit"]:hover { background: #EB7300; cursor:pointer; }
 
-ul.list_vertical { margin:3px 3px 3px 10px; }
+ul.list_vertical { margin:3px 3px 3px 30px; }
     ul.list_vertical li { list-style-type:square; }
 ul.list_horizontal li { float:left; margin: 2px; }
 
 fieldset { margin:10px; padding:5px; }
     fieldset.box { display:block; height:200px; }
+legend { font-family:Georgia; font-size:1.5em; padding-left:.5em; }
+
 /* main areas */
 .page { width: 95%; margin-left: auto; margin-right: auto; }
 
-#header { position: relative; margin:5px 0; padding: 0;}
-    #title { float:left;}
-        #subtitle { font-size:.8em; }
-    #quicksearch {float:right; }
+#header { position: relative; margin:2px 0 5px 0; padding: 0; overflow:hidden;}
+    #title { font-weight:bold; min-height:5em; vertical-align:bottom; }
+        #title #messages { margin-top:3em; }
+        #title #messages div { border-left:solid 1em; padding: 0 0 0 5px; margin:3px 0 0 0; }
+        #title #messages div, legend {border-left:solid 1em;}
+    #quicksearch {float:right; width:70%; }
         #quicksearch fieldset { float:left; }
-        #quicksearch input[type="submit"] { }
+        #quicksearch input, #quicksearch select, #quicksearch label { font-size:1.5em; font-weight:bold; color:#666; height:1.3em; line-height:1.3em; }
+        #quicksearch label {width:9%; float:left; font-weight:bold; color:#fff; margin-top:4px; }
+        #quicksearch input[type="text"] { width:79%; float:left; margin:3px 0; }
+        #quicksearch input[type="submit"] { float:right; width:10%; margin-top:3px; font-size:1.6em; color:#fff; }
+        #quicksearch select {  float:right; width:10%; margin-top:2px; height:1.6em; }
 #main { padding:0; background-color: #fff; margin-bottom: 30px; _height: 1px; clear:both; }
 #footer { color: #999; padding: 10px 0; text-align: center; line-height: normal; margin: 0; font-size: .9em; }
 
 
 /* headers */
 h1,h2,h3,h4,h5,h6, legend { font-weight:bold; color:#003366; }
-h1 { font-size:1.2em; }
+h1 { font-size:1.9em; margin:0 0 2px 0; width:28%; position:absolute;top:0; left:0; font-family:Georgia; }
 
 /* general */
 .left { float:left; }
@@ -40,3 +50,5 @@ h1 { font-size:1.2em; }
 .field-validation-error {}
 .input-validation-error {}
 .validation-summary-errors {}
+.error { border-color:Red; }
+.success { border-color:green; }

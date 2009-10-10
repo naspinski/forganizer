@@ -13,7 +13,6 @@ namespace Forganizer.Tests.WebUI
         [Test]
         public void Dashboard_presents_most_recently_modified_fileObjects()
         {
-            IFileObjectRepository repository = Utilities.Mocking.MockFileObjectRepository();
             HomeController controller = new HomeController();
 
             var result = controller.Dashboard();

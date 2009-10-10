@@ -12,10 +12,11 @@ namespace Forganizer.Tests.WebUI
     [TestFixture]
     class FilesControllerTests
     {
+        IFileObjectRepository repository = Utilities.Mocking.MockFileObjectRepository();
+
         [Test]
         public void Recent_return_most_recent()
         {
-            var repository = Utilities.Mocking.MockFileObjectRepository();
             FilesController controller = new FilesController(repository);
 
             var result = controller.Recent(2);
@@ -28,7 +29,6 @@ namespace Forganizer.Tests.WebUI
         [Test]
         public void TagCloud_returns_proper_cloud()
         {
-            var repository = Utilities.Mocking.MockFileObjectRepository();
             FilesController controller = new FilesController(repository);
 
             var result = controller.TagCloud();
@@ -43,7 +43,6 @@ namespace Forganizer.Tests.WebUI
         [Test]
         public void Extension_cloud_returns_proper_cloud()
         {
-            var repository = Utilities.Mocking.MockFileObjectRepository();
             FilesController controller = new FilesController(repository);
 
             var result = controller.ExtensionCloud();
@@ -57,7 +56,6 @@ namespace Forganizer.Tests.WebUI
         [Test]
         public void CategoryCloud_returns_category_cloud()
         {
-            var repository = Utilities.Mocking.MockFileObjectRepository();
             FilesController controller = new FilesController(repository);
 
             var result = controller.CategoryCloud();

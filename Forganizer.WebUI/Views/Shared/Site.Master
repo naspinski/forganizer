@@ -14,13 +14,25 @@
             <div id="title">
                 <h1>
                     <%= Html.ActionLink("forganizer", "dashboard", "Home") %>
-                    <span id="subtitle"><asp:ContentPlaceHolder ID="Title" runat="server" /></span>
                 </h1>
-            </div>
-            <div id="quicksearch">
-                <%= Html.TextBox("tags", "tags") %>
-                <%= Html.TextBox("extensions", "extensions") %>
-                <input type="submit" value="filter" />
+                <div id="quicksearch">
+                    <label for="tags">tags:</label>
+                    <%= Html.TextBox("tags") %>
+                    
+                    <%= Html.DropDownList("TagAndOr", 
+                        new List<SelectListItem>() { 
+                            new SelectListItem() { Value="Or", Text="Or" }, 
+                            new SelectListItem() { Value="And", Text="And" } 
+                        } ) %>
+                    <br />    
+                    <label for="extensions" class="clear">exts:</label>
+                    <%= Html.TextBox("extensions") %>
+                    <input type="submit" value="filter" />
+                </div>
+                <div id="messages">
+                    <% if (TempData["error"] != null){ %> <div class="error"><%= TempData["error"]%></div> <% } %>
+                    <% if (TempData["success"] != null){ %> <div class="success"><%= TempData["success"]%></div> <% } %>
+                </div>
             </div>
         </div>
 
