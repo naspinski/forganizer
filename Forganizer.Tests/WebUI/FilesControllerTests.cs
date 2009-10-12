@@ -10,28 +10,16 @@ using Forganizer.DomainModel.Entities;
 namespace Forganizer.Tests.WebUI
 {
     [TestFixture]
-    class FilesControllerTests
+    class BoxControllerTests
     {
-        IFileObjectRepository repository = Utilities.Mocking.MockFileObjectRepository();
-
-        [Test]
-        public void Recent_return_most_recent()
-        {
-            FilesController controller = new FilesController(repository);
-
-            var result = controller.Recent(2);
-
-            var fileObjects = result.ViewData.Model as IQueryable<FileObject>;
-            Assert.AreEqual(2, fileObjects.Count());
-            Assert.IsTrue(fileObjects.First().Modified > fileObjects.Last().Modified);
-        }
+        IFileObjectRepository repository = Utilities.Mocking.MockFileObjectRepository().Object;
 
         [Test]
         public void TagCloud_returns_proper_cloud()
         {
-            FilesController controller = new FilesController(repository);
+            BoxController controller = new BoxController(repository);
 
-            var result = controller.TagCloud();
+            var result = controller.TagCloud("","","And");
 
             var tags = result.ViewData.Model as IEnumerable<Tag>;
             Assert.AreEqual(2, tags.First(x => x.Name == "funny").Count);
@@ -43,22 +31,14 @@ namespace Forganizer.Tests.WebUI
         [Test]
         public void Extension_cloud_returns_proper_cloud()
         {
-            FilesController controller = new FilesController(repository);
+            BoxController controller = new BoxController(repository);
 
-            var result = controller.ExtensionCloud();
+            var result = controller.ExtensionCloud("","","And");
 
             var extensions = result.ViewData.Model as IEnumerable<Tag>;
             Assert.AreEqual(2, extensions.First(x => x.Name == ".jpg").Count);
             Assert.AreEqual(2, extensions.Count());
             Assert.AreEqual(3, extensions.Select(x => x.Count).Sum());
-        }
-
-        [Test]
-        public void CategoryCloud_returns_category_cloud()
-        {
-            FilesController controller = new FilesController(repository);
-
-            var result = controller.CategoryCloud();
         }
     }
 }

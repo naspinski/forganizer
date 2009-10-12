@@ -12,7 +12,7 @@ namespace Forganizer.Tests.DomainModel
     [TestFixture]
     class IEnumerableFileObjectTests
     {
-        IEnumerable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().FileObjects;
+        IQueryable<FileObject> fobs = Utilities.Mocking.MockFileObjectRepository().Object.FileObjects;
 
         [Test]
         public void Pulling_all_tags_from_an_ienumerable_yields_proper_results()

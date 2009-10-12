@@ -14,11 +14,6 @@ namespace Forganizer.Tests.DomainModel
         [Test]
         public void Category_string_works()
         {
-            Category cat = new Category { Name = "music" };
-            cat.Extensions.Add(".mp3");
-            cat.Extensions.Add(".wma");
-
-            Assert.AreEqual(".mp3" + Constants.UrlDelimiter + ".wma", cat.ExtensionString);
         }
     }
 }

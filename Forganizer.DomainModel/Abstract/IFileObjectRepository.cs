@@ -10,5 +10,7 @@ namespace Forganizer.DomainModel.Abstract
     {
         IQueryable<FileObject> FileObjects { get; }
         IQueryable<FileObject> AllFileObjects { get; }
+        FileObject GetFileObject(int Id);
+        void DeleteFileObject(FileObject fileObject);
     }
 }

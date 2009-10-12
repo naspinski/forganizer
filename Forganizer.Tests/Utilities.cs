@@ -56,14 +56,14 @@ namespace Forganizer.Tests
 
         public class Mocking
         {
-            public static IFileObjectRepository MockFileObjectRepository(params FileObject[] fobs)
+            public static Mock<IFileObjectRepository> MockFileObjectRepository(params FileObject[] fobs)
             {
                 var mockFileObjectRepos = new Mock<IFileObjectRepository>();
                 mockFileObjectRepos.Setup(x => x.FileObjects).Returns(fobs.AsQueryable());
-                return mockFileObjectRepos.Object;
+                return mockFileObjectRepos;
             }
 
-            public static IFileObjectRepository MockFileObjectRepository()
+            public static Mock<IFileObjectRepository> MockFileObjectRepository()
             {
                 FileObject[] fobs = new FileObject[] 
                 { 
@@ -86,7 +86,7 @@ namespace Forganizer.Tests
                 var mockFileObjectRepos = new Mock<IFileObjectRepository>();
                 mockFileObjectRepos.Setup(x => x.FileObjects).Returns(fobs.AsQueryable().Where(x => x.Active));
                 mockFileObjectRepos.Setup(x => x.AllFileObjects).Returns(fobs.AsQueryable());
-                return mockFileObjectRepos.Object;
+                return mockFileObjectRepos;
             }
         }
     }

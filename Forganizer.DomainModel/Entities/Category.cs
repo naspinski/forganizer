@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Linq.Mapping;
+using Forganizer.DomainModel.Extensions;
 
 namespace Forganizer.DomainModel.Entities
 {
+    [Table(Name = "Categories")]
     public class Category
     {
-        public string Name { get; set; }
-        public List<string> Extensions { get; set; }
-
-        public Category()
-        {
-            Extensions = new List<string>();
-        }
-
-        public string ExtensionString
-        {
-            get
-            {
-                StringBuilder sv = new StringBuilder();
-                for (int i = 0; i < Extensions.Count; i++)
-                    sv.Append(Extensions[i] + (i == Extensions.Count - 1 ? "" : Constants.UrlDelimiter));
-                return sv.ToString();
-            }
-        }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert)]
+        public int Id { get; set; }
+        [Column] public string Name { get; set; }
+        [Column] public string ExtensionString { get; set; }
+        public IEnumerable<string> Extensions { get { return ExtensionString.SplitTags(); } }
     }
 }

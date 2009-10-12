@@ -13,15 +13,6 @@ namespace Forganizer.Tests.DomainModel
     class FileObjectTests
     {
         [Test]
-        public void FileInfo_returns_the_proper_things()
-        {
-            FileObject file = new FileObject { FilePath = @"C:\some_folder\with a space\file.gif" };
-
-            Assert.AreEqual(".gif", file.FileInfo.Extension);
-            Assert.AreEqual(@"C:\some_folder\with a space", file.FileInfo.DirectoryName);
-        }
-
-        [Test]
         public void Tags_functions_are_working()
         {
             FileObject file = new FileObject();

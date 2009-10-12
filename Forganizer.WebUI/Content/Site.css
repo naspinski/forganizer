@@ -3,52 +3,141 @@
 body { background-image:url(Images/bg-body.jpg); background-repeat:repeat-x; font-size: .75em; font-family: Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; }
 
 a { color:#5C8A36; }
-a:hover { color: #EB7300; }
+a:hover, ul.list_vertical li:hover a.name { color: #EB7300; }
 
-input[type="text"] { background:#eee; color:#333; border:none; padding:1px .5%; }
+input, select { background:#eee; color:#666; font-weight:bold;  }
+input[type="text"] { border:none; padding:1px .5%; }
 input[type="submit"] { background: #5C8A36; border:none; color:#fff; font-weight:bold;  }
 input[type="submit"]:hover { background: #EB7300; cursor:pointer; }
 
-ul.list_vertical { margin:3px 3px 3px 30px; }
-    ul.list_vertical li { list-style-type:square; }
-ul.list_horizontal li { float:left; margin: 2px; }
+ul li { overflow:hidden; }
+ul.list_vertical { margin:-15px 8px 3px 20px; }
+    ul.list_vertical li { padding:6px 3px 0 3px; border:1px solid #ddd; margin:0; cursor:default; }
+    ul.list_vertical li.title {border:none; color:Navy; font-weight:bold; font-family:Georgia;}
+    ul.list_vertical li.title:hover { background:transparent; }
+    ul.list_vertical li:hover { background:#ddd;}
+        .name, span.tags, span.actions { display:block; float:left; }
+        ul.list_vertical li .name { width:25%;}
+        ul.list_vertical li span.tags { width:55%; text-align:right;}
+        ul.list_vertical li span.actions { width:20%; text-align:right; margin:0; position:relative; top:-2px; right:0; }
+ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
+    a.x { font-size:1em;position:absolute;top:2px;right:-.8em; text-decoration:none;border:solid 1px; height:.7em;line-height:.6em; padding-bottom:-2px; }
 
-fieldset { margin:10px; padding:5px; }
-    fieldset.box { display:block; height:200px; }
-legend { font-family:Georgia; font-size:1.5em; padding-left:.5em; }
+fieldset { margin:10px; padding:5px;}
+    fieldset.box { display:block; min-height:200px; overflow:visible; padding:10px;}
+        fieldset.box div { padding:10px 10px 0 0; overflow:visible; }
+        fieldset.box div.inactive { clear:both; margin-top:20px; }
+            fieldset.box div.inactive a { color:#999; }
+legend { font-family:Georgia; font-size:1.5em; }
 
 /* main areas */
 .page { width: 95%; margin-left: auto; margin-right: auto; }
 
-#header { position: relative; margin:2px 0 5px 0; padding: 0; overflow:hidden;}
-    #title { font-weight:bold; min-height:5em; vertical-align:bottom; }
-        #title #messages { margin-top:3em; }
-        #title #messages div { border-left:solid 1em; padding: 0 0 0 5px; margin:3px 0 0 0; }
-        #title #messages div, legend {border-left:solid 1em;}
-    #quicksearch {float:right; width:70%; }
+#header { position: relative; margin:2px 0 5px 0; padding: 0 0 5px 0; overflow:hidden;  }
+    #title { font-weight:bold; }
+        #title #messages { float:left; margin:0 0 0 3em; }
+            #title #messages div i { position:relative; bottom:-6px; }
+    /* before I changed out the old search boxes
+    #quicksearch {float:right; width:70%; visibility:hidden; }
+        #quicksearch div.old_search { display:none; }
         #quicksearch fieldset { float:left; }
-        #quicksearch input, #quicksearch select, #quicksearch label { font-size:1.5em; font-weight:bold; color:#666; height:1.3em; line-height:1.3em; }
-        #quicksearch label {width:9%; float:left; font-weight:bold; color:#fff; margin-top:4px; }
-        #quicksearch input[type="text"] { width:79%; float:left; margin:3px 0; }
+        #quicksearch input, #quicksearch select, #quicksearch label { font-size:1.5em; height:1.3em; line-height:1.3em; }
+        #quicksearch label {width:14%; float:left; font-weight:bold; color:#fff; margin-top:4px; }
+        #quicksearch input[type="text"] { width:74%; float:left; margin:3px 0; }
         #quicksearch input[type="submit"] { float:right; width:10%; margin-top:3px; font-size:1.6em; color:#fff; }
-        #quicksearch select {  float:right; width:10%; margin-top:2px; height:1.6em; }
-#main { padding:0; background-color: #fff; margin-bottom: 30px; _height: 1px; clear:both; }
-#footer { color: #999; padding: 10px 0; text-align: center; line-height: normal; margin: 0; font-size: .9em; }
+        #quicksearch select {  float:right; width:10%; margin-top:2px; height:1.6em; }*/
+    
+#main { padding:0; background-color: #fff; _height: 1px; clear:both; }
+#content { width:74%; float:left; }
+#sidebar { background:#ddd; margin:-5px 0; height:100%; width:25%; float:right; }
+    #tagFilter { font-size:.8em; float:right; position:relative;  top:.4em; padding:0; }
+        #tagFilter input { font-size:.8em; }
+        #tagFilter select { font-size:.7em; }
+#footer { color: #666; padding:10px 0; text-align: center; line-height: normal; margin: 0; font-size: .9em; }
 
 
 /* headers */
 h1,h2,h3,h4,h5,h6, legend { font-weight:bold; color:#003366; }
-h1 { font-size:1.9em; margin:0 0 2px 0; width:28%; position:absolute;top:0; left:0; font-family:Georgia; }
+h1 { font-size:2em; margin:0 0 2px 0;  /*position:absolute;top:0; left:0;*/ float:left; font-family:Georgia; }
+h1 a {text-decoration:none; }
 
 /* general */
+.pager{margin-top:1em;}
+.pager a { display:inline-block; height:1.6em; width:1.6em; border: solid 1px #ddd; margin:.2em; text-align:center; padding:3px; }
+.pager a.selected { font-weight:bold; border: solid 1px #5C8A36; }
+
 .left { float:left; }
 .right { float: right; }
 .clear {clear:both; }
-.third { width:33%; margin:0 }
+
+.delete, .download, .folder { display:block; height:24px; width:24px; background:url(Images/sprites.png) no-repeat; float:right; }
 
 /* errors */
 .field-validation-error {}
 .input-validation-error {}
 .validation-summary-errors {}
-.error { border-color:Red; }
-.success { border-color:green; }
+.error,.success,.warning { clear:left; line-height:1.6em; }
+i { background:url(Images/sprites.png) no-repeat; display:inline-block; margin:0 3px 0 0;}
+i {  height:24px; width:24px;  }
+.name i {height:24px; width:18px; background-position: 0 -1284px; float:left; }
+
+
+/* image sprites */
+.error i { background-position: 0 0; } 
+.success i { background-position: 0 -74px; } 
+.warning i { background-position: 0 -148px; } 
+.danger { background-position: 0 -222px; } 
+.reload:hover { background-position: 0 -296px; } 
+.folder:hover { background-position: 0 -370px; } 
+.delete:hover { background-position: 0 -444px; } 
+.download:hover { background-position: 0 -518px; } 
+.reload { background-position: 0 -592px; } 
+.folder { background-position: 0 -666px; } 
+.delete { background-position: 0 -740px; } 
+.download{ background-position: 0 -814px; } 
+.plus:hover { background-position: -74px -1526px; } 
+.minus:hover { background-position: -74px -1600px; } 
+.rss:hover { background-position: -74px -1674px; } 
+.tag_red { background-position: -74px -1748px; } 
+.tag_blue { background-position: -74px -1822px; } 
+.tag_green { background-position: -74px -1896px; } 
+.arrow_orange { background-position: -148px 0; } 
+.arrow_green { background-position: -148px -74px; } 
+.arrow_blue { background-position: -148px -148px; } 
+.plus { background-position: -148px -222px; } 
+.minus { background-position: -148px -296px; } 
+.rss { background-position: -148px -370px; } 
+.sprite-z__001_34 { background-position: -148px -444px; } 
+.sprite-z__001_35 { background-position: -148px -518px; } 
+.sprite-z__001_36 { background-position: -148px -592px; } 
+.sprite-z__001_58 { background-position: -148px -666px; } 
+.sprite-z__001_59 { background-position: -148px -740px; } 
+.sprite-z__001_60 { background-position: -148px -814px; } 
+
+
+/* iconize */
+.name i.doc, .name i.rtf, .name i.docx { background-position: 0 -1350px; }
+.name i.txt {background-position: -74px -1126px;}
+.name i.sql {background-position: -74px -928px;}
+.name i.xml, .name i.htm, .name i.asp, .name i.aspx, .name i.html, .name i.php, .name i.cgi, .name i.cfm {background-position: -74px -1324px;}
+.name i.iso {background-position: 0 -1944px;}
+.name i.xls, .name i.xlsx {background-position: -74px -1258px;}
+.name i.rss, .name i.atom { background-position: 0 -1548px;}
+.name i.phps { background-position: -74px -466px;}
+.name i.vcard { background-position: -74px -1192px;}
+.name i.torrent { background-position: -74px -994px;}
+.name i.opml { background-position: -74px -334px;}
+.name i.bat{background-position: 0 -1020px;} 
+.name i.exe { background-position: 0 -1416px;}
+.name i.pps, .name i.ppt, .name i.pptx { background-position: -74px -730px;}
+.name i.mmc, .name i.msc { background-position: -74px -132px;}
+.name i.pdf { background-position: -74px -400px;}
+.name i.xpi { background-position: -74px -598px;}
+.name i.fla, .name i.swf { background-position: 0 -1680px;}
+.name i.zip, .name i.rar, .name i.gzip, .name i.bzip, .name i.ace { background-position: 0 -954px;}
+.name i.ical { background-position: 0 -1812px;}
+.name i.css { background-position: 0 -1218px;}
+.name i.ttf { background-position: -74px -1060px;}
+.name i.jpg, .name i.gif, .name i.png, .name i.bmp, .name i.jpeg, .name i.svg, .name i.eps {background-position: -74px -532px;}
+.name i.mov, .name i.wmv, .name i.mp4, .name i.avi, .name i.mpg { background-position: 0 -1614px;}
+.name i.mp3, .name i.wav, .name i.ogg, .name i.wma, .name i.m4a { background-position: -74px -268px;}

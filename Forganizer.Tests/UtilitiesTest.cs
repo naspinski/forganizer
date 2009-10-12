@@ -10,7 +10,7 @@ namespace Forganizer.Tests
     [TestFixture]
     class UtilitiesTest
     {
-        IFileObjectRepository fileObjectRepository = Utilities.Mocking.MockFileObjectRepository();
+        IFileObjectRepository fileObjectRepository = Utilities.Mocking.MockFileObjectRepository().Object;
         [Test]
         public void Mocking_the_repository_works()
         {

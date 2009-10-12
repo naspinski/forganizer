@@ -22,5 +22,16 @@ namespace Forganizer.DomainModel.Concrete
         {
             get { return fileObjectTable; }
         }
+
+        public FileObject GetFileObject(int Id)
+        {
+            return fileObjectTable.SingleOrDefault(x => x.Id == Id);
+        }
+
+        public void DeleteFileObject(FileObject fileObject)
+        {
+            fileObject.Active = false;
+            fileObjectTable.Context.SubmitChanges();
+        }
     }
 }
