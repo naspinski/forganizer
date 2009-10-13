@@ -97,14 +97,14 @@ namespace Forganizer.DomainModel.Extensions
                 return categories.Select(x => new Tag() { Name = x.Name, QueryString = x.ExtensionString.AddToSearch(null), Count = 1, Size = Constants.TagMinSize });
             List<Tag> categoriesPresent = new List<Tag>();
             int count;
-            foreach (Category category in categories)
+            IEnumerable<Tag> existingFileExtensions = fileObjects.Extensions();
+            foreach(Category category in categories)
             {
-                count = fileObjects.Extensions().Select(x => x.Name).Intersect(category.Extensions).Count();
+                count = fileObjects.WithExtensions(category.ExtensionString).Count();
                 if (count > 0)
                     categoriesPresent.Add(new Tag() { Name = category.Name, QueryString = category.ExtensionString.AddToSearch(null), Count = count });
             }
-            categoriesPresent = SetSizes(categoriesPresent);
-            return categoriesPresent;
+            return SetSizes(categoriesPresent);
         }
     }
 }

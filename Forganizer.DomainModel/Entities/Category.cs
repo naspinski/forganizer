@@ -1,19 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Linq.Mapping;
 using Forganizer.DomainModel.Extensions;
 
 namespace Forganizer.DomainModel.Entities
 {
     [Table(Name = "Categories")]
-    public class Category
+    public class Category : IDataErrorInfo
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert)]
         public int Id { get; set; }
         [Column] public string Name { get; set; }
         [Column] public string ExtensionString { get; set; }
         public IEnumerable<string> Extensions { get { return ExtensionString.SplitTags(); } }
+
+        public string this[string propName]
+        {
+            get
+            {
+                if (propName == "Name" && string.IsNullOrEmpty(Name)) return "category name can't be blank";
+                return null;
+            }
+        }
+        public string Error { get { return null; } } 
     }
 }

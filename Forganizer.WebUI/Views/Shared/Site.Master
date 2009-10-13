@@ -13,26 +13,9 @@
         <div id="header">
             <div id="title">
                 <h1><%= Html.ActionLink("forganizer", "Index", "Home") %></h1>
-                <%--<div id="quicksearch">
-                    <% using (Html.BeginForm("Index", "Home")) { %>
-                        <div class="old_search">
-                            <label for="tags"><i class="tag_green"></i>tags:</label>
-                            <%= Html.TextBox("tags")%>
-                        </div>                           
-                        <%= Html.DropDownList("tagAndOr",
-                            new List<SelectListItem>() { 
-                                new SelectListItem() { Value="And", Text="And" } ,
-                                new SelectListItem() { Value="Or", Text="Or", 
-                                    Selected = (ViewData["tagAndOr"] == null ? false : ViewData["tagAndOr"].Equals("Or"))  }
-                            })%>
-                        <div class="old_search">
-                            <br />    
-                            <label for="extensions" class="clear"><i class="tag_blue"></i>exts:</label>
-                            <%= Html.TextBox("extensions")%>
-                        </div>
-                        <input type="submit" value="filter" />
-                    <% } %>
-                </div>--%>
+                <ul id="main_navigation" class="list_horizontal">
+                    <%= Html.NavMenu(Url, NavHelper.MenuType.MainNavigation) %>
+                </ul>
                 <div id="messages">
                     <% if (TempData["error"] != null){ %> <div class="error"><i></i><%= TempData["error"]%></div> <% } %>
                     <% if (TempData["success"] != null){ %> <div class="success"><i></i><%= TempData["success"]%></div> <% } %>
@@ -46,6 +29,10 @@
             <div class="clear"></div>
         </div>
         <div id="footer">
+            <div>
+                <%= Html.NavMenu(Url, NavHelper.MenuType.Footer) %>
+            </div>
+            <br />
             copyright &copy; <%= DateTime.Now.Year %> <a href="http://naspinski.net">stan naspinski</a>
         </div>
     </div>

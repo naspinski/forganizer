@@ -24,7 +24,7 @@
                         <a target="_blank" href="<%= fileObject.FileInfo.DirectoryName %>" class="folder" title="folder"> </a>
                         <a href="<%= fileObject.FilePath %>" class="download" title="download"> </a>
                     </span>
-                    </li>
+                </li>
                 <% } %>
             </ul>
             <div class="pager">
@@ -32,26 +32,12 @@
             </div> 
         </fieldset>
     </div>
-    <div id="sidebar" class="third right">
+    
+    <div id="sidebar" >
         <fieldset class="box">
-            <legend>
-                <span id="tagFilter">
-                    <% using (Html.BeginForm()) { %>
-                        <%= Html.DropDownList("tagAndOr",
-                            new List<SelectListItem>() { 
-                                new SelectListItem() { Value="And", Text="And" } ,
-                                new SelectListItem() { Value="Or", Text="Or", 
-                                    Selected = (ViewData["tagAndOr"] == null ? false : ViewData["tagAndOr"].Equals("Or"))  }
-                            })%>
-                        <input type="submit" value="change" />
-                    <% } %>    
-                </span>
-                <i class="tag_green"></i>tags
-            </legend>
             <% Html.RenderAction("TagCloud", "Box"); %>
         </fieldset>
         <fieldset class="box">
-            <legend><i class="tag_blue"></i>extensions</legend>
             <% Html.RenderAction("ExtensionCloud", "Box"); %>
         </fieldset>
         <fieldset class="box">

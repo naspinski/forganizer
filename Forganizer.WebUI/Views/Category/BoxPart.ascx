@@ -2,7 +2,7 @@
 <%@ Import Namespace="Forganizer.DomainModel.Extensions" %>
 
             <ul class="list_horizontal">
-                <% foreach (var category in Model) { %>
+                <% foreach (var category in Model.Where(x => x.QueryStringTags.Count() > 0)) { %>
                 <li>
                     <%= Html.ActionLink(category.Name, "Index", "Home",
                         new
@@ -11,7 +11,7 @@
                             tags = ViewData["tags"],
                             TagAndOr = ViewData["tagAndOr"]
                         },
-                        new { style = "font-size:" + category.Size.ToString("0.0") + "em;" })%>
+                        new { style = "font-size:" + category.Size + "em;" })%>
                     <% if (ViewData["Extensions"].ToString().SplitTags().Intersect(category.QueryStringTags).Count() > 0) { %>
                         <%= Html.ActionLink("x", "Index", "Home",  
                             new

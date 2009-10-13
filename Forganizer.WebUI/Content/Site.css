@@ -1,12 +1,15 @@
 ﻿
 /* base tags */
-body { background-image:url(Images/bg-body.jpg); background-repeat:repeat-x; font-size: .75em; font-family: Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; }
+body { background-image:url(Images/bg-body.jpg); background-repeat:repeat-x; font-size: .75em; font-family: Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; color:#333; }
 
 a { color:#5C8A36; }
 a:hover, ul.list_vertical li:hover a.name { color: #EB7300; }
 
-input, select { background:#eee; color:#666; font-weight:bold;  }
-input[type="text"] { border:none; padding:1px .5%; }
+label { display:block; font-weight:bold; font-size:1.4em; }
+
+input, select { background:#ddd; color:#666; font-weight:bold; font-size:2em;  }
+input[type="checkbox"] { border:none; }
+input[type="text"] { border:1px solid #ddd; padding:1px .5%; width:100%; }
 input[type="submit"] { background: #5C8A36; border:none; color:#fff; font-weight:bold;  }
 input[type="submit"]:hover { background: #EB7300; cursor:pointer; }
 
@@ -23,11 +26,17 @@ ul.list_vertical { margin:-15px 8px 3px 20px; }
 ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
     a.x { font-size:1em;position:absolute;top:2px;right:-.8em; text-decoration:none;border:solid 1px; height:.7em;line-height:.6em; padding-bottom:-2px; }
 
-fieldset { margin:10px; padding:5px;}
-    fieldset.box { display:block; min-height:200px; overflow:visible; padding:10px;}
+fieldset { margin:10px; padding:5px; }
+    fieldset div { padding:10px 20px; }
+    fieldset.box { display:block; overflow:visible; padding:10px;}
         fieldset.box div { padding:10px 10px 0 0; overflow:visible; }
-        fieldset.box div.inactive { clear:both; margin-top:20px; }
+        fieldset.box legend { margin-left:-1em; }
+        fieldset.box div.inactive { clear:both; margin-top:5px; }
             fieldset.box div.inactive a { color:#999; }
+    fieldset.box ul.list_vertical {margin:0;}
+        fieldset.box ul.list_vertical li { padding:0; overflow:visible; }
+        fieldset.box ul.list_vertical a { border:solid 1px; padding:2px 5px; text-decoration:none; display:block; }
+        fieldset.box ul.list_vertical a:hover { padding: 2px 3px 2px 7px; }
 legend { font-family:Georgia; font-size:1.5em; }
 
 /* main areas */
@@ -37,6 +46,10 @@ legend { font-family:Georgia; font-size:1.5em; }
     #title { font-weight:bold; }
         #title #messages { float:left; margin:0 0 0 3em; }
             #title #messages div i { position:relative; bottom:-6px; }
+    #main_navigation { position:absolute; font-size:1.3em; bottom:0; right:0; }
+        #main_navigation li { margin:0 0 0 2px; }
+        #main_navigation a { background:#fff; text-decoration:none; margin:0; padding:3px;  }
+            #main_navigation li a.selected { background:#ddd; }
     /* before I changed out the old search boxes
     #quicksearch {float:right; width:70%; visibility:hidden; }
         #quicksearch div.old_search { display:none; }
@@ -49,7 +62,7 @@ legend { font-family:Georgia; font-size:1.5em; }
     
 #main { padding:0; background-color: #fff; _height: 1px; clear:both; }
 #content { width:74%; float:left; }
-#sidebar { background:#ddd; margin:-5px 0; height:100%; width:25%; float:right; }
+#sidebar { background:#ddd; margin:-5px 0 0 0; height:100%; width:25%; float:right; }
     #tagFilter { font-size:.8em; float:right; position:relative;  top:.4em; padding:0; }
         #tagFilter input { font-size:.8em; }
         #tagFilter select { font-size:.7em; }
@@ -65,19 +78,22 @@ h1 a {text-decoration:none; }
 .pager{margin-top:1em;}
 .pager a { display:inline-block; height:1.6em; width:1.6em; border: solid 1px #ddd; margin:.2em; text-align:center; padding:3px; }
 .pager a.selected { font-weight:bold; border: solid 1px #5C8A36; }
+a.squaredLink { font-size:.5em; text-decoration:none; }
 
+.align_center { text-align:center; }
 .left { float:left; }
 .right { float: right; }
 .clear {clear:both; }
 
-.delete, .download, .folder { display:block; height:24px; width:24px; background:url(Images/sprites.png) no-repeat; float:right; }
+i,.delete, .download, .folder, .edit { background:url(Images/sprites.png) no-repeat; }
+.delete, .download, .folder, .edit { display:block; height:24px; width:24px; float:right; }
 
 /* errors */
-.field-validation-error {}
-.input-validation-error {}
-.validation-summary-errors {}
+.field-validation-error { color:Red; float:right;}
+input[type="text"].input-validation-error, .input-validation-error { border-color:Red;}
+ul.validation-summary-errors li {}
 .error,.success,.warning { clear:left; line-height:1.6em; }
-i { background:url(Images/sprites.png) no-repeat; display:inline-block; margin:0 3px 0 0;}
+i { display:inline-block; margin:0 3px 0 0;}
 i {  height:24px; width:24px;  }
 .name i {height:24px; width:18px; background-position: 0 -1284px; float:left; }
 
@@ -91,6 +107,9 @@ i {  height:24px; width:24px;  }
 .folder:hover { background-position: 0 -370px; } 
 .delete:hover { background-position: 0 -444px; } 
 .download:hover { background-position: 0 -518px; } 
+.edit:hover { background-position: -148px -888px; } 
+.edit { background-position: -148px -962px; } 
+    i.edit {float:left; }
 .reload { background-position: 0 -592px; } 
 .folder { background-position: 0 -666px; } 
 .delete { background-position: 0 -740px; } 
@@ -124,7 +143,7 @@ i {  height:24px; width:24px;  }
 .name i.xls, .name i.xlsx {background-position: -74px -1258px;}
 .name i.rss, .name i.atom { background-position: 0 -1548px;}
 .name i.phps { background-position: -74px -466px;}
-.name i.vcard { background-position: -74px -1192px;}
+.name i.vcard, .name i.category { background-position: -74px -1192px;}
 .name i.torrent { background-position: -74px -994px;}
 .name i.opml { background-position: -74px -334px;}
 .name i.bat{background-position: 0 -1020px;} 

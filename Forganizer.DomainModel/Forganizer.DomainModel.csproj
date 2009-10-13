@@ -54,8 +54,11 @@
     <Compile Include="Concrete\FileObjectRepository.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\EntityUtilities.cs" />
     <Compile Include="Entities\FileObject.cs" />
+    <Compile Include="Entities\Folder.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Extensions\EIEnumerableString.cs" />
     <Compile Include="Extensions\EKeyValuePairStringInt.cs" />
     <Compile Include="Extensions\EIEnumerableFileObject.cs" />
     <Compile Include="Extensions\Estring.cs" />

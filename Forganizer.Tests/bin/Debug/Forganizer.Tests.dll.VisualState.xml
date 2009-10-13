@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
-  <TopNode>[0-1043]C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll</TopNode>
-  <SelectedNode>[0-1045]Forganizer.Tests</SelectedNode>
+  <TopNode>[0-1045]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll</TopNode>
+  <SelectedNode>[0-1042]Forganizer.Tests.WebUI.PagingHelperTests</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1043]C:\Documents and Settings\stan.naspinski\Desktop\Forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" Expanded="true" />
-    <Node UniqueName="[0-1044]Forganizer" Expanded="true" />
-    <Node UniqueName="[0-1045]Forganizer.Tests" Expanded="true" />
-    <Node UniqueName="[0-1046]Forganizer.Tests.DomainModel" Expanded="true" />
-    <Node UniqueName="[0-1039]Forganizer.Tests.DomainModel.EKeyValuePairStringIntTests" Expanded="true" />
+    <Node UniqueName="[0-1045]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1046]Forganizer" Expanded="true" />
+    <Node UniqueName="[0-1047]Forganizer.Tests" Expanded="true" />
+    <Node UniqueName="[0-1048]Forganizer.Tests.DomainModel" Expanded="true" />
     <Node UniqueName="[0-1002]Forganizer.Tests.DomainModel.IEnumerableFileObjectTests" Expanded="true" />
-    <Node UniqueName="[0-1041]Forganizer.Tests.DomainModel.TagTests" Expanded="true" />
-    <Node UniqueName="[0-1047]Forganizer.Tests.WebUI" Expanded="true" />
+    <Node UniqueName="[0-1049]Forganizer.Tests.WebUI" Expanded="true" />
+    <Node UniqueName="[0-1011]Forganizer.Tests.WebUI.BoxControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1042]Forganizer.Tests.WebUI.PagingHelperTests" Expanded="true" />
   </Nodes>
 </VisualState>

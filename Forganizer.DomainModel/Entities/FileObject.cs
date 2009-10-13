@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Data.Linq.Mapping;
 using System.IO;
-using Forganizer.DomainModel.Abstract;
-using Forganizer.DomainModel.Concrete;
+using System.Linq;
 using Forganizer.DomainModel.Extensions;
 
 namespace Forganizer.DomainModel.Entities
@@ -13,7 +11,7 @@ namespace Forganizer.DomainModel.Entities
     public enum SearchType { And, Or };
 
     [Table(Name = "FileObjects")]
-    public class FileObject
+    public class FileObject : IDataErrorInfo
     {
         public FileObject() { TagString = string.Empty; }
 
@@ -41,5 +39,16 @@ namespace Forganizer.DomainModel.Entities
             if(tag.SplitTags().Count() > 1) throw new FormatException("delimiters not allowed in a tag");
             else TagString += (TagString.Length > 0 ? Constants.UrlDelimiter : "") + tag;
         }
+
+        public string this[string propName]
+        {
+            get
+            {
+                if (propName == "FilePath" && string.IsNullOrEmpty(FilePath)) return "FilePath can't be empty";
+                if (propName == "Name" && string.IsNullOrEmpty(Name)) return "Name can't be blank (code error)";
+                return null;
+            }
+        }
+        public string Error { get { return null; } } 
     }
 }
