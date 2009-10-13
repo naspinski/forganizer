@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using Forganizer.DomainModel.Abstract;
+
+namespace Forganizer.WebUI.Controllers
+{
+    public class FilesController : Controller
+    {
+        private IFileObjectRepository fileObjectRepository;
+        public FilesController(IFileObjectRepository fileObjectRepository)
+        {
+            this.fileObjectRepository = fileObjectRepository;
+        }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
