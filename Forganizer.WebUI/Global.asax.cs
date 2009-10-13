@@ -53,6 +53,7 @@ namespace Forganizer.WebUI
                 new { page = @"\d+" }
             );
 
+            routes.MapRoute(null, "{controller}/", new { action = "Index" });
             routes.MapRoute(null, "{controller}/{action}");
         }
 

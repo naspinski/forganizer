@@ -61,8 +61,8 @@ legend { font-family:Georgia; font-size:1.5em; }
         #quicksearch select {  float:right; width:10%; margin-top:2px; height:1.6em; }*/
     
 #main { padding:0; background-color: #fff; _height: 1px; clear:both; }
-#content { width:74%; float:left; }
-#sidebar { background:#ddd; margin:-5px 0 0 0; height:100%; width:25%; float:right; }
+#content { width:69%; float:left; }
+#sidebar { background:#ddd; margin:-5px 0 0 0; height:100%; width:30%; float:right; }
     #tagFilter { font-size:.8em; float:right; position:relative;  top:.4em; padding:0; }
         #tagFilter input { font-size:.8em; }
         #tagFilter select { font-size:.7em; }

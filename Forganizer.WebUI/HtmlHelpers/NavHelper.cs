@@ -17,14 +17,15 @@ namespace Forganizer.WebUI.HtmlHelpers
                 new NavLink() { Text = "home", Controller="Home", View="Index" },
                 new NavLink() { Text = "categories", Controller = "Category", View = "Index" },
                 new NavLink() { Text = "add files", Controller = "Files", View = "Index" } };
-            string[] url = HttpContext.Current.Request.Url.Segments;
+            string[] url = HttpContext.Current.Request.Url.Segments.Select(x => x.Replace("/","")).ToArray();
            
             string navMenu = string.Empty;
-            bool isHome = !links.Select(x => x.Controller).Any(x => url.Contains(x + "/"));
+            bool isHome = !links.Select(x => x.Controller).Any(x => url.Contains(x));
 
             for (int i = 0; i < links.Length; i++)
             {
-                string lnk = "<a " + ((isHome && links[i].Controller == "Home") || (!isHome && url.Contains(links[i].Controller + "/")) ? "class=\"selected\" " : "") +
+                bool isSelected = (isHome && links[i].Controller == "Home") || (!isHome && url.Contains(links[i].Controller));
+                string lnk = "<a " + (isSelected ? "class=\"selected\" " : "") +
                     "href=\"" + urlHelper.Action(links[i].View, links[i].Controller).ToString() + "\">" + links[i].Text + "</a>";
                 if (menuType == MenuType.MainNavigation) navMenu += "<li>" + lnk + "</li>";
                 else if (menuType == MenuType.Footer) navMenu += (i == 0 ? "" : " | ") + lnk;
