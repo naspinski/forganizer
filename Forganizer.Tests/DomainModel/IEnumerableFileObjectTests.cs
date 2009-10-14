@@ -17,7 +17,7 @@ namespace Forganizer.Tests.DomainModel
         [Test]
         public void Pulling_all_tags_from_an_ienumerable_yields_proper_results()
         {
-            Assert.AreEqual(4, fobs.Tags().Count());
+            Assert.AreEqual(4, fobs.Tags(true).Count());
             Assert.AreEqual(2, fobs.TagCount("funny"));
             Assert.AreNotEqual(2, fobs.TagCount("non-existant tag"));
             Assert.AreEqual(0, fobs.TagCount("non-existant tag"));

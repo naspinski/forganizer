@@ -21,7 +21,7 @@ namespace Forganizer.DomainModel.Entities
             }
         }
 
-        private static void EnsureValid(IDataErrorInfo validatable, params string[] properties)
+        public static void EnsureValid(IDataErrorInfo validatable, params string[] properties)
         {
             if (properties.Any(x => validatable[x] != null))
                 throw new InvalidOperationException(validatable.GetType().ToString() + " is invalid");

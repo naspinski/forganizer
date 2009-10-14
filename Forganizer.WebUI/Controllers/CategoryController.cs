@@ -10,40 +10,16 @@ namespace Forganizer.WebUI.Controllers
     public class CategoryController : Controller
     {
         private ICategoryRepository categoryRepository;
-        public CategoryController(ICategoryRepository categoryRepository)
+        private IFileObjectRepository fileObjectRepository;
+        public CategoryController(ICategoryRepository categoryRepository, IFileObjectRepository fileObjectRepository)
         {
             this.categoryRepository = categoryRepository;
+            this.fileObjectRepository = fileObjectRepository;
         }
 
         public ViewResult Index()
         {
             return View(categoryRepository.Categories);
-        }
-
-        public ViewResult Box(string tags, string extensions, string tagAndOr, IEnumerable<FileObject> fileObjects)
-        {
-            ViewData["tags"] = tags;
-            ViewData["extensions"] = extensions;
-            ViewData["tagAndOr"] = tagAndOr;
-
-            return View(fileObjects.AsQueryable().Categories(categoryRepository.Categories.Where(x => x.ExtensionString.Length > 0)));
-        }
-
-        public ViewResult BoxPart(string tags, string extensions, string tagAndOr, IEnumerable<FileObject> fileObjects, 
-            IEnumerable<Tag> Model, bool ActivePart)
-        {
-            ViewData["tags"] = tags;
-            ViewData["extensions"] = extensions;
-            ViewData["tagAndOr"] = tagAndOr;
-            IEnumerable<string> extensionsInFileObjects = fileObjects.AsQueryable().WithExtensions(extensions).Select(x => x.FileInfo.Extension);
-            IEnumerable<Tag> activeCategories = Model.Where(x => x.QueryStringTags.Any(y => extensionsInFileObjects.Contains(y)));
-            if (ActivePart) return View(activeCategories);
-            else
-            {
-                IEnumerable<Category> inactiveCategories = categoryRepository.Categories.Where(x => !activeCategories.Select(y => y.Name).Contains(x.Name));
-                IEnumerable<Tag> inactiveCategoryTags = inactiveCategories.Select(x => new Tag() { Name = x.Name, QueryString = x.ExtensionString, Size = 1 });
-                return View(inactiveCategoryTags);
-            }
         }
 
         [AcceptVerbs(HttpVerbs.Get)]

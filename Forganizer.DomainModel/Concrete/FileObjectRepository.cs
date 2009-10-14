@@ -2,6 +2,8 @@
 using System.Linq;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
+using System.IO;
+using System;
 
 namespace Forganizer.DomainModel.Concrete
 {
@@ -28,9 +30,30 @@ namespace Forganizer.DomainModel.Concrete
             return fileObjectTable.SingleOrDefault(x => x.Id == Id);
         }
 
+        public FileObject GetFileObject(string filePath)
+        {
+            try { return fileObjectTable.First(x => x.FilePath.Equals(filePath)); }
+            catch { return new FileObject(); }
+        }
+
         public void DeleteFileObject(FileObject fileObject)
         {
             fileObject.Active = false;
+            fileObjectTable.Context.SubmitChanges();
+        }
+
+        public void SaveFileObject(FileObject fileObject)
+        {
+            EntityUtilities.EnsureValid(fileObject, "FilePath", "Name");
+            fileObject.UpdateName();
+            if (fileObject.Id == 0) fileObjectTable.InsertOnSubmit(fileObject);
+            else
+            {
+                try { fileObjectTable.Attach(fileObject); }
+                catch (InvalidOperationException ex) { if (!ex.Message.Equals("Cannot attach an entity that already exists.")) throw ex; } //already attached
+                catch (Exception ex) { throw ex; }
+                fileObjectTable.Context.Refresh(RefreshMode.KeepCurrentValues, fileObject);
+            }
             fileObjectTable.Context.SubmitChanges();
         }
     }

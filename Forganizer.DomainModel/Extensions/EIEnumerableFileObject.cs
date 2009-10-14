@@ -11,7 +11,7 @@ namespace Forganizer.DomainModel.Extensions
     {
         public static int TagCount(this IEnumerable<FileObject> fobs, string tag)
         {
-            try { return fobs.Tags().Where(x => x.Name == tag).FirstOrDefault().Count; }
+            try { return fobs.Tags(true).Where(x => x.Name == tag).FirstOrDefault().Count; }
             catch (NullReferenceException) { return 0; }
             catch (Exception ex) { throw ex; }
         }
@@ -49,38 +49,22 @@ namespace Forganizer.DomainModel.Extensions
             return fobs.Where(x => x.FilePath.EndsWith(extension));
         }
 
-        public static IQueryable<Tag> Extensions(this IQueryable<FileObject> fobs)
+        public static IQueryable<Tag> Extensions(this IQueryable<FileObject> fobs, bool active)
         {
             List<Tag> extensions = new List<Tag>();
             IEnumerable<string> distinctExts = fobs.Select(x => x.FilePath.GetExtension());
             foreach (string ext in distinctExts.Distinct())
-                extensions.Add(new Tag { Name = ext, Count = fobs.Where(x => x.FilePath.EndsWith(ext)).Count() });
-            extensions = SetSizes(extensions);
-            return extensions.AsQueryable();
+                extensions.Add(new Tag { Name = ext, Count = fobs.Where(x => x.FilePath.EndsWith(ext)).Count(), Active = active, QueryString = ext });
+            return extensions.SetSizes().AsQueryable();
         }
 
-        public static IEnumerable<Tag> Tags(this IEnumerable<FileObject> fobs)
+        public static IEnumerable<Tag> Tags(this IEnumerable<FileObject> fobs, bool active)
         {
             List<Tag> tags = new List<Tag>();
             IEnumerable<string> allTags = AllTags(fobs.Select(x => x.Tags));
             foreach (string tag in allTags.Distinct())
-                tags.Add(new Tag { Name = tag, Count = allTags.Where(x => x == tag).Count() });// Add(tag, allTags.Where(x => x == tag).Count());
-            tags = SetSizes(tags);
-            return tags;
-        }
-
-        private static List<Tag> SetSizes(List<Tag> tags)
-        {
-            int max = 0;
-            try { max = tags.Select(x => x.Count).Max(); }
-            catch (InvalidOperationException) { } //none present
-            catch (Exception ex) { throw ex; }
-            foreach (Tag tag in tags)
-            {
-                tag.Size = (tag.Count / (decimal)max) * (decimal)Constants.TagMaxSize;
-                if (tag.Size < Constants.TagMinSize) tag.Size = Constants.TagMinSize;
-            }
-            return tags.OrderBy(x => x.Name).ToList();
+                tags.Add(new Tag { Name = tag, Count = allTags.Where(x => x == tag).Count(), Active = active, QueryString=tag });
+            return tags.SetSizes();
         }
 
         private static IEnumerable<string> AllTags(IEnumerable<IEnumerable<string>> allTagLists)
@@ -91,20 +75,20 @@ namespace Forganizer.DomainModel.Extensions
             return allTags;
         }
 
-        public static IEnumerable<Tag> Categories(this IQueryable<FileObject> fileObjects, IEnumerable<Category> categories)
+        public static IEnumerable<Tag> Categories(this IQueryable<FileObject> fileObjects, IEnumerable<Category> categories, bool active)
         {
-            if (fileObjects == null || fileObjects.Count() == 0) 
-                return categories.Select(x => new Tag() { Name = x.Name, QueryString = x.ExtensionString.AddToSearch(null), Count = 1, Size = Constants.TagMinSize });
+            if (fileObjects == null || fileObjects.Count() == 0)
+                return new List<Tag>();
             List<Tag> categoriesPresent = new List<Tag>();
             int count;
-            IEnumerable<Tag> existingFileExtensions = fileObjects.Extensions();
+            IEnumerable<Tag> existingFileExtensions = fileObjects.Extensions(true);
             foreach(Category category in categories)
             {
                 count = fileObjects.WithExtensions(category.ExtensionString).Count();
                 if (count > 0)
-                    categoriesPresent.Add(new Tag() { Name = category.Name, QueryString = category.ExtensionString.AddToSearch(null), Count = count });
+                    categoriesPresent.Add(new Tag() { Name = category.Name, QueryString = category.ExtensionString.AddToSearch(null), Count = count, Active = active });
             }
-            return SetSizes(categoriesPresent);
+            return categoriesPresent.SetSizes();
         }
     }
 }

@@ -60,10 +60,10 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BoxController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\FilesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SideBarController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,7 +79,6 @@
     <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Categories.xml" />
     <Content Include="bin\Castle.Core.dll" />
     <Content Include="bin\Castle.DynamicProxy2.dll" />
     <Content Include="bin\Castle.MicroKernel.dll" />
@@ -93,16 +92,12 @@
     <Content Include="Content\reset.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Views\Box\ExtensionCloud.ascx" />
-    <Content Include="Views\Box\ExtensionCloudPart.ascx" />
-    <Content Include="Views\Box\TagCloud.ascx" />
-    <Content Include="Views\Box\TagCloudPart.ascx" />
-    <Content Include="Views\Category\Box.ascx" />
-    <Content Include="Views\Category\BoxPart.ascx" />
     <Content Include="Views\Category\Edit.aspx" />
     <Content Include="Views\Category\Index.aspx" />
-    <Content Include="Views\Files\Index.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Manage\Folder.aspx" />
+    <Content Include="Views\Search\Index.aspx" />
+    <Content Include="Views\SideBar\Container.ascx" />
+    <Content Include="Views\SideBar\Index.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
@@ -113,7 +108,6 @@
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

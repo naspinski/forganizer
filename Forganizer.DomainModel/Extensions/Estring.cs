@@ -18,7 +18,7 @@ namespace Forganizer.DomainModel.Extensions
         {
             int dotPosition = filePath.LastIndexOf('.');
             if (dotPosition > 0) return filePath.Substring(dotPosition, filePath.Length - dotPosition).Trim();
-            else return "none";
+            else return string.Empty;
         }
 
         public static string AddToSearch(this object previous, string add)

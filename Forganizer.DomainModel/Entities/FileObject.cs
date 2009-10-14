@@ -40,12 +40,16 @@ namespace Forganizer.DomainModel.Entities
             else TagString += (TagString.Length > 0 ? Constants.UrlDelimiter : "") + tag;
         }
 
+        public void UpdateName()
+        {
+            Name = FileInfo.Name;
+        }
+
         public string this[string propName]
         {
             get
             {
                 if (propName == "FilePath" && string.IsNullOrEmpty(FilePath)) return "FilePath can't be empty";
-                if (propName == "Name" && string.IsNullOrEmpty(Name)) return "Name can't be blank (code error)";
                 return null;
             }
         }

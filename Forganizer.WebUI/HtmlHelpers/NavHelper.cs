@@ -14,9 +14,9 @@ namespace Forganizer.WebUI.HtmlHelpers
         public static string NavMenu(this HtmlHelper html, UrlHelper urlHelper, RouteValueDictionary routeValues, MenuType menuType)
         {
             NavLink[] links = {
-                new NavLink() { Text = "home", Controller="Home", View="Index" },
+                new NavLink() { Text = "search", Controller="Search", View="Index" },
                 new NavLink() { Text = "categories", Controller = "Category", View = "Index" },
-                new NavLink() { Text = "add files", Controller = "Files", View = "Index" } };
+                new NavLink() { Text = "manage", Controller = "Manage", View = "AddFolder" } };
            
             string navMenu = string.Empty;
 

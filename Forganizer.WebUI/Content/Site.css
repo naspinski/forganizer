@@ -4,6 +4,8 @@ body { background-image:url(Images/bg-body.jpg); background-repeat:repeat-x; fon
 
 a { color:#5C8A36; }
 a:hover, ul.list_vertical li:hover a.name { color: #EB7300; }
+a.andOr { text-decoration:none; border:solid 1px #ddd; padding:0 3px;}
+    a.andOr.selected { border-color: #5C8A36; }
 
 label { display:block; font-weight:bold; font-size:1.4em; }
 
@@ -21,7 +23,7 @@ ul.list_vertical { margin:-15px 8px 3px 20px; }
     ul.list_vertical li:hover { background:#ddd;}
         .name, span.tags, span.actions { display:block; float:left; }
         ul.list_vertical li .name { width:25%;}
-        ul.list_vertical li span.tags { width:55%; text-align:right;}
+        ul.list_vertical li span.tags { width:54%; text-align:right; padding:.5% 0;}
         ul.list_vertical li span.actions { width:20%; text-align:right; margin:0; position:relative; top:-2px; right:0; }
 ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
     a.x { font-size:1em;position:absolute;top:2px;right:-.8em; text-decoration:none;border:solid 1px; height:.7em;line-height:.6em; padding-bottom:-2px; }
@@ -37,7 +39,10 @@ fieldset { margin:10px; padding:5px; }
         fieldset.box ul.list_vertical li { padding:0; overflow:visible; }
         fieldset.box ul.list_vertical a { border:solid 1px; padding:2px 5px; text-decoration:none; display:block; }
         fieldset.box ul.list_vertical a:hover { padding: 2px 3px 2px 7px; }
-legend { font-family:Georgia; font-size:1.5em; }
+fieldset.messages div { font-size:.8em; padding:1px 0px 1px 20px; }
+    fieldset.messages div:hover { background:#ddd; }
+        
+legend { font-family:Georgia; font-size:1.5em; cursor:default; }
 
 /* main areas */
 .page { width: 95%; margin-left: auto; margin-right: auto; }
@@ -50,31 +55,27 @@ legend { font-family:Georgia; font-size:1.5em; }
         #main_navigation li { margin:0 0 0 2px; }
         #main_navigation a { background:#fff; text-decoration:none; margin:0; padding:3px;  }
             #main_navigation li a.selected { background:#ddd; }
-    /* before I changed out the old search boxes
-    #quicksearch {float:right; width:70%; visibility:hidden; }
-        #quicksearch div.old_search { display:none; }
-        #quicksearch fieldset { float:left; }
-        #quicksearch input, #quicksearch select, #quicksearch label { font-size:1.5em; height:1.3em; line-height:1.3em; }
-        #quicksearch label {width:14%; float:left; font-weight:bold; color:#fff; margin-top:4px; }
-        #quicksearch input[type="text"] { width:74%; float:left; margin:3px 0; }
-        #quicksearch input[type="submit"] { float:right; width:10%; margin-top:3px; font-size:1.6em; color:#fff; }
-        #quicksearch select {  float:right; width:10%; margin-top:2px; height:1.6em; }*/
     
 #main { padding:0; background-color: #fff; _height: 1px; clear:both; }
-#content { width:69%; float:left; }
+#content { width:68%; float:left; }
 #sidebar { background:#ddd; margin:-5px 0 0 0; height:100%; width:30%; float:right; }
-    #tagFilter { font-size:.8em; float:right; position:relative;  top:.4em; padding:0; }
-        #tagFilter input { font-size:.8em; }
-        #tagFilter select { font-size:.7em; }
+    #tagFilter { font-size:.8em; float:right; padding:0; padding:3px; }
 #footer { color: #666; padding:10px 0; text-align: center; line-height: normal; margin: 0; font-size: .9em; }
 
 
 /* headers */
 h1,h2,h3,h4,h5,h6, legend { font-weight:bold; color:#003366; }
-h1 { font-size:2em; margin:0 0 2px 0;  /*position:absolute;top:0; left:0;*/ float:left; font-family:Georgia; }
+h1 { font-size:2em; margin:0 0 2px 0;  float:left; font-family:Georgia; }
 h1 a {text-decoration:none; }
 
 /* general */
+.tag { border:solid 1px #fff; padding:0 2px; font-weight:bold;}
+    .tag a { display:none; }
+    .tag:hover a { display:inline-block; }
+span.add_tag { float:right; position:relative; top:-3px; }
+    span.add_tag input[type="text"], span.add_tag input[type="submit"] { font-size:.9em; }
+    span.add_tag input[type="text"] { width:75px; }
+        li:hover span.add_tag input[type="text"] { background:#fff; }
 .pager{margin-top:1em;}
 .pager a { display:inline-block; height:1.6em; width:1.6em; border: solid 1px #ddd; margin:.2em; text-align:center; padding:3px; }
 .pager a.selected { font-weight:bold; border: solid 1px #5C8A36; }
@@ -99,9 +100,9 @@ i {  height:24px; width:24px;  }
 
 
 /* image sprites */
-.error i { background-position: 0 0; } 
-.success i { background-position: 0 -74px; } 
-.warning i { background-position: 0 -148px; } 
+.error i, i.error { background-position: 0 0; } 
+.success i, i.success { background-position: 0 -74px; } 
+.warning i, i.warning { background-position: 0 -148px; } 
 .danger { background-position: 0 -222px; } 
 .reload:hover { background-position: 0 -296px; } 
 .folder:hover { background-position: 0 -370px; } 

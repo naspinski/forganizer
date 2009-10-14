@@ -17,39 +17,32 @@ namespace Forganizer.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(null, "", new { controller = "Home", action = "Index", tags = "", extensions = "", page = 1 });
+            routes.MapRoute(null, "", new { controller = "Search", action = "Index", tags = "", extensions = "", page = 1 });
 
-            routes.MapRoute(null, "page{page}",
-                new { controller = "Home", action = "Index", extensions = "", tags="" },
+            routes.MapRoute(null, "Page{page}",
+                new { controller = "Search", action = "Index", extensions = "", tags="" },
                 new { page = @"\d+" }
             );
-            routes.MapRoute(null, "tags/{tags}",
-                new { controller = "Home", action = "Index", extensions = "", page = 1 }
+            routes.MapRoute(null, "Tags/{tags}",
+                new { controller = "Search", action = "Index", extensions = "", page = 1 }
             );
-            routes.MapRoute(null, "tags/{tags}/page{page}",
-                new { controller = "Home", action = "Index", extensions = "" },
+            routes.MapRoute(null, "Tags/{Tags}/Page{page}",
+                new { controller = "Search", action = "Index", extensions = "" },
                 new { page = @"\d+" }
             );
-            routes.MapRoute(null, "tags/{tags}/extensions/{extensions}",
-                new { controller = "Home", action = "Index", page = 1 }
+            routes.MapRoute(null, "Tags/{tags}/Extensions/{extensions}",
+                new { controller = "Search", action = "Index", page = 1 }
             );
-            routes.MapRoute(null, "tags/{tags}/extensions/{extensions}/page{page}",
-                new { controller = "Home", action = "Index" },
+            routes.MapRoute(null, "Tags/{tags}/Extensions/{extensions}/Page{page}",
+                new { controller = "Search", action = "Index" },
                 new { page = @"\d+" }
             );
 
-            routes.MapRoute(null, "extensions/{extensions}",
-                new { controller = "Home", action = "Index", tags = "", page = 1 }
+            routes.MapRoute(null, "Extensions/{extensions}",
+                new { controller = "Search", action = "Index", tags = "", page = 1 }
             );
-            routes.MapRoute(null, "extensions/{extensions}/page{page}",
-                new { controller = "Home", action = "Index", tags = "" },
-                new { page = @"\d+" }
-            );
-            routes.MapRoute(null, "extensions/{extensions}/tags/{tags}",
-                new { controller = "Home", action = "Index", page = 1 }
-            );
-            routes.MapRoute(null, "extensions/{extensions}/tags/{tags}/page{page}",
-                new { controller = "Home", action = "Index" },
+            routes.MapRoute(null, "Extensions/{extensions}/Page{page}",
+                new { controller = "Search", action = "Index", tags = "" },
                 new { page = @"\d+" }
             );
 

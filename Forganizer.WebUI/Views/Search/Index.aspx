@@ -1,7 +1,6 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Forganizer.DomainModel.Entities.FileObject>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Forganizer.DomainModel.Entities.FileAndTagCollection>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
 
     <div id="content">
         <fieldset class="clear">
@@ -11,16 +10,26 @@
                     <span class="name"></span>
                     <span class="tags title">tags</span>
                 </li>
-                <% foreach (var fileObject in Model) { %>
+                <% foreach (var fileObject in Model.PageOfFileObjects) { %>
                 <li>
                     <a class="name" title="<%= fileObject.FilePath %>">
                         <i class="<%= fileObject.FileInfo.Extension.Replace(".","") %>"></i>
                         <%= fileObject.FileInfo.Name%>
                     </a>    
-                    <span class="tags"><% foreach (var tag in fileObject.Tags)
-                                          { %><%= tag%> <% } %></span>
+                    <span class="tags">
+                        <% using(Html.BeginForm()) { %>
+                            <span class="add_tag">
+                                <%= Html.Hidden("Id", fileObject.Id) %>
+                                <%= Html.TextBox("AddTag") %>
+                                <input type="submit" value="add" />
+                            </span>
+                        <% } %>
+                        <% foreach (var tag in fileObject.Tags) { %><span class="tag"><%= tag%> <a href="#">delete</a></span><% } %>
+                    </span>
                     <span class="actions">
-                        <%= Html.ActionLink(" ", "Delete", new { fileObject.Id }, new { @class = "delete", title = "delete" })%>
+                        <%= Html.ActionLink(" ", "Delete", 
+                            new { fileObject.Id, returnUrl = ViewContext.HttpContext.Request.Url.ToString() }, 
+                            new { @class = "delete", title = "delete" })%>
                         <a target="_blank" href="<%= fileObject.FileInfo.DirectoryName %>" class="folder" title="folder"> </a>
                         <a href="<%= fileObject.FilePath %>" class="download" title="download"> </a>
                     </span>
@@ -32,20 +41,8 @@
             </div> 
         </fieldset>
     </div>
-    
-    <div id="sidebar" >
-        <fieldset class="box">
-            <% Html.RenderAction("TagCloud", "Box"); %>
-        </fieldset>
-        <fieldset class="box">
-            <% Html.RenderAction("ExtensionCloud", "Box"); %>
-        </fieldset>
-        <fieldset class="box">
-            <legend><i class="tag_red"></i>categories</legend>
-            <% Html.RenderAction("Box", "Category", new { fileObjects = Model }); %>
-        </fieldset>                
-    </div>
-    
+    <% Html.RenderAction("Index", "SideBar",  new { fileAndTagCollection = Model }); %>
+    <div class="clear"></div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">
