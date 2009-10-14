@@ -45,7 +45,7 @@ fieldset.messages div { font-size:.8em; padding:1px 0px 1px 20px; }
 legend { font-family:Georgia; font-size:1.5em; cursor:default; }
 
 /* main areas */
-.page { width: 95%; margin-left: auto; margin-right: auto; }
+.page { width: 95%; margin-left: auto; margin-right: auto; background: url(Images/bg-main.jpg) center top no-repeat; }
 
 #header { position: relative; margin:2px 0 5px 0; padding: 0 0 5px 0; overflow:hidden;  }
     #title { font-weight:bold; }
