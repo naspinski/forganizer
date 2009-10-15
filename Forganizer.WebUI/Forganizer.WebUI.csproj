@@ -71,6 +71,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\CloudHelper.cs" />
     <Compile Include="HtmlHelpers\DelimiterInfoHelper.cs" />
     <Compile Include="HtmlHelpers\NavHelper.cs" />
     <Compile Include="HtmlHelpers\PagingHelper.cs" />
@@ -88,6 +89,7 @@
     <Content Include="bin\Microsoft.Web.Mvc.dll" />
     <Content Include="Content\iconize.css" />
     <Content Include="Content\Images\bg-body.jpg" />
+    <Content Include="Content\Images\bg-main.jpg" />
     <Content Include="Content\Images\sprites.png" />
     <Content Include="Content\reset.css" />
     <Content Include="Default.aspx" />
@@ -96,7 +98,6 @@
     <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Manage\Folder.aspx" />
     <Content Include="Views\Search\Index.aspx" />
-    <Content Include="Views\SideBar\Container.ascx" />
     <Content Include="Views\SideBar\Index.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\site.css" />

@@ -18,14 +18,8 @@
                         new { @class = "squaredLink" })%>
                 <% } %>
             </legend>
-            <div class="active">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Tags, active = true, tagType = Forganizer.DomainModel.Entities.TagType.Tag }); %>
-            </div>
-            <div class="inactive">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Tags, active = false, tagType = Forganizer.DomainModel.Entities.TagType.Tag }); %>
-            </div>
+            <%= Html.Cloud(Url,Model.Tags, ViewData["tags"].ToString(), ViewData["extensions"].ToString(), 
+                ViewData["tagAndOr"].ToString(), Forganizer.DomainModel.Entities.TagType.Tag) %>
         </fieldset>
         <fieldset class="box">
             <legend>
@@ -36,24 +30,12 @@
                         new { @class = "squaredLink" })%>
                     <% } %>
             </legend>
-            <div class="active">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Extensions, active = true, tagType = Forganizer.DomainModel.Entities.TagType.Extension }); %>
-            </div>
-            <div class="inactive">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Extensions, active = false, tagType = Forganizer.DomainModel.Entities.TagType.Extension }); %>
-            </div>    
+            <%= Html.Cloud(Url,Model.Extensions, ViewData["tags"].ToString(), ViewData["extensions"].ToString(), 
+                ViewData["tagAndOr"].ToString(), Forganizer.DomainModel.Entities.TagType.Extension) %>
         </fieldset>
         <fieldset class="box">
             <legend><i class="tag_red"></i>categories</legend>
-            <div class="active">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Categories, active = true, tagType = Forganizer.DomainModel.Entities.TagType.Category }); %>
-            </div>
-            <div class="inactive">
-                <% Html.RenderAction("Container", "SideBar", 
-                       new { tagObjects = Model.Categories, active = false, tagType = Forganizer.DomainModel.Entities.TagType.Category }); %>
-            </div>    
+            <%= Html.Cloud(Url,Model.Categories, ViewData["tags"].ToString(), ViewData["extensions"].ToString(), 
+                ViewData["tagAndOr"].ToString(), Forganizer.DomainModel.Entities.TagType.Category) %>
         </fieldset>
     </div>
