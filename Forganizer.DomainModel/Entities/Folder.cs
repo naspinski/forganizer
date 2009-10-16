@@ -57,7 +57,7 @@ namespace Forganizer.DomainModel.Entities
 
                         if (!fileObject.Active)
                         {
-                            bool isOld = Path.Length > 0;
+                            bool isOld = fileObject.FilePath.Length > 0;
                             fileObject.FilePath = filePath;
                             fileObject.Modified = DateTime.Now;
                             fileObject.Active = true;

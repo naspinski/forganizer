@@ -29,7 +29,7 @@ namespace Forganizer.DomainModel.Entities
         {
             var newTags = tags.Split(Constants.Delimiters, StringSplitOptions.RemoveEmptyEntries);
             if (newTags.Count() == 0)  throw new FormatException("tags entry is empty");
-            else  foreach (string tag in newTags) AddTag(tag.Trim());
+            else  foreach (string tag in newTags.Except(Tags)) AddTag(tag.Trim());
         }
 
         public void AddTag(string tag)
@@ -53,6 +53,11 @@ namespace Forganizer.DomainModel.Entities
                 return null;
             }
         }
-        public string Error { get { return null; } } 
+        public string Error { get { return null; } }
+
+        public void DeleteTag(string tag)
+        {
+            TagString = TagString.RemoveFromSearch(tag).Replace(Constants.UrlDelimiter, " ");
+        }
     }
 }

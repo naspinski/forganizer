@@ -8,6 +8,7 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.DomainModel;
+using System.IO;
 
 namespace Forganizer.WebUI.Controllers
 {
@@ -82,6 +83,47 @@ namespace Forganizer.WebUI.Controllers
             catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
             Response.Redirect(returnUrl);
             //return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public void DeleteTag(int Id, string tag, string returnUrl)
+        {
+            try
+            {
+                FileObject fileObject = fileObjectRepository.GetFileObject(Id);
+                fileObject.DeleteTag(tag);
+                fileObjectRepository.SaveFileObject(fileObject);
+                TempData["success"] = "tag " + tag + " deleted";
+            }
+            catch (Exception ex) { TempData["error"] = ex.Message; }
+            Response.Redirect(returnUrl);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void Index(string returnUrl)
+        {
+            try
+            {
+                foreach (string textBoxName in Request.Form.Keys)
+                {
+                    if (!(string.IsNullOrEmpty(Request.Form[textBoxName].Trim())))
+                    {
+                        FileObject fileObject = fileObjectRepository.GetFileObject(Convert.ToInt32(textBoxName.Replace("AddTagsTo", "")));
+                        try { fileObject.AddTags(Request.Form[textBoxName]); }
+                        catch (Exception ex) { TempData["warning"] = ex.Message; }
+                        fileObjectRepository.SaveFileObject(fileObject);
+                    }
+                }
+                TempData["success"] = "tags added";
+            }
+            catch (Exception ex) { TempData["error"] = ex.Message; }
+            Response.Redirect(returnUrl);
+        }
+
+        public void Download(string filePath)
+        {
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + new FileInfo(filePath).Name);
+            Response.TransmitFile(filePath);
+            Response.End();
         }
     }
 }

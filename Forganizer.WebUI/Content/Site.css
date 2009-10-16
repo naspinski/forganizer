@@ -21,10 +21,13 @@ ul.list_vertical { margin:-15px 8px 3px 20px; }
     ul.list_vertical li.title {border:none; color:Navy; font-weight:bold; font-family:Georgia;}
     ul.list_vertical li.title:hover { background:transparent; }
     ul.list_vertical li:hover { background:#ddd;}
-        .name, span.tags, span.actions { display:block; float:left; }
+        .name, .actions, .tags { display:block; }
+        .name { float:left; }
+        .actions, .tags { float:right; }
+        
         ul.list_vertical li .name { width:25%;}
-        ul.list_vertical li span.tags { width:54%; text-align:right; padding:.5% 0;}
-        ul.list_vertical li span.actions { width:20%; text-align:right; margin:0; position:relative; top:-2px; right:0; }
+        ul.list_vertical li span.tags { text-align:right; padding:.5% 0;}
+        ul.list_vertical li span.actions { width:78px; text-align:right; margin:0; position:relative; top:-2px; right:0; }
 ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
     a.x { font-size:1em;position:absolute;top:2px;right:-.8em; text-decoration:none;border:solid 1px; height:.7em;line-height:.6em; padding-bottom:-2px; }
 
@@ -71,10 +74,11 @@ h1 a {text-decoration:none; }
 /* general */
 .tag { border:solid 1px #fff; padding:0 2px; font-weight:bold;}
     .tag a { display:none; }
-    .tag:hover a { display:inline-block; }
+    .tag:hover a { display:inline-block; padding-left:3px; }
 span.add_tag { float:right; position:relative; top:-3px; }
-    span.add_tag input[type="text"], span.add_tag input[type="submit"] { font-size:.9em; }
-    span.add_tag input[type="text"] { width:75px; }
+    span.add_tag input[type="text"], span.tags input[type="submit"] { font-size:.9em; padding:1px 3px;margin-left:7px; }
+    span.tags input[type="submit"] { width:83px; }
+    span.add_tag input[type="text"] { width:75px; margin-left:3px; }
         li:hover span.add_tag input[type="text"] { background:#fff; }
 .pager{margin-top:1em;}
 .pager a { display:inline-block; height:1.6em; width:1.6em; border: solid 1px #ddd; margin:.2em; text-align:center; padding:3px; }
