@@ -9,6 +9,7 @@ using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.DomainModel;
 using System.IO;
+using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI.Controllers
 {
@@ -92,6 +93,7 @@ namespace Forganizer.WebUI.Controllers
                 FileObject fileObject = fileObjectRepository.GetFileObject(Id);
                 fileObject.DeleteTag(tag);
                 fileObjectRepository.SaveFileObject(fileObject);
+                fileObjectRepository.SubmitChanges();
                 TempData["success"] = "tag " + tag + " deleted";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
@@ -113,6 +115,7 @@ namespace Forganizer.WebUI.Controllers
                         fileObjectRepository.SaveFileObject(fileObject);
                     }
                 }
+                fileObjectRepository.SubmitChanges();
                 TempData["success"] = "tags added";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }

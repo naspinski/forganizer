@@ -21,30 +21,15 @@ namespace Forganizer.DomainModel.Entities
         public IEnumerable<string> ExcludeExtensions { get { return Exclude.SplitTags(); } }
         public IEnumerable<string> IncludeExtensions { get { return Include.SplitTags(); } }
 
-        public string this[string propName]
-        {
-            get
-            {
-                if (propName == "Path")
-                {
-                    if(string.IsNullOrEmpty(Path)) return "path can't be blank";
-                    if (!Regex.IsMatch(Path, @"^\\\\.+\\.+"))
-                        return "invalid network path (starts with '\\\\')";
-                }
-                return null;
-            }
-        }
-        public string Error { get { return null; } }
 
         public IEnumerable<string> AddFilesTo(IFileObjectRepository fileObjects)
         {
             List<string> report = new List<string>();
-            Include = Include.Length > 0 ? Include : "*";
 
             foreach(char c in System.IO.Path.GetInvalidPathChars())
                 Include = Include.Replace(c.ToString(), string.Empty);
 
-            IEnumerable<string> include = Include.SplitTags().Select(x => "*" + x);
+            IEnumerable<string> include = string.IsNullOrEmpty(Include) ? new List<string> { "*" } : Include.SplitTags().Select(x => "*" + x);
             IEnumerable<string> exclude = Exclude.SplitTags();
 
             foreach (string extension in include)
@@ -57,9 +42,8 @@ namespace Forganizer.DomainModel.Entities
 
                         if (!fileObject.Active)
                         {
-                            bool isOld = fileObject.FilePath.Length > 0;
+                            bool isOld = fileObject.FilePath != null;
                             fileObject.FilePath = filePath;
-                            fileObject.Modified = DateTime.Now;
                             fileObject.Active = true;
 
                             fileObjects.SaveFileObject(fileObject);
@@ -67,9 +51,24 @@ namespace Forganizer.DomainModel.Entities
                         }
                     }
                 }
+                fileObjects.SubmitChanges();
             }
             if (report.Count == 0) report.Add("nothing new added to forganizer");
             return report;
         }
+
+        public string this[string propName]
+        {
+            get
+            {
+                if (propName == "Path")
+                {
+                    if (string.IsNullOrEmpty(Path)) return "path can't be blank";
+                    if (!Regex.IsMatch(Path, @"^\\\\.+\\.+")) return "invalid network path (ex: '\\\\server\\share')";
+                }
+                return null;
+            }
+        }
+        public string Error { get { return null; } }
     }
 }

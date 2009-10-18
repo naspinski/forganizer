@@ -25,7 +25,7 @@ ul.list_vertical { margin:-15px 8px 3px 20px; }
         .name { float:left; }
         .actions, .tags { float:right; }
         
-        ul.list_vertical li .name { width:25%;}
+        ul.list_vertical li .name { width:25%; margin-top:3px;}
         ul.list_vertical li span.tags { text-align:right; padding:.5% 0;}
         ul.list_vertical li span.actions { width:78px; text-align:right; margin:0; position:relative; top:-2px; right:0; }
 ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
@@ -48,7 +48,7 @@ fieldset.messages div { font-size:.8em; padding:1px 0px 1px 20px; }
 legend { font-family:Georgia; font-size:1.5em; cursor:default; }
 
 /* main areas */
-.page { width: 95%; margin-left: auto; margin-right: auto; background: url(Images/bg-main.jpg) center top no-repeat; }
+.page { width: 95%; margin-left: auto; margin-right: auto; }
 
 #header { position: relative; margin:2px 0 5px 0; padding: 0 0 5px 0; overflow:hidden;  }
     #title { font-weight:bold; }
@@ -65,18 +65,18 @@ legend { font-family:Georgia; font-size:1.5em; cursor:default; }
     #tagFilter { font-size:.8em; float:right; padding:0; padding:3px; }
 #footer { color: #666; padding:10px 0; text-align: center; line-height: normal; margin: 0; font-size: .9em; }
 
-
 /* headers */
 h1,h2,h3,h4,h5,h6, legend { font-weight:bold; color:#003366; }
 h1 { font-size:2em; margin:0 0 2px 0;  float:left; font-family:Georgia; }
 h1 a {text-decoration:none; }
 
 /* general */
-.tag { border:solid 1px #fff; padding:0 2px; font-weight:bold;}
-    .tag a { display:none; }
+.tag { border:solid 1px #fff; padding:0 2px 1px 2px; font-weight:bold; display:inline-block;}
+    .tag a { display:none; text-decoration:none; }
+    .tag:hover { border-color:#EB7300 ;}
     .tag:hover a { display:inline-block; padding-left:3px; }
 span.add_tag { float:right; position:relative; top:-3px; }
-    span.add_tag input[type="text"], span.tags input[type="submit"] { font-size:.9em; padding:1px 3px;margin-left:7px; }
+    span.add_tag input[type="text"], span.tags input[type="submit"] { font-size:.9em; padding:2px 3px 1px 3px;margin:1px 0 0 7px; }
     span.tags input[type="submit"] { width:83px; }
     span.add_tag input[type="text"] { width:75px; margin-left:3px; }
         li:hover span.add_tag input[type="text"] { background:#fff; }

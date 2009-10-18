@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Forganizer.DomainModel.Entities.FileAndTagCollection>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Forganizer.WebUI.Models.FileAndTagCollection>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -10,7 +10,7 @@
                     <li class="title">
                         <span class="name"></span>
                         <span class="actions"> </span>
-                        <span class="tags title">tags<input type="submit" value="add tags" /></span>
+                        <span class="tags title">tags<input type="submit" value="+tags" /></span>
                     </li>
                     <% int count = 1; foreach (var fileObject in Model.PageOfFileObjects) { %>
                     <li>
@@ -45,7 +45,6 @@
         </fieldset>
     </div>
     <% Html.RenderAction("Index", "SideBar",  new { fileAndTagCollection = Model }); %>
-    <div class="clear"></div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">

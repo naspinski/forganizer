@@ -30,12 +30,5 @@ namespace Forganizer.WebUI.HtmlHelpers
             }
             return navMenu;
         }
-
-        private class NavLink
-        {
-            public string Text { get; set; }
-            public string Controller { get; set; }
-            public string View { get; set; }
-        }
     }
 }

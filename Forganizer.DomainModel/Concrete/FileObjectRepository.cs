@@ -4,6 +4,7 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using System.IO;
 using System;
+using System.Collections.Generic;
 
 namespace Forganizer.DomainModel.Concrete
 {
@@ -54,7 +55,25 @@ namespace Forganizer.DomainModel.Concrete
                 catch (Exception ex) { throw ex; }
                 fileObjectTable.Context.Refresh(RefreshMode.KeepCurrentValues, fileObject);
             }
+        }
+
+        public void SubmitChanges()
+        {
             fileObjectTable.Context.SubmitChanges();
+        }
+
+        public IEnumerable<string> Cleanup()
+        {
+            List<string> deleted = new List<string>();
+            foreach (FileObject fileObject in fileObjectTable.Where(x => x.Active))
+            {
+                if (!File.Exists(fileObject.FilePath))
+                {
+                    fileObject.Active = false;
+                    deleted.Add(fileObject.FilePath);
+                }
+            }
+            return deleted;
         }
     }
 }

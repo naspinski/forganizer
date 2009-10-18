@@ -19,7 +19,6 @@ namespace Forganizer.DomainModel.Entities
         [Column] public string FilePath { get; set; }
         [Column] public string Name { get; private set; }
         [Column] public string TagString { get; set; }
-        [Column] public DateTime Modified { get; set; }
         [Column] public bool Active { get; set; }
 
         public FileInfo FileInfo { get { return new FileInfo(FilePath); } }
@@ -27,22 +26,23 @@ namespace Forganizer.DomainModel.Entities
 
         public void AddTags(string tags)
         {
-            var newTags = tags.Split(Constants.Delimiters, StringSplitOptions.RemoveEmptyEntries);
-            if (newTags.Count() == 0)  throw new FormatException("tags entry is empty");
-            else  foreach (string tag in newTags.Except(Tags)) AddTag(tag.Trim());
+            TagString = EntityUtilities.AddTags(TagString, tags);
         }
 
-        public void AddTag(string tag)
+        public void DeleteTag(string tag)
         {
-            if (string.IsNullOrEmpty(tag)) throw new FormatException("tag entered is empty");
-            if (Tags.Contains(tag)) throw new FormatException("duplicate entered [" + tag + "]");
-            if(tag.SplitTags().Count() > 1) throw new FormatException("delimiters not allowed in a tag");
-            else TagString += (TagString.Length > 0 ? Constants.UrlDelimiter : "") + tag;
+            TagString = EntityUtilities.DeleteTag(TagString, tag);
         }
 
         public void UpdateName()
         {
             Name = FileInfo.Name;
+        }
+
+        public void ReplaceTags(string replace, string with)
+        {
+            if(!string.IsNullOrEmpty(replace.Trim())) DeleteTag(replace);
+            if(!string.IsNullOrEmpty(with.Trim())) AddTags(with);
         }
 
         public string this[string propName]
@@ -54,10 +54,5 @@ namespace Forganizer.DomainModel.Entities
             }
         }
         public string Error { get { return null; } }
-
-        public void DeleteTag(string tag)
-        {
-            TagString = TagString.RemoveFromSearch(tag).Replace(Constants.UrlDelimiter, " ");
-        }
     }
 }

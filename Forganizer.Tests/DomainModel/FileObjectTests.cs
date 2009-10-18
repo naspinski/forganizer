@@ -16,8 +16,8 @@ namespace Forganizer.Tests.DomainModel
         public void Tags_functions_are_working()
         {
             FileObject file = new FileObject();
-            file.AddTag("abc");
-            file.AddTag("def");
+            file.AddTags("abc");
+            file.AddTags("def");
 
             Assert.IsTrue(file.Tags.Contains("abc"));
             Assert.IsTrue(file.Tags.Contains("def"));

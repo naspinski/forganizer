@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<div id="background">
     <div class="page">
         <div id="header">
             <div id="title">
@@ -36,5 +37,6 @@
             copyright &copy; <%= DateTime.Now.Year %> <a href="http://naspinski.net">stan naspinski</a>
         </div>
     </div>
+</div>
 </body>
 </html>

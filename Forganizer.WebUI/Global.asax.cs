@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Forganizer.WebUI.App_Code;
+using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI
 {
@@ -45,6 +46,9 @@ namespace Forganizer.WebUI
                 new { controller = "Search", action = "Index", tags = "" },
                 new { page = @"\d+" }
             );
+
+            routes.MapRoute(null, "Manage/Tags/", new { controller = "Manage", action = "Tags", tagEditType = TagEditType.Edit });
+            routes.MapRoute(null, "Manage/Tags/{tagEditType}", new { controller = "Manage", action = "Tags"});
 
             routes.MapRoute(null, "{controller}/", new { action = "Index" });
             routes.MapRoute(null, "{controller}/{action}");

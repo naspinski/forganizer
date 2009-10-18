@@ -1,0 +1,100 @@
+﻿USE [master]
+GO
+/****** Object:  Database [Forganizer]    Script Date: 10/18/2009 10:03:04 ******/
+CREATE DATABASE [Forganizer] ON  PRIMARY 
+( NAME = N'Forganizer', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\Forganizer.mdf' , SIZE = 2240KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'Forganizer_log', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\Forganizer_log.LDF' , SIZE = 4224KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+ COLLATE SQL_Latin1_General_CP1_CI_AS
+GO
+EXEC dbo.sp_dbcmptlevel @dbname=N'Forganizer', @new_cmptlevel=90
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Forganizer].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Forganizer] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Forganizer] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Forganizer] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Forganizer] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Forganizer] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Forganizer] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [Forganizer] SET AUTO_CREATE_STATISTICS ON 
+GO
+ALTER DATABASE [Forganizer] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Forganizer] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Forganizer] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Forganizer] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Forganizer] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Forganizer] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Forganizer] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Forganizer] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Forganizer] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [Forganizer] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Forganizer] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Forganizer] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Forganizer] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Forganizer] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Forganizer] SET  READ_WRITE 
+GO
+ALTER DATABASE [Forganizer] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [Forganizer] SET  MULTI_USER 
+GO
+ALTER DATABASE [Forganizer] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Forganizer] SET DB_CHAINING OFF 
+
+USE [Forganizer]
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 10/18/2009 10:03:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ExtensionString] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+) ON [PRIMARY]
+
+USE [Forganizer]
+GO
+/****** Object:  Table [dbo].[FileObjects]    Script Date: 10/18/2009 10:03:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FileObjects](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FilePath] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[TagString] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[Active] [bit] NOT NULL,
+	[Name] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF

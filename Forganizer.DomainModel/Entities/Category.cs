@@ -14,6 +14,16 @@ namespace Forganizer.DomainModel.Entities
         [Column] public string ExtensionString { get; set; }
         public IEnumerable<string> Extensions { get { return ExtensionString.SplitTags(); } }
 
+        public void AddExtensions(string extensions)
+        {
+            ExtensionString = EntityUtilities.AddTags(ExtensionString, extensions);
+        }
+
+        public void DeleteExtension(string tag)
+        {
+            ExtensionString = EntityUtilities.DeleteTag(ExtensionString, tag);
+        }
+
         public string this[string propName]
         {
             get
@@ -22,6 +32,6 @@ namespace Forganizer.DomainModel.Entities
                 return null;
             }
         }
-        public string Error { get { return null; } } 
+        public string Error { get { return null; } }
     }
 }

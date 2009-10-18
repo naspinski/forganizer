@@ -35,7 +35,9 @@ namespace Forganizer.DomainModel.Concrete
             if (category.Id == 0) categoryTable.InsertOnSubmit(category);
             else
             {
-                categoryTable.Attach(category);
+                try { categoryTable.Attach(category); }
+                catch (InvalidOperationException ex) { if (!ex.Message.Equals("Cannot attach an entity that already exists.")) throw ex; } //already attached
+                catch (Exception ex) { throw ex; }
                 categoryTable.Context.Refresh(RefreshMode.KeepCurrentValues, category);
             }
             categoryTable.Context.SubmitChanges();

@@ -5,25 +5,36 @@
     <div id="content">
         <fieldset class="clear">
             <legend><i class="arrow_blue"></i>categories</legend>
-            <ul class="list_vertical">
-                <li class="title">
-                    <span class="name"></span>
-                    <span class="tags title">extensions</span>
-                </li>
-                <% foreach(var category in Model) { %>
-                <li>
-                    <a class="name" title="<%= category.Name %>">
-                        <i class="category"></i>
-                        <%= category.Name%>
-                    </a>    
-                    <span class="tags"><% foreach (var extension in category.Extensions) { %><%= extension %> <% } %></span>
-                    <span class="actions">
-                        <%= Html.ActionLink(" ", "Delete", new { category.Id }, new { @class = "delete", title = "delete" })%>
-                        <%= Html.ActionLink(" ", "Edit", new { category.Id }, new { @class = "edit", title = "edit" })%>
-                    </span>
-                </li>
-                <% } %>
-            </ul>
+            <% using (Html.BeginForm("Index", "Category", new { returnUrl = ViewContext.HttpContext.Request.Url.ToString() })) { %>
+                <ul class="list_vertical">
+                    <li class="title">
+                        <span class="name"></span>
+                        <span class="actions"> </span>
+                        <span class="tags title">extensions<input type="submit" value="+extensions" /></span>
+                    </li>
+                    <% int count = 1;  foreach (var category in Model) { %>
+                    <li>
+                        <a class="name" title="<%= category.Name %>">
+                            <i class="category"></i>
+                            <%= category.Name%>
+                        </a>    
+                        <span class="actions">
+                            <%= Html.ActionLink(" ", "Delete", new { category.Id }, new { @class = "delete", title = "delete" })%>
+                            <%= Html.ActionLink(" ", "Edit", new { category.Id }, new { @class = "edit", title = "edit" })%>
+                        </span>
+                        <span class="tags">
+                            <span class="add_tag"><%= Html.TextBox("AddExtensionsTo" + category.Id, null, new { tabindex = count++ })%></span>
+                            <% foreach (var extension in category.Extensions) { %>
+                            <span class="tag">
+                                <%= extension %><%= Html.ActionLink("[delete]", "DeleteExtension", 
+                                    new { category.Id, extension, returnUrl = ViewContext.HttpContext.Request.Url.ToString() }, 
+                                    new { title = "delete" })%></span>
+                            <% } %>
+                        </span>
+                    </li>
+                    <% } %>
+                </ul>
+            <% } %>
         </fieldset>
     </div>
     <div id="sidebar">

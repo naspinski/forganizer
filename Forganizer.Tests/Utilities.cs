@@ -67,21 +67,21 @@ namespace Forganizer.Tests
             {
                 FileObject[] fobs = new FileObject[] 
                 { 
-                    new FileObject() { Id=1, FilePath=@"C:\some_folder\another one\image.jpg", Modified = Convert.ToDateTime("2/2/2001"), Active=true },
-                    new FileObject() { Id=2, FilePath=@"C:\some_folder\second\another_image.jpg", Modified = Convert.ToDateTime("3/3/2001"), Active=true },
-                    new FileObject() { Id=3, FilePath=@"C:\some_folder\second\textfile.txt", Modified = Convert.ToDateTime("1/1/2001"), Active=true },
+                    new FileObject() { Id=1, FilePath=@"C:\some_folder\another one\image.jpg", Active=true },
+                    new FileObject() { Id=2, FilePath=@"C:\some_folder\second\another_image.jpg", Active=true },
+                    new FileObject() { Id=3, FilePath=@"C:\some_folder\second\textfile.txt", Active=true },
                     
-                    new FileObject() { Id=4, FilePath=@"C:\some_folder\second\another.txt", Modified = Convert.ToDateTime("1/1/2001"), Active=false }
+                    new FileObject() { Id=4, FilePath=@"C:\some_folder\second\another.txt", Active=false }
                 };
 
-                fobs[0].AddTag("funny");
-                fobs[0].AddTag("big");
-                fobs[1].AddTag("serious");
-                fobs[1].AddTag("big");
-                fobs[2].AddTag("funny");
-                fobs[2].AddTag("long");
+                fobs[0].AddTags("funny");
+                fobs[0].AddTags("big");
+                fobs[1].AddTags("serious");
+                fobs[1].AddTags("big");
+                fobs[2].AddTags("funny");
+                fobs[2].AddTags("long");
 
-                fobs[3].AddTag("party");
+                fobs[3].AddTags("party");
 
                 var mockFileObjectRepos = new Mock<IFileObjectRepository>();
                 mockFileObjectRepos.Setup(x => x.FileObjects).Returns(fobs.AsQueryable().Where(x => x.Active));

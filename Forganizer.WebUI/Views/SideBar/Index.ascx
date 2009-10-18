@@ -1,5 +1,4 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Forganizer.DomainModel.Entities.FileAndTagCollection>" %>
-
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Forganizer.WebUI.Models.FileAndTagCollection>" %>
     <div id="sidebar" >
        <fieldset class="box">
             <legend>

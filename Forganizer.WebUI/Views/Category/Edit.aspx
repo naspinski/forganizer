@@ -39,7 +39,7 @@
         </fieldset>
         <fieldset class="box">
             <legend>info</legend>
-            <%= Html.DelimiterInfo() %>
+            <%= Html.ManageInfo()%>
         </fieldset>
     </div>
     <div class="clear"> </div>

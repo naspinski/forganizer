@@ -55,7 +55,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\EntityUtilities.cs" />
-    <Compile Include="Entities\FileAndTagCollection.cs" />
     <Compile Include="Entities\FileObject.cs" />
     <Compile Include="Entities\Folder.cs" />
     <Compile Include="Entities\Tag.cs" />

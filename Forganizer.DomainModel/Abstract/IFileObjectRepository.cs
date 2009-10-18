@@ -14,5 +14,7 @@ namespace Forganizer.DomainModel.Abstract
         FileObject GetFileObject(string filePath);
         void DeleteFileObject(FileObject fileObject);
         void SaveFileObject(FileObject fileObject);
+        void SubmitChanges();
+        IEnumerable<string> Cleanup();
     }
 }

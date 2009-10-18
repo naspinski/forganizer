@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Forganizer.DomainModel.Entities;
+using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI.Controllers
 {
