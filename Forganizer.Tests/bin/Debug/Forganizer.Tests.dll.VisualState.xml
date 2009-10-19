@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
-  <TopNode>[0-1054]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll</TopNode>
-  <SelectedNode>[0-1056]Forganizer.Tests</SelectedNode>
+  <TopNode>[0-1059]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll</TopNode>
+  <SelectedNode>[0-1060]Forganizer</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1054]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" Expanded="true" />
-    <Node UniqueName="[0-1055]Forganizer" Expanded="true" />
-    <Node UniqueName="[0-1056]Forganizer.Tests" Expanded="true" />
-    <Node UniqueName="[0-1058]Forganizer.Tests.DomainModel" Expanded="true" />
-    <Node UniqueName="[0-1052]Forganizer.Tests.DomainModel.EListTagTests" Expanded="true" />
-    <Node UniqueName="[0-1000]Forganizer.Tests.UtilitiesTest" Expanded="true" />
-    <Node UniqueName="[0-1057]Forganizer.Tests.WebUI" Expanded="true" />
-    <Node UniqueName="[0-1049]Forganizer.Tests.WebUI.CloudHelperTests" Expanded="true" />
+    <Node UniqueName="[0-1059]C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1060]Forganizer" Expanded="true" />
+    <Node UniqueName="[0-1061]Forganizer.Tests" Expanded="true" />
+    <Node UniqueName="[0-1010]Forganizer.Tests.DomainModel.CategoryTests" Expanded="true" />
+    <Node UniqueName="[0-1057]Forganizer.Tests.DomainModel.EIEnumerableCategoryTests" Expanded="true" />
+    <Node UniqueName="[0-1055]Forganizer.Tests.DomainModel.EIEnumerableStringTests" Expanded="true" />
+    <Node UniqueName="[0-1021]Forganizer.Tests.DomainModel.EKeyValuePairStringIntTests" Expanded="true" />
+    <Node UniqueName="[0-1053]Forganizer.Tests.DomainModel.EListTagTests" Expanded="true" />
+    <Node UniqueName="[0-1039]Forganizer.Tests.DomainModel.EstringTests" Expanded="true" />
+    <Node UniqueName="[0-1033]Forganizer.Tests.DomainModel.FileObjectTests" Expanded="true" />
+    <Node UniqueName="[0-1005]Forganizer.Tests.DomainModel.IEnumerableFileObjectTests" Expanded="true" />
+    <Node UniqueName="[0-1062]Forganizer.Tests.WebUI" Expanded="true" />
+    <Node UniqueName="[0-1046]Forganizer.Tests.WebUI.CategoryControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1050]Forganizer.Tests.WebUI.CloudHelperTests" Expanded="true" />
+    <Node UniqueName="[0-1013]Forganizer.Tests.WebUI.InboundRoutingTests" Expanded="true" />
+    <Node UniqueName="[0-1048]Forganizer.Tests.WebUI.ManageControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1023]Forganizer.Tests.WebUI.OutboundRoutingTests" Expanded="true" />
+    <Node UniqueName="[0-1002]Forganizer.Tests.WebUI.PagingHelperTests" Expanded="true" />
+    <Node UniqueName="[0-1042]Forganizer.Tests.WebUI.SearchControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1044]Forganizer.Tests.WebUI.SideBarControllerTests" Expanded="true" />
   </Nodes>
 </VisualState>

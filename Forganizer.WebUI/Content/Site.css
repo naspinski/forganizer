@@ -25,7 +25,7 @@ ul.list_vertical { margin:-15px 8px 3px 20px; }
         .name { float:left; }
         .actions, .tags { float:right; }
         
-        ul.list_vertical li .name { width:25%; margin-top:3px;}
+        ul.list_vertical li .name { width:35%; margin-top:3px;}
         ul.list_vertical li span.tags { text-align:right; padding:.5% 0;}
         ul.list_vertical li span.actions { width:78px; text-align:right; margin:0; position:relative; top:-2px; right:0; }
 ul.list_horizontal li { float:left; margin: 2px 1.3em 0 0; overflow:visible; position:relative; }
