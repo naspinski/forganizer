@@ -56,18 +56,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\CategoryTests.cs" />
+    <Compile Include="DomainModel\EIEnumerableCategoryTests.cs" />
+    <Compile Include="DomainModel\EIEnumerableStringTests.cs" />
     <Compile Include="DomainModel\EKeyValuePairStringIntTests.cs" />
+    <Compile Include="DomainModel\EListTagTests.cs" />
     <Compile Include="DomainModel\EstringTests.cs" />
     <Compile Include="DomainModel\FileObjectTests.cs" />
     <Compile Include="DomainModel\IEnumerableFileObjectTests.cs" />
-    <Compile Include="WebUI\FilesControllerTests.cs" />
-    <Compile Include="WebUI\HomeControllerTests.cs" />
+    <Compile Include="WebUI\CategoryControllerTests.cs" />
+    <Compile Include="WebUI\CloudHelperTests.cs" />
+    <Compile Include="WebUI\ManageControllerTests.cs" />
+    <Compile Include="WebUI\SearchControllerTests.cs" />
     <Compile Include="WebUI\InboundRoutingTests.cs" />
     <Compile Include="WebUI\OutboundRoutingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="UtilitiesTest.cs" />
     <Compile Include="WebUI\PagingHelperTests.cs" />
+    <Compile Include="WebUI\SideBarControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Moq.dll" />

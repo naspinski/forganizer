@@ -83,7 +83,6 @@ namespace Forganizer.WebUI.Controllers
             }
             catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
             Response.Redirect(returnUrl);
-            //return RedirectToAction("Index", new { returnUrl });
         }
 
         public void DeleteTag(int Id, string tag, string returnUrl)
@@ -91,7 +90,7 @@ namespace Forganizer.WebUI.Controllers
             try
             {
                 FileObject fileObject = fileObjectRepository.GetFileObject(Id);
-                fileObject.DeleteTag(tag);
+                fileObject.DeleteTags(tag);
                 fileObjectRepository.SaveFileObject(fileObject);
                 fileObjectRepository.SubmitChanges();
                 TempData["success"] = "tag " + tag + " deleted";

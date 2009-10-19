@@ -65,7 +65,7 @@ namespace Forganizer.WebUI.Controllers
             try
             {
                 Category category = categoryRepository.GetCategory(Id);
-                category.DeleteExtension(extension);
+                category.DeleteExtensions(extension);
                 categoryRepository.SaveCategory(category);
                 TempData["success"] = "extension " + extension + " deleted";
             }

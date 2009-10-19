@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace Forganizer.WebUI.HtmlHelpers
 {
-    public static class MangeInfoHelper
+    public static class ManageInfoHelper
     {
         public static string ManageInfo(this HtmlHelper html)
         {

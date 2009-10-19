@@ -19,7 +19,7 @@ namespace Forganizer.DomainModel.Entities
             ExtensionString = EntityUtilities.AddTags(ExtensionString, extensions);
         }
 
-        public void DeleteExtension(string tag)
+        public void DeleteExtensions(string tag)
         {
             ExtensionString = EntityUtilities.DeleteTag(ExtensionString, tag);
         }

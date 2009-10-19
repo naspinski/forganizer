@@ -29,7 +29,7 @@ namespace Forganizer.DomainModel.Entities
             TagString = EntityUtilities.AddTags(TagString, tags);
         }
 
-        public void DeleteTag(string tag)
+        public void DeleteTags(string tag)
         {
             TagString = EntityUtilities.DeleteTag(TagString, tag);
         }
@@ -41,7 +41,7 @@ namespace Forganizer.DomainModel.Entities
 
         public void ReplaceTags(string replace, string with)
         {
-            if(!string.IsNullOrEmpty(replace.Trim())) DeleteTag(replace);
+            if(!string.IsNullOrEmpty(replace.Trim())) DeleteTags(replace);
             if(!string.IsNullOrEmpty(with.Trim())) AddTags(with);
         }
 

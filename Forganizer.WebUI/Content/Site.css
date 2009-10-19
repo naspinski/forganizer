@@ -80,7 +80,9 @@ span.add_tag { float:right; position:relative; top:-3px; }
     span.tags input[type="submit"] { width:83px; }
     span.add_tag input[type="text"] { width:75px; margin-left:3px; }
         li:hover span.add_tag input[type="text"] { background:#fff; }
-.pager{margin-top:1em;}
+.full_address { display:none; clear:both; }
+li:hover .full_address { display:block; }
+.pager{margin-top:1em; clear:both;}
 .pager a { display:inline-block; height:1.6em; width:1.6em; border: solid 1px #ddd; margin:.2em; text-align:center; padding:3px; }
 .pager a.selected { font-weight:bold; border: solid 1px #5C8A36; }
 a.squaredLink { font-size:.5em; text-decoration:none; }

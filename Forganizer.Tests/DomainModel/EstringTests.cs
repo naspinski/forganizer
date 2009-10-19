@@ -15,14 +15,14 @@ namespace Forganizer.Tests.DomainModel
         public void GetExtension_returns_extension()
         {
             Assert.AreEqual(".txt", "asbdsafds.asdasd.asdasd.asd.txt".GetExtension());
-            Assert.AreEqual("none", "asbd/asdsad/asdasdasdasd".GetExtension());
+            Assert.AreEqual(string.Empty, "asbd/asdsad/asdasdasdasd".GetExtension());
         }
 
         [Test]
         public void AddToSearch_works()
         {
             Assert.AreEqual("abbc" + Constants.UrlDelimiter + "def", "abbc".AddToSearch(" def"));
-            Assert.AreEqual("xxx", ((string)null).AddToSearch("xxx"));
+            Assert.AreEqual("xxx", string.Empty.AddToSearch("xxx"));
         }
     }
 }

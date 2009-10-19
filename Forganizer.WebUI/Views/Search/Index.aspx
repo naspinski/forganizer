@@ -35,6 +35,7 @@
                                     new { title = "delete" })%></span>
                             <% } %>
                         </span>
+                        <div class="full_address"><%= fileObject.FileInfo.DirectoryName %></div>
                     </li>
                 <% } %>
                 </ul>

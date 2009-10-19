@@ -1,43 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" total="35" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2009-10-11" time="16:14:51">
+<test-results name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" total="42" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2009-10-19" time="14:13:03">
   <environment nunit-version="2.5.2.9222" clr-version="2.0.50727.3082" os-version="Microsoft Windows NT 5.1.2600 Service Pack 3" platform="Win32NT" cwd="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug" machine-name="N-IZ-23-40EF6A" user="stan.naspinski" user-domain="IRAQ" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" executed="True" success="False" time="4.187" asserts="0">
+  <test-suite name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" executed="True" success="True" time="1.500" asserts="0">
     <results>
-      <test-suite name="Forganizer" executed="True" success="False" time="4.172" asserts="0">
+      <test-suite name="Forganizer" executed="True" success="True" time="1.500" asserts="0">
         <results>
-          <test-suite name="Tests" executed="True" success="False" time="4.156" asserts="0">
+          <test-suite name="Tests" executed="True" success="True" time="1.484" asserts="0">
             <results>
-              <test-suite name="DomainModel" executed="True" success="True" time="1.344" asserts="0">
+              <test-suite name="DomainModel" executed="True" success="True" time="0.734" asserts="0">
                 <results>
-                  <test-suite name="CategoryTests" executed="True" success="True" time="0.094" asserts="0">
+                  <test-suite name="CategoryTests" executed="True" success="True" time="0.109" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.DomainModel.CategoryTests.Category_string_works" executed="True" success="True" time="0.078" asserts="1" />
+                      <test-case name="Forganizer.Tests.DomainModel.CategoryTests.Add_and_delete_extensions_works" executed="True" success="True" time="0.109" asserts="7" />
+                      <test-case name="Forganizer.Tests.DomainModel.CategoryTests.Category_Extensions_works" executed="True" success="True" time="0.000" asserts="2" />
                     </results>
                   </test-suite>
-                  <test-suite name="EKeyValuePairStringIntTests" executed="True" success="True" time="0.016" asserts="0">
+                  <test-suite name="EIEnumerableCategoryTests" executed="True" success="True" time="0.047" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.DomainModel.EKeyValuePairStringIntTests.TagSize_returns_the_proper_tagsize" executed="True" success="True" time="0.016" asserts="1" />
+                      <test-case name="Forganizer.Tests.DomainModel.EIEnumerableCategoryTests.GetCategoryTags" executed="True" success="True" time="0.047" asserts="5" />
                     </results>
                   </test-suite>
-                  <test-suite name="EstringTests" executed="True" success="True" time="0.031" asserts="0">
+                  <test-suite name="EIEnumerableStringTests" executed="True" success="True" time="0.016" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.DomainModel.EstringTests.AddToSearch_works" executed="True" success="True" time="0.031" asserts="2" />
+                      <test-case name="Forganizer.Tests.DomainModel.EIEnumerableStringTests.ToSpacedString" executed="True" success="True" time="0.016" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="EKeyValuePairStringIntTests" executed="True" success="True" time="0.000" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.DomainModel.EKeyValuePairStringIntTests.TagSize_returns_the_proper_tagsize" executed="True" success="True" time="0.000" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="EListTagTests" executed="True" success="True" time="0.000" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.DomainModel.EListTagTests.SetSizes" executed="True" success="True" time="0.000" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="EstringTests" executed="True" success="True" time="0.000" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.DomainModel.EstringTests.AddToSearch_works" executed="True" success="True" time="0.000" asserts="2" />
                       <test-case name="Forganizer.Tests.DomainModel.EstringTests.GetExtension_returns_extension" executed="True" success="True" time="0.000" asserts="2" />
                     </results>
                   </test-suite>
                   <test-suite name="FileObjectTests" executed="True" success="True" time="0.000" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.FileName_returns_correct_string" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.Add_and_remove_tags_works" executed="True" success="True" time="0.000" asserts="5" />
+                      <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.FileInfo_returns_correct_string" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.ReplaceTags" executed="True" success="True" time="0.000" asserts="1" />
                       <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.Tags_functions_are_working" executed="True" success="True" time="0.000" asserts="2" />
+                      <test-case name="Forganizer.Tests.DomainModel.FileObjectTests.UpdateName_updates_name_correctly" executed="True" success="True" time="0.000" asserts="1" />
                     </results>
                   </test-suite>
-                  <test-suite name="IEnumerableFileObjectTests" executed="True" success="True" time="1.187" asserts="0">
+                  <test-suite name="IEnumerableFileObjectTests" executed="True" success="True" time="0.547" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.FileObjects_with_extensions" executed="True" success="True" time="0.125" asserts="4" />
+                      <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.Categories" executed="True" success="True" time="0.109" asserts="6" />
+                      <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.FileObjects_with_extensions" executed="True" success="True" time="0.016" asserts="4" />
                       <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.FileObjects_with_Tags" executed="True" success="True" time="0.016" asserts="7" />
-                      <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.Pulling_all_tags_from_an_ienumerable_yields_proper_results" executed="True" success="True" time="0.047" asserts="4" />
+                      <test-case name="Forganizer.Tests.DomainModel.IEnumerableFileObjectTests.Pulling_all_tags_from_an_ienumerable_yields_proper_results" executed="True" success="True" time="0.016" asserts="4" />
                     </results>
                   </test-suite>
                 </results>
@@ -47,67 +67,62 @@
                   <test-case name="Forganizer.Tests.UtilitiesTest.Mocking_the_repository_works" executed="True" success="True" time="0.016" asserts="3" />
                 </results>
               </test-suite>
-              <test-suite name="WebUI" executed="True" success="False" time="2.797" asserts="0">
+              <test-suite name="WebUI" executed="True" success="True" time="0.734" asserts="0">
                 <results>
-                  <test-suite name="FilesControllerTests" executed="True" success="True" time="1.266" asserts="0">
+                  <test-suite name="CategoryControllerTests" executed="True" success="True" time="0.000" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.WebUI.FilesControllerTests.CategoryCloud_returns_category_cloud" executed="True" success="True" time="1.250" asserts="0" />
-                      <test-case name="Forganizer.Tests.WebUI.FilesControllerTests.Extension_cloud_returns_proper_cloud" executed="True" success="True" time="0.016" asserts="3" />
-                      <test-case name="Forganizer.Tests.WebUI.FilesControllerTests.TagCloud_returns_proper_cloud" executed="True" success="True" time="0.000" asserts="4" />
+                      <test-case name="Forganizer.Tests.WebUI.CategoryControllerTests.hmm" executed="True" success="True" time="0.000" asserts="0" />
                     </results>
                   </test-suite>
-                  <test-suite name="HomeControllerTests" executed="True" success="True" time="0.078" asserts="0">
+                  <test-suite name="CloudHelperTests" executed="True" success="True" time="0.109" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.WebUI.HomeControllerTests.Delete_works" executed="True" success="True" time="0.031" asserts="3" />
-                      <test-case name="Forganizer.Tests.WebUI.HomeControllerTests.Index_presents_most_recently_modified_fileObjects" executed="True" success="True" time="0.047" asserts="5" />
+                      <test-case name="Forganizer.Tests.WebUI.CloudHelperTests.Extends_HtmlHelper" executed="True" success="True" time="0.109" asserts="0" />
+                      <test-case name="Forganizer.Tests.WebUI.CloudHelperTests.Makes_correct_clouds" executed="True" success="True" time="0.000" asserts="1" />
                     </results>
                   </test-suite>
-                  <test-suite name="InboundRoutingTests" executed="True" success="True" time="1.219" asserts="0">
+                  <test-suite name="InboundRoutingTests" executed="True" success="True" time="0.375" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something" executed="True" success="True" time="1.156" asserts="6" />
+                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something" executed="True" success="True" time="0.328" asserts="6" />
                       <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something_slash_pageNumber" executed="True" success="True" time="0.031" asserts="6" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something_slash_tags_slash_something" executed="True" success="True" time="0.000" asserts="6" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something_slash_tags_slash_something_slash_pageNumer" executed="True" success="True" time="0.016" asserts="6" />
                       <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Slash_goes_to_Home" executed="True" success="True" time="0.000" asserts="3" />
                       <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something" executed="True" success="True" time="0.000" asserts="6" />
                       <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_extensions_slash_something" executed="True" success="True" time="0.000" asserts="6" />
                       <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_extensions_slash_something_slash_pageNumer" executed="True" success="True" time="0.000" asserts="6" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_pageNumber" executed="True" success="True" time="0.016" asserts="6" />
+                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_pageNumber" executed="True" success="True" time="0.000" asserts="6" />
                     </results>
                   </test-suite>
-                  <test-suite name="OutboundRoutingTests" executed="True" success="True" time="0.062" asserts="0">
+                  <test-suite name="ManageControllerTests" executed="True" success="True" time="0.016" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.WebUI.ManageControllerTests.Tags_which_tests_setEditType" executed="True" success="True" time="0.016" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="OutboundRoutingTests" executed="True" success="True" time="0.078" asserts="0">
                     <results>
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions" executed="True" success="True" time="0.031" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions_page" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions_page" executed="True" success="True" time="0.016" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions_Tags" executed="True" success="True" time="0.000" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions_tags_page" executed="True" success="True" time="0.000" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Home" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags" executed="True" success="True" time="0.016" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_extensions" executed="True" success="True" time="0.000" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_extensions_page" executed="True" success="True" time="0.000" asserts="1" />
                       <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_page" executed="True" success="True" time="0.016" asserts="1" />
                     </results>
                   </test-suite>
-                  <test-suite name="PagingHelperTests" executed="True" success="False" time="0.141" asserts="0">
+                  <test-suite name="PagingHelperTests" executed="True" success="True" time="0.000" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Method_Extends_HtmlHelper" executed="True" success="False" time="0.031" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.NotImplementedException : The method or operation is not implemented.]]></message>
-                          <stack-trace><![CDATA[at System.Web.HttpContextBase.get_Request()
-at Forganizer.WebUI.HtmlHelpers.PagingHelper.PageLinks(HtmlHelper html, Int32 currentPage, Int32 totalPages, Func`2 pageUrl, ViewContext viewContext) in C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\HtmlHelpers\PagingHelper.cs:line 15
-at Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Method_Extends_HtmlHelper() in C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\WebUI\PagingHelperTests.cs:line 18
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Produces_Anchor_Tags" executed="True" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.NotImplementedException : The method or operation is not implemented.]]></message>
-                          <stack-trace><![CDATA[at System.Web.HttpContextBase.get_Request()
-at Forganizer.WebUI.HtmlHelpers.PagingHelper.PageLinks(HtmlHelper html, Int32 currentPage, Int32 totalPages, Func`2 pageUrl, ViewContext viewContext) in C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\HtmlHelpers\PagingHelper.cs:line 15
-at Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Produces_Anchor_Tags() in C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\WebUI\PagingHelperTests.cs:line 24
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Method_Extends_HtmlHelper" executed="True" success="True" time="0.000" asserts="0" />
+                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Produces_Anchor_Tags" executed="True" success="True" time="0.000" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="SearchControllerTests" executed="True" success="True" time="0.156" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.WebUI.SearchControllerTests.Index_presents_correct_FileAndTagCollection" executed="True" success="True" time="0.156" asserts="16" />
+                    </results>
+                  </test-suite>
+                  <test-suite name="SideBarControllerTests" executed="True" success="True" time="0.000" asserts="0">
+                    <results>
+                      <test-case name="Forganizer.Tests.WebUI.SideBarControllerTests.NoTests" executed="True" success="True" time="0.000" asserts="0" />
                     </results>
                   </test-suite>
                 </results>
