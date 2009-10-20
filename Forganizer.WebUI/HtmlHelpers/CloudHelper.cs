@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
-using System.Text;
 
 namespace Forganizer.WebUI.HtmlHelpers
 {

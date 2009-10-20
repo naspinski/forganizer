@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using Forganizer.WebUI.Models;
-using Forganizer.WebUI.Controllers;
-using Moq;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
+using Forganizer.WebUI.Controllers;
+using Forganizer.WebUI.Models;
+using Moq;
+using NUnit.Framework;
 
 namespace Forganizer.Tests.WebUI
 {

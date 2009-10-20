@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data.Linq;
 using System.Linq;
-using System.Text;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;

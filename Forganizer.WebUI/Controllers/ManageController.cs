@@ -1,14 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
+using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
-using Forganizer.DomainModel.Abstract;
-using System.ComponentModel;
-using Forganizer.DomainModel;
 using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI.Controllers
@@ -34,15 +30,36 @@ namespace Forganizer.WebUI.Controllers
             else return View(folder);
         }
 
-        public ViewResult AddFolder()
+        public ViewResult Cleanup() { return View(new List<string>()); }
+
+        public ActionResult Delete() { return View(new FileDeleteModel()); }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Delete(FileDeleteModel fileDeleteModel) 
         {
-            return View("Folder", new Folder());
+            List<string> report = new List<string>();
+            TagEditModel tagEditModel = new TagEditModel() { Path = fileDeleteModel.Path, Exclude = fileDeleteModel.Exclude,
+                Include = fileDeleteModel.Include, Recursive = fileDeleteModel.Recursive, Replace = fileDeleteModel.WithTags ?? "" };
+            IEnumerable<int> fileObjectIds = GetRelevantFileObjectIds(tagEditModel, true);
+
+            foreach (int Id in fileObjectIds)
+            {
+                FileObject fileObject = fileObjectRepository.GetFileObject(Id);
+                if (!fileDeleteModel.ExcludeTags.SplitTags().Any(x => fileObject.Tags.Contains(x)))
+                {
+                    fileObjectRepository.DeleteFileObject(fileObject);
+                    fileObjectRepository.SubmitChanges();
+                    report.Add(fileObject.Name + " deleted");
+                }
+            }
+            fileObjectRepository.SubmitChanges();
+            if (report.Count == 0) report.Add("no active files matched your criteria");
+            TempData["report"] = report;
+
+            return View(); 
         }
 
-        public ViewResult Cleanup()
-        {
-            return View(new List<string>());
-        }
+        public ViewResult AddFolder() { return View("Folder", new Folder()); }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ViewResult Cleanup(IEnumerable<string> deleted)
@@ -57,10 +74,7 @@ namespace Forganizer.WebUI.Controllers
             return View(deleted);
         }
 
-        public ViewResult FormRoot()
-        {
-            return View();
-        }
+        public ViewResult FormRoot() { return View(); }
 
         public ViewResult Tags(string tagEditType)
         {
@@ -78,7 +92,7 @@ namespace Forganizer.WebUI.Controllers
             {
                 tagEditModel.Replace = tagEditModel.Replace ?? "";
                 tagEditModel.With = tagEditModel.With ?? "";
-                IEnumerable<int> fileObjectIds = GetRelevantFileObjectIds(tagEditModel);
+                IEnumerable<int> fileObjectIds = GetRelevantFileObjectIds(tagEditModel, false);
 
                 foreach (int Id in fileObjectIds)
                 {
@@ -104,13 +118,14 @@ namespace Forganizer.WebUI.Controllers
             }
         }
 
-        private IEnumerable<int> GetRelevantFileObjectIds(TagEditModel tagEditModel)
+        private IEnumerable<int> GetRelevantFileObjectIds(TagEditModel tagEditModel, bool active_only)
         {
             int test = "ASDF".LastIndexOf("\\", 2);
             List<int> Ids = new List<int>();
             int distanceFromStartForSlashCheck = tagEditModel.Path.EndsWith("\\") ? tagEditModel.Path.Length : tagEditModel.Path.Length + 2;
             
-            var filesWithPathTagsAndIncludedExtensionsInProperFolders = fileObjectRepository.AllFileObjects.Where(x => x.FilePath.StartsWith(tagEditModel.Path)
+            var filesWithPathTagsAndIncludedExtensionsInProperFolders = fileObjectRepository.AllFileObjects
+                .Where(x => (active_only ? x.Active : true)).Where(x => x.FilePath.StartsWith(tagEditModel.Path)
                 && ((tagEditModel.Recursive || string.IsNullOrEmpty(tagEditModel.Path)) ? true // this part checks if it is recursive
                     // makes sure there isn't a slash after the root is removed... meaning it's in the same folder
                     : (x.FilePath.Length > distanceFromStartForSlashCheck && !x.FilePath.Substring(distanceFromStartForSlashCheck).Contains("\\")) 

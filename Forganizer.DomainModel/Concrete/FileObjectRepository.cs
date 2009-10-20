@@ -1,10 +1,10 @@
-﻿using System.Data.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
-using System.IO;
-using System;
-using System.Collections.Generic;
 
 namespace Forganizer.DomainModel.Concrete
 {
@@ -40,7 +40,6 @@ namespace Forganizer.DomainModel.Concrete
         public void DeleteFileObject(FileObject fileObject)
         {
             fileObject.Active = false;
-            fileObjectTable.Context.SubmitChanges();
         }
 
         public void SaveFileObject(FileObject fileObject)

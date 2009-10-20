@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq.Mapping;
 using System.IO;
-using System.Linq;
 using Forganizer.DomainModel.Extensions;
 
 namespace Forganizer.DomainModel.Entities

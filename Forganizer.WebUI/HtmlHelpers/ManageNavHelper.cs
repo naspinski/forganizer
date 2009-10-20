@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -15,9 +12,10 @@ namespace Forganizer.WebUI.HtmlHelpers
             StringBuilder sb = new StringBuilder();
             string url;
             bool isSelected;
-                    
+
             NavLink[] links = {
                 new NavLink() { Text = "add files", Controller="Manage", View="AddFolder", Views = new string[] {"AddFolder","Folder"}, RouteString = string.Empty },
+                new NavLink() { Text = "delete files", Controller="Manage", View="Delete", Views = new string[] {"Delete"}, RouteString = string.Empty },
                 new NavLink() { Text = "file cleanup", Controller="Manage", View="Cleanup", Views = new string[] {"Cleanup"}, RouteString=string.Empty },
                 new NavLink() { Text = "mass tag editing", Controller = "Manage", View = "Tags", Views = new string[] {"Tags"}, RouteString="Edit" },
                 new NavLink() { Text = "mass tag deleting", Controller = "Manage", View = "Tags", Views = new string[] {"Tags"}, RouteString = "Delete" },

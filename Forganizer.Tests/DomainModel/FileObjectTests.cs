@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using System.Linq;
 using Forganizer.DomainModel.Entities;
-using Forganizer.DomainModel.Extensions;
-using Forganizer.DomainModel;
+using NUnit.Framework;
 
 namespace Forganizer.Tests.DomainModel
 {

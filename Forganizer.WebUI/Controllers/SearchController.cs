@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
+using Forganizer.DomainModel;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
-using Forganizer.DomainModel;
-using System.IO;
 using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI.Controllers
@@ -79,6 +77,7 @@ namespace Forganizer.WebUI.Controllers
             {
                 FileObject fileObject = fileObjectRepository.GetFileObject(Id);
                 fileObjectRepository.DeleteFileObject(fileObject);
+                fileObjectRepository.SubmitChanges();
                 TempData["success"] = fileObject.FileInfo.Name + " deleted";
             }
             catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }

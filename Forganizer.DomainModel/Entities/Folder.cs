@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using Forganizer.DomainModel.Extensions;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Forganizer.DomainModel.Abstract;
+using Forganizer.DomainModel.Extensions;
 
 namespace Forganizer.DomainModel.Entities
 {
@@ -47,7 +45,7 @@ namespace Forganizer.DomainModel.Entities
                             fileObject.Active = true;
 
                             fileObjects.SaveFileObject(fileObject);
-                            report.Add(filePath + " " + (isOld ? "restored" : "added"));
+                            report.Add(fileObject.Name + " " + (isOld ? "restored" : "added"));
                         }
                     }
                 }

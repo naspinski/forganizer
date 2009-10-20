@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Forganizer.DomainModel.Entities;
-using Forganizer.DomainModel.Extensions;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
+using Forganizer.DomainModel.Entities;
 
 namespace Forganizer.WebUI.Models
 {

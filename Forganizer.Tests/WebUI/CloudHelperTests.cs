@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
 using System.Web.Mvc;
-using Forganizer.WebUI.HtmlHelpers;
 using Forganizer.DomainModel.Entities;
+using Forganizer.WebUI.HtmlHelpers;
+using NUnit.Framework;
 
 namespace Forganizer.Tests.WebUI
 {

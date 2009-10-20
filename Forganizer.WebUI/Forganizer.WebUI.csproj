@@ -78,6 +78,7 @@
     <Compile Include="HtmlHelpers\NavLink.cs" />
     <Compile Include="HtmlHelpers\PagingHelper.cs" />
     <Compile Include="Models\FileAndTagCollection.cs" />
+    <Compile Include="Models\FileDeleteModel.cs" />
     <Compile Include="Models\TagRenameModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Code\WindsorControllerFactory.cs" />
@@ -100,6 +101,7 @@
     <Content Include="Views\Category\Edit.aspx" />
     <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Manage\Cleanup.aspx" />
+    <Content Include="Views\Manage\Delete.aspx" />
     <Content Include="Views\Manage\Folder.aspx" />
     <Content Include="Views\Manage\FormRoot.ascx" />
     <Content Include="Views\Manage\Tags.aspx" />

@@ -1,10 +1,7 @@
+using System;
 using System.Web.Mvc;
 using Forganizer.DomainModel.Abstract;
-using System.Collections.Generic;
 using Forganizer.DomainModel.Entities;
-using Forganizer.DomainModel.Extensions;
-using System.Linq;
-using System;
 
 namespace Forganizer.WebUI.Controllers
 {

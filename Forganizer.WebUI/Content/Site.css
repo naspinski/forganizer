@@ -120,6 +120,7 @@ i {  height:24px; width:24px;  }
 .reload { background-position: 0 -592px; } 
 .folder { background-position: 0 -666px; } 
 .delete { background-position: 0 -740px; } 
+    i.delete { float:left; }
 .download{ background-position: 0 -814px; } 
 .plus:hover { background-position: -74px -1526px; } 
 .minus:hover { background-position: -74px -1600px; } 
