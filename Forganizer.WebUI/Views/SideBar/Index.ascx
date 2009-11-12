@@ -4,10 +4,10 @@
             <legend>
                 <span id="tagFilter">
                     <%= Html.ActionLink("or", "Index", "Search", 
-                            new { extensions = ViewData["extensions"], tags = ViewData["tags"], TagAndOr = "Or" },
+                            new { extensions = ViewData["extensions"], tags = ViewData["tags"], page = ViewData["page"], TagAndOr = "Or" },
                             new { @class = "andOr" + (ViewData["tagAndOr"].ToString().Equals("Or") ? " selected" : "") })%>
-                    <%= Html.ActionLink("and", "Index", "Search", 
-                            new { extensions = ViewData["extensions"], tags = ViewData["tags"], TagAndOr = "And" },
+                    <%= Html.ActionLink("and", "Index", "Search",
+                            new { extensions = ViewData["extensions"], tags = ViewData["tags"], page = ViewData["page"], TagAndOr = "And" },
                             new { @class = "andOr" + (ViewData["tagAndOr"].ToString().Equals("And") ? " selected" : "") })%>
                 </span>
                 <i class="tag_green"></i>tags

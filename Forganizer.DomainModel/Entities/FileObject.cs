@@ -15,7 +15,7 @@ namespace Forganizer.DomainModel.Entities
 
         [Column(IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert)] public int Id { get; set; }
         [Column] public string FilePath { get; set; }
-        [Column] public string Name { get; private set; }
+        [Column] public string Name { get; private set; } // redundant info, but helps for sql ordering
         [Column] public string TagString { get; set; }
         [Column] public bool Active { get; set; }
 

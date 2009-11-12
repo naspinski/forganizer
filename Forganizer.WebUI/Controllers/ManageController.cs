@@ -6,6 +6,7 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.WebUI.Models;
+using System.IO;
 
 namespace Forganizer.WebUI.Controllers
 {
@@ -124,6 +125,7 @@ namespace Forganizer.WebUI.Controllers
             List<int> Ids = new List<int>();
             int distanceFromStartForSlashCheck = tagEditModel.Path.EndsWith("\\") ? tagEditModel.Path.Length : tagEditModel.Path.Length + 2;
             
+
             var filesWithPathTagsAndIncludedExtensionsInProperFolders = fileObjectRepository.AllFileObjects
                 .Where(x => (active_only ? x.Active : true)).Where(x => x.FilePath.StartsWith(tagEditModel.Path)
                 && ((tagEditModel.Recursive || string.IsNullOrEmpty(tagEditModel.Path)) ? true // this part checks if it is recursive

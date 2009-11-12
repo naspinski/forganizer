@@ -14,17 +14,8 @@ namespace Forganizer.WebUI.Controllers
             ViewData["extensions"] = extensions;
             SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
             ViewData["tagAndOr"] = TagAndOr.ToString();
+            ViewData["page"] = page;
             return View(fileAndTagCollection);
-        }
-
-        public ActionResult Container(IEnumerable<Tag> tagObjects, string tags, string extensions, string tagAndOr, bool active, TagType tagType)
-        {
-            ViewData["tags"] = tags;
-            ViewData["extensions"] = extensions;
-            ViewData["tagAndOr"] = tagAndOr;
-            ViewData["tagType"] = tagType;
-
-            return View(tagObjects.Where(x => x.Active == active));
         }
     }
 }
