@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Forganizer.WebUI.App_Code;
 using Forganizer.WebUI.Models;
+using Forganizer.DomainModel.Entities;
 
 namespace Forganizer.WebUI
 {
@@ -18,33 +19,66 @@ namespace Forganizer.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(null, "", new { controller = "Search", action = "Index", tags = "", extensions = "", page = 1 });
+            routes.MapRoute(null, "", new { controller = "Search", action = "Index", tags = "", extensions = "", page = 1, tagAndOr = SearchType.And });
 
             routes.MapRoute(null, "Page{page}",
-                new { controller = "Search", action = "Index", extensions = "", tags="" },
+                new { controller = "Search", action = "Index", extensions = "", tags="", tagAndOr=SearchType.And },
                 new { page = @"\d+" }
+            );
+            routes.MapRoute(null, "Tags/{tagAndOr}/Page{page}",
+                new { controller = "Search", action = "Index", extensions = "", tags="", page = 1 },
+                new { page = @"\d+", tagAndOr = @"And|Or{1}" }
+            );
+            routes.MapRoute(null, "Tags/{tagAndOr}/{tags}",
+                new { controller = "Search", action = "Index", extensions = "", page = 1 },
+                new { tagAndOr = @"And|Or{1}" }
+            );
+            routes.MapRoute(null, "Tags/{tagAndOr}",
+                new { controller = "Search", action = "Index", extensions = "", page = 1 },
+                new { tagAndOr = @"And|Or{1}" }
             );
             routes.MapRoute(null, "Tags/{tags}",
-                new { controller = "Search", action = "Index", extensions = "", page = 1 }
+                new { controller = "Search", action = "Index", extensions = "", page = 1, tagAndOr = SearchType.And }
             );
             routes.MapRoute(null, "Tags/{Tags}/Page{page}",
-                new { controller = "Search", action = "Index", extensions = "" },
+                new { controller = "Search", action = "Index", extensions = "", tagAndOr = SearchType.And },
                 new { page = @"\d+" }
             );
+            routes.MapRoute(null, "Tags/{tagAndOr}/{Tags}/Page{page}",
+                new { controller = "Search", action = "Index", extensions = "" },
+                new { page = @"\d+", tagAndOr = @"And|Or{1}" }
+            );
             routes.MapRoute(null, "Tags/{tags}/Extensions/{extensions}",
-                new { controller = "Search", action = "Index", page = 1 }
+                new { controller = "Search", action = "Index", page = 1, tagAndOr = SearchType.And }
+            );
+            routes.MapRoute(null, "Tags/{tagAndOr}/{tags}/Extensions/{extensions}",
+                new { controller = "Search", action = "Index", page = 1 },
+                new { tagAndOr = @"And|Or{1}" }
             );
             routes.MapRoute(null, "Tags/{tags}/Extensions/{extensions}/Page{page}",
+                new { controller = "Search", action = "Index", tagAndOr = SearchType.And },
+                new { page = @"\d+" }
+            );
+            routes.MapRoute(null, "Tags/{tagAndOr}/{tags}/Extensions/{extensions}/Page{page}",
                 new { controller = "Search", action = "Index" },
+                new { page = @"\d+", tagAndOr = @"And|Or{1}" }
+            );
+            routes.MapRoute(null, "Extensions/{extensions}",
+                new { controller = "Search", action = "Index", tags = "", page = 1, tagAndOr = SearchType.And }
+            );
+            routes.MapRoute(null, "Extensions/{extensions}/Page{page}",
+                new { controller = "Search", action = "Index", tags = "", tagAndOr = SearchType.And },
                 new { page = @"\d+" }
             );
 
-            routes.MapRoute(null, "Extensions/{extensions}",
-                new { controller = "Search", action = "Index", tags = "", page = 1 }
+            routes.MapRoute(null, "Delete/{Id}/ReturnTo/{*returnTo}", 
+                new { controller = "Search", action = "Delete", returnTo = "" },
+                new { Id = @"\d+" }
             );
-            routes.MapRoute(null, "Extensions/{extensions}/Page{page}",
-                new { controller = "Search", action = "Index", tags = "" },
-                new { page = @"\d+" }
+
+            routes.MapRoute(null, "DeleteTag/{tag}/From/{Id}/ReturnTo/{*returnTo}", 
+                new { controller = "Search", action = "DeleteTag", returnTo = "" },
+                new { Id = @"\d+" }
             );
 
             routes.MapRoute(null, "Manage/Tags/", new { controller = "Manage", action = "Tags", tagEditType = TagEditType.Edit });

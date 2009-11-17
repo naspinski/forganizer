@@ -6,6 +6,8 @@ namespace Forganizer.DomainModel.Extensions
 {
     public static class Estring
     {
+        public static T ToEnum<T>(this string strOfEnum) { return (T)Enum.Parse(typeof(T), strOfEnum.Replace(" ", "")); }
+
         public static List<string> SplitTags(this string tagString)
         {
             if (tagString == null) return new List<string>();

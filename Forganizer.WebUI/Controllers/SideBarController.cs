@@ -8,13 +8,11 @@ namespace Forganizer.WebUI.Controllers
 {
     public class SideBarController : Controller
     {
-        public ActionResult Index(FileAndTagCollection fileAndTagCollection, string tags, string extensions, int page, string tagAndOr)
+        public ActionResult Index(FileAndTagCollection fileAndTagCollection, SearchType tagAndOr)
         {
-            ViewData["tags"] = tags;
-            ViewData["extensions"] = extensions;
-            SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
-            ViewData["tagAndOr"] = TagAndOr.ToString();
-            ViewData["page"] = page;
+            fileAndTagCollection.RouteData = this.RouteData;
+            //SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
+            ViewData["tagAndOr"] = tagAndOr;//.ToString();
             return View(fileAndTagCollection);
         }
     }

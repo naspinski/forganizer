@@ -14,13 +14,13 @@ namespace Forganizer.Tests.WebUI
         public void Extends_HtmlHelper()
         {
             HtmlHelper html = null;
-            html.Cloud((UrlHelper)null, new List<Tag>(), "", "", "", TagType.Category);
+            html.Cloud((UrlHelper)null, new List<Tag>(), "", "", SearchType.And, TagType.Category);
         }
 
         [Test]
         public void Makes_correct_clouds()
         {
-            string cloud = ((HtmlHelper)null).Cloud((UrlHelper)null, new List<Tag>(), "tgs", "exts", "And", TagType.Category);
+            string cloud = ((HtmlHelper)null).Cloud((UrlHelper)null, new List<Tag>(), "tgs", "exts", SearchType.And, TagType.Category);
 
             Assert.AreEqual(@"<div class=""active"">" + Environment.NewLine, cloud.Trim().Substring(0, 22));
         }

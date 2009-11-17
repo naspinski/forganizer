@@ -9,7 +9,7 @@ namespace Forganizer.WebUI.HtmlHelpers
 {
     public static class CloudHelper
     {
-        public static string Cloud(this HtmlHelper html, UrlHelper url, IEnumerable<Tag> allTags, string tags, string extensions, string tagAndOr, TagType tagType)
+        public static string Cloud(this HtmlHelper html, UrlHelper url, IEnumerable<Tag> allTags, string tags, string extensions, SearchType tagAndOr, TagType tagType)
         {
             bool[] bools = { true, false };
             StringBuilder sb = new StringBuilder();
@@ -23,7 +23,7 @@ namespace Forganizer.WebUI.HtmlHelpers
                     sb.AppendLine("                    <li><a style=\"font-size:" + tag.Size.ToString("0.0") + "em;\" href=\"" +
                         url.Action("Index", "Search", new
                         {
-                            TagAndOr = tagAndOr,
+                            tagAndOr = tagAndOr,
                             tags = (tagType == TagType.Tag ? tags.AddToSearch(tag.QueryString) : tags),
                             extensions = (tagType == TagType.Tag ? extensions : extensions.AddToSearch(tag.QueryString))
                         }).ToString() + "\">" +
@@ -36,7 +36,7 @@ namespace Forganizer.WebUI.HtmlHelpers
                         sb.AppendLine("                    <a class=\"x\" href=\"" +
                             url.Action("Index", "Search", new
                             {
-                                TagAndOr = tagAndOr,
+                                tagAndOr = tagAndOr,
                                 tags = (tagType == TagType.Tag ? tags.RemoveFromSearch(tag.QueryString) : tags),
                                 extensions = (tagType == TagType.Tag ? extensions : extensions.RemoveFromSearch(tag.QueryString))
                             }).ToString() +

@@ -8,6 +8,7 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.WebUI.Models;
+using System.Web.Routing;
 
 namespace Forganizer.WebUI.Controllers
 {
@@ -22,20 +23,19 @@ namespace Forganizer.WebUI.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-        public ViewResult Index(string tags, string extensions, int page, string tagAndOr)
+        //need tags, extensions and page will always be null - leaving them in purely because of testing and the inability to override RouteData even in Mocking
+        public ViewResult Index(SearchType tagAndOr, string tags, string extensions, int page)
         {
-            FileAndTagCollection fileAndTagCollection = new FileAndTagCollection();
-            ViewData["tags"] = tags;
-            ViewData["extensions"] = extensions;
+            FileAndTagCollection fileAndTagCollection = new FileAndTagCollection() { RouteData = this.RouteData };
+            
             ViewData["currentQuery"] = (string.IsNullOrEmpty(tags) ? "" : "/tags/" + tags) + (string.IsNullOrEmpty(extensions) ? "" : "/extensions/" + extensions);
-            SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
-            ViewData["tagAndOr"] = TagAndOr.ToString();
-            ViewData["queryString"] = "?TagAndOr=" + TagAndOr.ToString();
+            //SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
+            //ViewData["tagAndOr"] = TagAndOr.ToString();
+            //ViewData["queryString"] = "?TagAndOr=" + TagAndOr.ToString();
 
             //get files with specifications met
-            IQueryable<FileObject> filesWithSpecifications = fileObjectRepository.FileObjects.WithTags(tags, TagAndOr).WithExtensions(extensions);
+            IQueryable<FileObject> filesWithSpecifications = fileObjectRepository.FileObjects.WithTags(tags, tagAndOr).WithExtensions(extensions);
             int numFobs = filesWithSpecifications.Count();
-            ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling((double)numFobs / PageSize);
             
             //set the files to show on the current page
@@ -51,7 +51,7 @@ namespace Forganizer.WebUI.Controllers
 
             //set the tags
             IEnumerable<Tag> tagCollection = filesWithSpecifications.Tags(true);
-            if(TagAndOr == SearchType.Or)
+            if(tagAndOr == SearchType.Or)
                 tagCollection = tagCollection.Concat(filesWithoutSpecifications.Tags(false));
             IEnumerable<Tag> tagsInSearchNotInFiles = tags.SplitTags().Except(tagCollection.Select(x => x.Name))
                 .Select(x => new Tag() { Name=x, Count=0, Size=Constants.TagMinSize, Active=false, QueryString=x});
@@ -71,20 +71,20 @@ namespace Forganizer.WebUI.Controllers
             return View(fileAndTagCollection);
         }
 
-        public void Delete(int Id, string returnUrl)
-        {
-            try
-            {
-                FileObject fileObject = fileObjectRepository.GetFileObject(Id);
-                fileObjectRepository.DeleteFileObject(fileObject);
-                fileObjectRepository.SubmitChanges();
-                TempData["success"] = fileObject.FileInfo.Name + " deleted";
-            }
-            catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
-            Response.Redirect(returnUrl);
-        }
+public void Delete(int Id, string returnTo)
+{
+    try
+    {
+        FileObject fileObject = fileObjectRepository.GetFileObject(Id);
+        fileObjectRepository.DeleteFileObject(fileObject);
+        fileObjectRepository.SubmitChanges();
+        TempData["success"] = fileObject.FileInfo.Name + " deleted";
+    }
+    catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
+    Response.Redirect("~/" + returnTo);
+}
 
-        public void DeleteTag(int Id, string tag, string returnUrl)
+        public void DeleteTag(int Id, string tag, string returnTo)
         {
             try
             {
@@ -95,11 +95,11 @@ namespace Forganizer.WebUI.Controllers
                 TempData["success"] = "tag " + tag + " deleted";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect(returnUrl);
+            Response.Redirect("~/" + returnTo);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public void Index(string returnUrl)
+        public void Index(string returnUrl, string tagAndOr)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace Forganizer.WebUI.Controllers
                 TempData["success"] = "tags added";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect(returnUrl);
+            Response.Redirect(returnUrl + "?" + tagAndOr);
         }
 
         public void Download(string filePath)

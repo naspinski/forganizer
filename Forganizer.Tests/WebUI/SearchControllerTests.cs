@@ -7,6 +7,7 @@ using Forganizer.WebUI.Controllers;
 using Forganizer.WebUI.Models;
 using Moq;
 using NUnit.Framework;
+using System.Web.Routing;
 
 namespace Forganizer.Tests.WebUI
 {
@@ -39,7 +40,7 @@ namespace Forganizer.Tests.WebUI
         }
         
         [Test]
-        public void Index_presents_correct_FileAndTagCollection()
+        public void Index_tags_funny_exts_jpg_returns_correct_FileAndTagCollection()
         {
             Assert.IsNotNull(mockFileObjectRepository.Object);
             Assert.IsNotNull(mockCategoryRepository.Object);
@@ -47,7 +48,8 @@ namespace Forganizer.Tests.WebUI
 
             SearchController controller = new SearchController(mockFileObjectRepository.Object, mockCategoryRepository.Object);
 
-            ViewResult result = controller.Index("funny", ".jpg", 1, "And");
+            //ViewResult result = controller.Index("And");
+            ViewResult result = controller.Index(Forganizer.DomainModel.Entities.SearchType.And, "funny", ".jpg", 1);
             FileAndTagCollection Model = result.ViewData.Model as FileAndTagCollection;
             
             Assert.AreEqual(".jpg", Model.Extensions.First().Name);
@@ -64,9 +66,14 @@ namespace Forganizer.Tests.WebUI
 
             Assert.AreEqual(1, Model.PageOfFileObjects.Count());
             Assert.AreEqual("image.jpg", Model.PageOfFileObjects.First().FileInfo.Name);
+        }
 
-            result = controller.Index("funny,long", "", 1, "Or");
-            Model = result.ViewData.Model as FileAndTagCollection;
+        [Test]
+        public void Index_tags_fun_and_long_exts_blank_returns_correct_FileAndTagCollection()
+        {
+            SearchController controller = new SearchController(mockFileObjectRepository.Object, mockCategoryRepository.Object);
+            ViewResult result = controller.Index(Forganizer.DomainModel.Entities.SearchType.Or, "funny,long", "", 1);
+            FileAndTagCollection Model = result.ViewData.Model as FileAndTagCollection;
             Assert.AreEqual(5, Model.Tags.Count());
             Assert.AreEqual(3, Model.Tags.Where(x => x.Active).Count());
         }

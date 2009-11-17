@@ -20,7 +20,7 @@
                         </a>    
                         <span class="actions">
                             <%= Html.ActionLink(" ", "Delete", 
-                                new { fileObject.Id, returnUrl = ViewContext.HttpContext.Request.Url.ToString() }, 
+                                new { fileObject.Id, returnTo = ViewContext.HttpContext.Request.Url.LocalPath.ToString() }, 
                                 new { @class = "delete", title = "delete" })%>
                             <a target="_blank" href="<%= fileObject.FileInfo.DirectoryName %>" class="folder" title="folder"> </a>
                             <%= Html.ActionLink(" ", "Download", new { filePath = fileObject.FilePath }, 
@@ -31,21 +31,22 @@
                             <% foreach (var tag in fileObject.Tags) { %>
                             <span class="tag">
                                 <%= tag%><%= Html.ActionLink("[delete]", "DeleteTag", 
-                                    new { fileObject.Id, tag, returnUrl = ViewContext.HttpContext.Request.Url.ToString() }, 
+                                    new { fileObject.Id, tag, returnTo = ViewContext.HttpContext.Request.Url.LocalPath.ToString() }, 
                                     new { title = "delete" })%></span>
                             <% } %>
                         </span>
-                        <div class="full_address"><%= fileObject.FileInfo.DirectoryName %></div>
+                        <%-- uncomment if you would like the full path to show on rollover --%>
+                        <%--<div class="full_address"><%= fileObject.FileInfo.DirectoryName %></div>--%>
                     </li>
                 <% } %>
                 </ul>
             <% } %>
             <div class="pager">
-                <%= Html.PageLinks((int)ViewData["CurrentPage"], (int)ViewData["TotalPages"], x => ViewData["currentQuery"] + "/Page" + x + ViewData["queryString"])%>   
+                <%= Html.PageLinks(Int32.Parse(Model.RouteData.Values["page"].ToString()), (int)ViewData["TotalPages"], x => ViewData["currentQuery"] + "/Page" + x + ViewData["queryString"])%>   
             </div> 
         </fieldset>
     </div>
-    <% Html.RenderAction("Index", "SideBar",  new { fileAndTagCollection = Model }); %>
+    <% Html.RenderAction("Index", "SideBar",  new { fileAndTagCollection = Model, tagAndOr=Model.RouteData.Values["tagAndOr"] }); %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">
