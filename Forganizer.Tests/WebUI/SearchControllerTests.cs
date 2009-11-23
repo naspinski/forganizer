@@ -77,5 +77,23 @@ namespace Forganizer.Tests.WebUI
             Assert.AreEqual(5, Model.Tags.Count());
             Assert.AreEqual(3, Model.Tags.Where(x => x.Active).Count());
         }
+
+        [Test]
+        public void Delete_redirects_correctly()
+        {
+            string url = "abc/def";
+            SearchController controller = new SearchController(mockFileObjectRepository.Object, mockCategoryRepository.Object);
+            RedirectResult result = controller.Delete(1, url);
+            Assert.AreEqual("~/" + url, result.Url);
+        }
+
+        [Test]
+        public void DeleteTag_redirects_correctly()
+        {
+            string url = "abc/def";
+            SearchController controller = new SearchController(mockFileObjectRepository.Object, mockCategoryRepository.Object);
+            RedirectResult result = controller.DeleteTag(1, "as", url);
+            Assert.AreEqual("~/" + url, result.Url);
+        }
     }
 }

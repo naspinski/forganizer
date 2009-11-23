@@ -2,14 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="content">
-        <% using (Html.BeginForm("Edit", "Category", FormMethod.Post)) {%>
+    <div id="content"><% using (Html.BeginForm("Edit", "Category", FormMethod.Post)) {%>
         <fieldset>
             <legend>
                 <i class="edit"></i><%= ((string)ViewContext.RouteData.Values["action"] ==  "Edit" ? "edit" : "create")%> category
             </legend>
             <%= Html.Hidden("Id") %>
-            <div>
+            <% if (Model.IsValid) { %><div>
                 <label for="Name">
                     <% if (TempData["duplicate"] != null) { %><span class="field-validation-error"><%= TempData["duplicate"]%></span><% } %>
                     <%= Html.ValidationMessage("Name") %>
@@ -20,10 +19,9 @@
             <div>
                 <label for="ExtensionString"><%= Html.ValidationMessage("ExtensionString") %>extensions</label>
                 <%= Html.TextBox("ExtensionString") %>
-            </div>
-            <div class="align_center">
+            </div><div class="align_center">
                 <input type="submit" value="save" />
-            </div>
+            </div><% } %>
         </fieldset>
         <% } %>
     </div>

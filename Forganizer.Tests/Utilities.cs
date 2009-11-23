@@ -5,7 +5,10 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.WebUI;
 using Moq;
+using System.Collections.Generic;
 using NUnit.Framework;
+using System.Web.Mvc;
+using System.Collections.Specialized;
 
 namespace Forganizer.Tests
 {
@@ -49,6 +52,41 @@ namespace Forganizer.Tests
             }
 
             private class FakeResponse : HttpResponseBase { public override string ApplyAppPathModifier(string x) { return x; } }
+        }
+
+        public class ContextMocks
+        {
+            public Mock<HttpContextBase> HttpContext { get; private set; }
+            public Mock<HttpRequestBase> Request { get; private set; }
+            public Mock<HttpResponseBase> Response { get; private set; }
+            public RouteData RouteData { get; private set; }
+
+            public ContextMocks(Controller onController)
+            {
+                HttpContext = new Mock<HttpContextBase>();
+                Request = new Mock<HttpRequestBase>();
+                Response = new Mock<HttpResponseBase>();
+                HttpContext.Setup(x => x.Request).Returns(Request.Object);
+                HttpContext.Setup(x => x.Response).Returns(Response.Object);
+                HttpContext.Setup(x => x.Session).Returns(new FakeSessionState());
+                Request.Setup(x => x.Cookies).Returns(new HttpCookieCollection());
+                Response.Setup(x => x.Cookies).Returns(new HttpCookieCollection());
+                Request.Setup(x => x.QueryString).Returns(new NameValueCollection());
+                Request.Setup(x => x.Form).Returns(new NameValueCollection());
+
+                RequestContext rc = new RequestContext(HttpContext.Object, new RouteData());
+                onController.ControllerContext = new ControllerContext(rc, onController);
+            }
+
+            private class FakeSessionState : HttpSessionStateBase
+            {
+                Dictionary<string, object> items = new Dictionary<string, object>();
+                public override object this[string name]
+                {
+                    get { return items.ContainsKey(name) ? items[name] : null; }
+                    set { items[name] = value; }
+                }
+            }
         }
 
         public class Mocking

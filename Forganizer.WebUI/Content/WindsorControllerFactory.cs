@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Castle.Windsor;
-using Castle.Windsor.Configuration.Interpreters;
-using Castle.Core.Resource;
 using System.Reflection;
 using System.Web.Mvc;
 using Castle.Core;
+using Castle.Core.Resource;
+using Castle.Windsor;
+using Castle.Windsor.Configuration.Interpreters;
 
-namespace Forganizer.WebUI
+namespace Forganizer.WebUI.App_Code
 {
     public class WindsorControllerFactory : DefaultControllerFactory
     {
@@ -26,9 +24,7 @@ namespace Forganizer.WebUI
 
         protected override IController GetControllerInstance(Type controllerType)
         {
-            try { return (IController)container.Resolve(controllerType); }
-            catch (ArgumentNullException ex) { throw new HttpException(404, ex.Message); }
-            catch (Exception ex) { throw ex; }
+            return (IController)container.Resolve(controllerType);
         }
     }
 }

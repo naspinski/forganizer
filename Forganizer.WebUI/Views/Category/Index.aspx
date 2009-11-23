@@ -5,7 +5,7 @@
     <div id="content">
         <fieldset class="clear">
             <legend><i class="arrow_blue"></i>categories</legend>
-            <% using (Html.BeginForm("Index", "Category", new { returnUrl = ViewContext.HttpContext.Request.Url.ToString() })) { %>
+            <% using (Html.BeginForm("Submit", "Category")) { %>
                 <ul class="list_vertical">
                     <li class="title">
                         <span class="name"></span>
@@ -27,7 +27,7 @@
                             <% foreach (var extension in category.Extensions) { %>
                             <span class="tag">
                                 <%= extension %><%= Html.ActionLink("[delete]", "DeleteExtension", 
-                                    new { category.Id, extension, returnUrl = ViewContext.HttpContext.Request.Url.ToString() }, 
+                                    new { category.Id, extension }, 
                                     new { title = "delete" })%></span>
                             <% } %>
                         </span>

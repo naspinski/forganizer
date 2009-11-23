@@ -10,6 +10,7 @@ using System.IO;
 
 namespace Forganizer.WebUI.Controllers
 {
+    [HandleError]
     public class ManageController : Controller
     {
         private IFileObjectRepository fileObjectRepository;

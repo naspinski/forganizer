@@ -65,6 +65,7 @@
     <Compile Include="DomainModel\IEnumerableFileObjectTests.cs" />
     <Compile Include="WebUI\CategoryControllerTests.cs" />
     <Compile Include="WebUI\CloudHelperTests.cs" />
+    <Compile Include="WebUI\ErrorControllerTests.cs" />
     <Compile Include="WebUI\ManageControllerTests.cs" />
     <Compile Include="WebUI\SearchControllerTests.cs" />
     <Compile Include="WebUI\InboundRoutingTests.cs" />

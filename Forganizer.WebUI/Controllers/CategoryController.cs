@@ -5,6 +5,7 @@ using Forganizer.DomainModel.Entities;
 
 namespace Forganizer.WebUI.Controllers
 {
+    [HandleError]
     public class CategoryController : Controller
     {
         private ICategoryRepository categoryRepository;
@@ -13,6 +14,11 @@ namespace Forganizer.WebUI.Controllers
         {
             this.categoryRepository = categoryRepository;
             this.fileObjectRepository = fileObjectRepository;
+        }
+
+        private void CategoryIDError()
+        {
+            TempData["error"] = "invalid category id specified, please use the navigation provided";
         }
 
         public ViewResult Index()
@@ -24,6 +30,7 @@ namespace Forganizer.WebUI.Controllers
         public ViewResult Edit(int Id)
         {
             Category category = categoryRepository.GetCategory(Id);
+            if (!category.IsValid) CategoryIDError();
             return View(category);
         }
 
@@ -46,32 +53,40 @@ namespace Forganizer.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new Category());
+            return View("Edit", new Category() { IsValid = true });
         }
 
-        public RedirectToRouteResult Delete(int Id)
+        public ActionResult Delete(int Id)
         {
             Category category = categoryRepository.GetCategory(Id);
-            categoryRepository.DeleteCategory(category);
-            TempData["success"] = category.Name + " deleted";
-            return RedirectToAction("Index");
+            if (!category.IsValid) CategoryIDError();
+            else
+            {
+                categoryRepository.DeleteCategory(category);
+                TempData["success"] = category.Name + " deleted";
+            }
+            return RedirectToRoute(new { controller = "Category", action = "Index" });
         }
 
-        public void DeleteExtension(int Id, string extension, string returnUrl)
+        public RedirectToRouteResult DeleteExtension(int Id, string extension)
         {
             try
             {
                 Category category = categoryRepository.GetCategory(Id);
-                category.DeleteExtensions(extension);
-                categoryRepository.SaveCategory(category);
-                TempData["success"] = "extension " + extension + " deleted";
+                if (!category.IsValid) CategoryIDError();
+                else
+                {
+                    category.DeleteExtensions(extension);
+                    categoryRepository.SaveCategory(category);
+                    TempData["success"] = "extension " + extension + " deleted";
+                }
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect(returnUrl);
+            return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public void Index(string returnUrl)
+        public ActionResult Index(bool formPost)
         {
             try
             {
@@ -88,7 +103,7 @@ namespace Forganizer.WebUI.Controllers
                 TempData["success"] = "tags added";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect(returnUrl);
+            return Index();
         }
     }
 }

@@ -22,7 +22,10 @@ namespace Forganizer.DomainModel.Concrete
 
         public Category GetCategory(int Id)
         {
-            return categoryTable.SingleOrDefault(x => x.Id == Id);
+            Category category = categoryTable.SingleOrDefault(x => x.Id == Id);
+            if (category == null) category = new Category() { IsValid = false };
+            else category.IsValid = true;
+            return category;
         }
 
         public void SaveCategory(Category category)

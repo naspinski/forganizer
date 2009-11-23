@@ -5,7 +5,7 @@
     <div id="content">
         <fieldset class="clear">
             <legend><i class="arrow_blue"></i>files</legend>
-            <% using (Html.BeginForm("Index", "Search", new { returnUrl = ViewContext.HttpContext.Request.Url.ToString() })) { %>
+            <% using (Html.BeginForm("AddTags", "Search", new { returnTo = ViewContext.HttpContext.Request.Url.LocalPath.ToString() }, FormMethod.Post)) { %>
                 <ul class="list_vertical">
                     <li class="title">
                         <span class="name"></span>

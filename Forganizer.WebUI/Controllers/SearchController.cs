@@ -12,6 +12,7 @@ using System.Web.Routing;
 
 namespace Forganizer.WebUI.Controllers
 {
+    [HandleError]
     public class SearchController : Controller
     {
         private int PageSize = 15;
@@ -23,15 +24,11 @@ namespace Forganizer.WebUI.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-        //need tags, extensions and page will always be null - leaving them in purely because of testing and the inability to override RouteData even in Mocking
         public ViewResult Index(SearchType tagAndOr, string tags, string extensions, int page)
         {
             FileAndTagCollection fileAndTagCollection = new FileAndTagCollection() { RouteData = this.RouteData };
             
             ViewData["currentQuery"] = (string.IsNullOrEmpty(tags) ? "" : "/tags/" + tags) + (string.IsNullOrEmpty(extensions) ? "" : "/extensions/" + extensions);
-            //SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
-            //ViewData["tagAndOr"] = TagAndOr.ToString();
-            //ViewData["queryString"] = "?TagAndOr=" + TagAndOr.ToString();
 
             //get files with specifications met
             IQueryable<FileObject> filesWithSpecifications = fileObjectRepository.FileObjects.WithTags(tags, tagAndOr).WithExtensions(extensions);
@@ -71,20 +68,20 @@ namespace Forganizer.WebUI.Controllers
             return View(fileAndTagCollection);
         }
 
-public void Delete(int Id, string returnTo)
-{
-    try
-    {
-        FileObject fileObject = fileObjectRepository.GetFileObject(Id);
-        fileObjectRepository.DeleteFileObject(fileObject);
-        fileObjectRepository.SubmitChanges();
-        TempData["success"] = fileObject.FileInfo.Name + " deleted";
-    }
-    catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
-    Response.Redirect("~/" + returnTo);
-}
+        public RedirectResult Delete(int Id, string returnTo)
+        {
+            try
+            {
+                FileObject fileObject = fileObjectRepository.GetFileObject(Id);
+                fileObjectRepository.DeleteFileObject(fileObject);
+                fileObjectRepository.SubmitChanges();
+                TempData["success"] = fileObject.FileInfo.Name + " deleted";
+            }
+            catch (Exception ex) { TempData["error"] = "error: " + ex.Message; }
+            return Redirect("~/" + returnTo);
+        }
 
-        public void DeleteTag(int Id, string tag, string returnTo)
+        public RedirectResult DeleteTag(int Id, string tag, string returnTo)
         {
             try
             {
@@ -95,11 +92,11 @@ public void Delete(int Id, string returnTo)
                 TempData["success"] = "tag " + tag + " deleted";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect("~/" + returnTo);
+            return Redirect("~/" + returnTo);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public void Index(string returnUrl, string tagAndOr)
+        public RedirectResult AddTags(string returnTo)
         {
             try
             {
@@ -117,14 +114,12 @@ public void Delete(int Id, string returnTo)
                 TempData["success"] = "tags added";
             }
             catch (Exception ex) { TempData["error"] = ex.Message; }
-            Response.Redirect(returnUrl + "?" + tagAndOr);
+            return Redirect("~" + returnTo);
         }
 
-        public void Download(string filePath)
+        public FileResult Download(string filePath)
         {
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + new FileInfo(filePath).Name);
-            Response.TransmitFile(filePath);
-            Response.End();
+            return File(filePath, "application/octetstream", Path.GetFileName(filePath));
         }
     }
 }

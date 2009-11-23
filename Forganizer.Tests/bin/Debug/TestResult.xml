@@ -1,77 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" total="31" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2009-11-17" time="13:36:35">
+<test-results name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2009-11-23" time="16:47:29">
   <environment nunit-version="2.5.2.9222" clr-version="2.0.50727.3082" os-version="Microsoft Windows NT 5.1.2600 Service Pack 3" platform="Win32NT" cwd="C:\Program Files\NUnit 2.5.2\bin\net-2.0" machine-name="N-IZ-23-40EF6A" user="stan.naspinski" user-domain="IRAQ" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" executed="True" success="True" time="1.437" asserts="0">
+  <test-suite name="C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Forganizer.Tests.dll" executed="True" success="True" time="1.375" asserts="0">
     <results>
-      <test-suite name="Forganizer" executed="True" success="True" time="1.406" asserts="0">
+      <test-suite name="Forganizer" executed="True" success="True" time="1.375" asserts="0">
         <results>
-          <test-suite name="Tests" executed="True" success="True" time="1.406" asserts="0">
+          <test-suite name="Tests" executed="True" success="True" time="1.375" asserts="0">
             <results>
-              <test-suite name="WebUI" executed="True" success="True" time="1.406" asserts="0">
+              <test-suite name="WebUI" executed="True" success="True" time="1.359" asserts="0">
                 <results>
-                  <test-suite name="CategoryControllerTests" executed="True" success="True" time="0.016" asserts="0">
+                  <test-suite name="ErrorControllerTests" executed="True" success="True" time="1.359" asserts="0">
                     <results>
-                      <test-case name="Forganizer.Tests.WebUI.CategoryControllerTests.hmm" executed="True" success="True" time="0.016" asserts="0" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="CloudHelperTests" executed="True" success="True" time="0.234" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.CloudHelperTests.Extends_HtmlHelper" executed="True" success="True" time="0.219" asserts="0" />
-                      <test-case name="Forganizer.Tests.WebUI.CloudHelperTests.Makes_correct_clouds" executed="True" success="True" time="0.016" asserts="1" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="InboundRoutingTests" executed="True" success="True" time="0.719" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something" executed="True" success="True" time="0.656" asserts="6" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Extensions_slash_something_slash_pageNumber" executed="True" success="True" time="0.031" asserts="6" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Slash_goes_to_Home" executed="True" success="True" time="0.000" asserts="3" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_andOr_slash_something" executed="True" success="True" time="0.016" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_andOr_slash_something_slash_extensions_slash_something" executed="True" success="True" time="0.000" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_andOr_slash_something_slash_extensions_slash_something_slash_pageNumer" executed="True" success="True" time="0.000" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_andOr_slash_something_slash_pageNumber" executed="True" success="True" time="0.016" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something" executed="True" success="True" time="0.000" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_extensions_slash_something" executed="True" success="True" time="0.000" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_extensions_slash_something_slash_pageNumer" executed="True" success="True" time="0.000" asserts="7" />
-                      <test-case name="Forganizer.Tests.WebUI.InboundRoutingTests.Tags_slash_something_slash_pageNumber" executed="True" success="True" time="0.000" asserts="7" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="ManageControllerTests" executed="True" success="True" time="0.031" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.ManageControllerTests.Tags_which_tests_setEditType" executed="True" success="True" time="0.016" asserts="2" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="OutboundRoutingTests" executed="True" success="True" time="0.078" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions" executed="True" success="True" time="0.031" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Extensions_page" executed="True" success="True" time="0.016" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Home" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_andOr" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_andOr_extensions" executed="True" success="True" time="0.016" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_andOr_extensions_page" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_andOr_page" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_extensions" executed="True" success="True" time="0.016" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_extensions_page" executed="True" success="True" time="0.000" asserts="1" />
-                      <test-case name="Forganizer.Tests.WebUI.OutboundRoutingTests.Tags_page" executed="True" success="True" time="0.000" asserts="1" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="PagingHelperTests" executed="True" success="True" time="0.000" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Method_Extends_HtmlHelper" executed="True" success="True" time="0.000" asserts="0" />
-                      <test-case name="Forganizer.Tests.WebUI.PagingHelperTests.PageLinks_Produces_Anchor_Tags" executed="True" success="True" time="0.000" asserts="1" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="SearchControllerTests" executed="True" success="True" time="0.312" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.SearchControllerTests.Index_tags_funny_exts_jpg_returns_correct_FileAndTagCollection" executed="True" success="True" time="0.266" asserts="14" />
-                      <test-case name="Forganizer.Tests.WebUI.SearchControllerTests.Index_tags_fuun_and_long_exts_blank_returns_correct_FileAndTagCollection" executed="True" success="True" time="0.047" asserts="2" />
-                    </results>
-                  </test-suite>
-                  <test-suite name="SideBarControllerTests" executed="True" success="True" time="0.000" asserts="0">
-                    <results>
-                      <test-case name="Forganizer.Tests.WebUI.SideBarControllerTests.NoTests" executed="True" success="True" time="0.000" asserts="0" />
+                      <test-case name="Forganizer.Tests.WebUI.ErrorControllerTests.NotFound_works_with_both_inputs" executed="True" success="True" time="1.359" asserts="1" />
+                      <test-case name="Forganizer.Tests.WebUI.ErrorControllerTests.NotFound_works_with_first_input" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.WebUI.ErrorControllerTests.NotFound_works_with_last_input" executed="True" success="True" time="0.000" asserts="1" />
+                      <test-case name="Forganizer.Tests.WebUI.ErrorControllerTests.NotFound_works_with_no_input" executed="True" success="True" time="0.000" asserts="1" />
                     </results>
                   </test-suite>
                 </results>

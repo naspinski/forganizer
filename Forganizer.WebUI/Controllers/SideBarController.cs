@@ -6,12 +6,12 @@ using Forganizer.WebUI.Models;
 
 namespace Forganizer.WebUI.Controllers
 {
+    [HandleError]
     public class SideBarController : Controller
     {
         public ActionResult Index(FileAndTagCollection fileAndTagCollection, SearchType tagAndOr)
         {
             fileAndTagCollection.RouteData = this.RouteData;
-            //SearchType TagAndOr = tagAndOr == SearchType.Or.ToString() ? SearchType.Or : SearchType.And;
             ViewData["tagAndOr"] = tagAndOr;//.ToString();
             return View(fileAndTagCollection);
         }

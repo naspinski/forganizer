@@ -42,6 +42,5 @@ namespace Forganizer.Tests.WebUI
 
             Assert.AreEqual(TagEditType.Add, result.EditType);
         }
-
     }
 }

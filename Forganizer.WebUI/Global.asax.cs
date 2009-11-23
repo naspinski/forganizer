@@ -20,7 +20,7 @@ namespace Forganizer.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(null, "", new { controller = "Search", action = "Index", tags = "", extensions = "", page = 1, tagAndOr = SearchType.And });
-
+            
             routes.MapRoute(null, "Page{page}",
                 new { controller = "Search", action = "Index", extensions = "", tags="", tagAndOr=SearchType.And },
                 new { page = @"\d+" }
@@ -71,21 +71,54 @@ namespace Forganizer.WebUI
                 new { page = @"\d+" }
             );
 
+            routes.MapRoute(null, "Delete/{Id}",
+                new { controller = "Search", action = "Delete", returnTo = "/" },
+                new { Id = @"\d+" }
+            );
             routes.MapRoute(null, "Delete/{Id}/ReturnTo/{*returnTo}", 
                 new { controller = "Search", action = "Delete", returnTo = "" },
                 new { Id = @"\d+" }
             );
 
-            routes.MapRoute(null, "DeleteTag/{tag}/From/{Id}/ReturnTo/{*returnTo}", 
+            routes.MapRoute(null, "DeleteTag/{tag}/From/{Id}",
+                new { controller = "Search", action = "DeleteTag", returnTo = "/" },
+                new { Id = @"\d+" }
+            );
+            routes.MapRoute(null, "DeleteTag/{tag}/From/{Id}/ReturnTo/{*returnTo}",
                 new { controller = "Search", action = "DeleteTag", returnTo = "" },
                 new { Id = @"\d+" }
+            );
+
+            routes.MapRoute(null, "AddTags",
+                new { controller = "Search", action = "AddTags", returnTo = "/" },
+                new { httpMethod = new HttpMethodConstraint("POST") }
+            );
+            routes.MapRoute(null, "Submit/ReturnTo/{*returnTo}",
+                new { controller = "Search", action = "AddTags", returnTo = "" },
+                new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
             routes.MapRoute(null, "Manage/Tags/", new { controller = "Manage", action = "Tags", tagEditType = TagEditType.Edit });
             routes.MapRoute(null, "Manage/Tags/{tagEditType}", new { controller = "Manage", action = "Tags"});
 
+
+            routes.MapRoute(null, "{controller}/{action}/{extension}/From/{Id}");
+
+            routes.MapRoute(null, "{controller}/{action}/{id}");
             routes.MapRoute(null, "{controller}/", new { action = "Index" });
+
+            routes.MapRoute(null, "{controller}/Submit",
+                new { formPost = true, action = "Index" },
+                new { httpMethod = new HttpMethodConstraint("POST") }
+            );
+            routes.MapRoute(null, "{controller}/Submit/ReturnTo/{*returnTo}",
+                new { formPost = true, action = "Index" },
+                new { httpMethod = new HttpMethodConstraint("POST") }
+            );
             routes.MapRoute(null, "{controller}/{action}");
+
+            routes.MapRoute(null, "{*url}", new { controller = "Error", action = "NotFound" });
+            routes.MapRoute(null, "Error/NotFound/{*url}", new { controller = "Error", action = "NotFound" });
         }
 
         protected void Application_Start()

@@ -13,6 +13,7 @@ namespace Forganizer.DomainModel.Entities
         [Column] public string Name { get; set; }
         [Column] public string ExtensionString { get; set; }
         public IEnumerable<string> Extensions { get { return ExtensionString.SplitTags(); } }
+        public bool IsValid;
 
         public void AddExtensions(string extensions)
         {

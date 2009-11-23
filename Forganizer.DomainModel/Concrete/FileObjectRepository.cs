@@ -69,7 +69,7 @@ namespace Forganizer.DomainModel.Concrete
                 if (!File.Exists(fileObject.FilePath))
                 {
                     fileObject.Active = false;
-                    deleted.Add(fileObject.FilePath);
+                    deleted.Add(fileObject.FilePath + " cleaned up");
                 }
             }
             return deleted;
