@@ -14,9 +14,9 @@
                     </li>
                     <% int count = 1;  foreach (var category in Model) { %>
                     <li>
-                        <a class="name" title="<%= category.Name %>">
+                        <a class="name" title="<%= Html.Encode(category.Name) %>">
                             <i class="category"></i>
-                            <%= category.Name%>
+                            <%= Html.Encode(category.Name) %>
                         </a>    
                         <span class="actions">
                             <%= Html.ActionLink(" ", "Delete", new { category.Id }, new { @class = "delete", title = "delete" })%>
@@ -26,7 +26,7 @@
                             <span class="add_tag"><%= Html.TextBox("AddExtensionsTo" + category.Id, null, new { tabindex = count++ })%></span>
                             <% foreach (var extension in category.Extensions) { %>
                             <span class="tag">
-                                <%= extension %><%= Html.ActionLink("[delete]", "DeleteExtension", 
+                                <%= Html.Encode(extension) %><%= Html.ActionLink("[delete]", "DeleteExtension", 
                                     new { category.Id, extension }, 
                                     new { title = "delete" })%></span>
                             <% } %>

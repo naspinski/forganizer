@@ -110,6 +110,7 @@ namespace Forganizer.WebUI.Controllers
             return View(tagEditModel);
         }
 
+        [NonAction]
         private void SetTagEditType(TagEditModel tagEditModel, string tagEditType)
         {
             switch (tagEditType)
@@ -120,6 +121,7 @@ namespace Forganizer.WebUI.Controllers
             }
         }
 
+        [NonAction]
         private IEnumerable<int> GetRelevantFileObjectIds(TagEditModel tagEditModel, bool active_only)
         {
             int test = "ASDF".LastIndexOf("\\", 2);

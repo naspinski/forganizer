@@ -14,7 +14,8 @@ namespace Forganizer.WebUI.Controllers
         public ViewResult NotFound(string url, string aspxerrorpath) 
         { 
             Response.StatusCode = (int)HttpStatusCode.NotFound;
-            ViewData["url"] = string.IsNullOrEmpty(url) ? aspxerrorpath : url; 
+            ViewData["url"] = string.IsNullOrEmpty(url) ? aspxerrorpath : url;
+            TempData["error"] = Response.Status;
             return View(); 
         }
     }

@@ -5,12 +5,12 @@
     <div id="content"><% using (Html.BeginForm("Edit", "Category", FormMethod.Post)) {%>
         <fieldset>
             <legend>
-                <i class="edit"></i><%= ((string)ViewContext.RouteData.Values["action"] ==  "Edit" ? "edit" : "create")%> category
+                <i class="edit"></i><%= Html.Encode(((string)ViewContext.RouteData.Values["action"] ==  "Edit" ? "edit" : "create")) %> category
             </legend>
             <%= Html.Hidden("Id") %>
             <% if (Model.IsValid) { %><div>
                 <label for="Name">
-                    <% if (TempData["duplicate"] != null) { %><span class="field-validation-error"><%= TempData["duplicate"]%></span><% } %>
+                    <% if (TempData["duplicate"] != null) { %><span class="field-validation-error"><%= Html.Encode(TempData["duplicate"]) %></span><% } %>
                     <%= Html.ValidationMessage("Name") %>
                     name
                 </label>
@@ -46,6 +46,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">
-    <%= ((string)ViewContext.RouteData.Values["action"] ==  "Edit" ? "edit" : "create")%> category <%= Model.Name %>
+    <%= Html.Encode(((string)ViewContext.RouteData.Values["action"] ==  "Edit" ? "edit" : "create")) %> category <%= Html.Encode(Model.Name) %>
 </asp:Content>
 

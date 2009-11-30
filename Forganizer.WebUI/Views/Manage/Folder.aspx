@@ -16,7 +16,7 @@
         <fieldset class="messages">
             <legend><i class="success"></i>report</legend>
             <% foreach(string message in (IEnumerable<string>)TempData["report"]) { %>
-                <div><%= message %></div>
+                <div><%= Html.Encode(message) %></div>
             <% } %>
         </fieldset>
         <% } %>

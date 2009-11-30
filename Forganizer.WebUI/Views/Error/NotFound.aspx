@@ -4,13 +4,12 @@
 
     <div id="content">
         <fieldset>
-            <legend><i class="error"></i>page not found (404)</legend>
+            <legend><i class="error"></i>these aren't the <del>droids</del> <span style="font-style:italic">pages</span></i> we're looking for</legend>
             <div>
-                what the hell are you doing here? <br />
                 if you clicked on a link to get here, please open a new <a href="http://forganizer.codeplex.com/WorkItem/List.aspx">work item</a> telling us which link 
             </div>
             <div>
-                <label>invalid url</label>
+                <label>invalid url:</label>
                 <%= Html.Encode(ViewData["url"]) %>
             </div>
         </fieldset>    

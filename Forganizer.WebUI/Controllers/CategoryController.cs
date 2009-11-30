@@ -16,6 +16,7 @@ namespace Forganizer.WebUI.Controllers
             this.fileObjectRepository = fileObjectRepository;
         }
 
+        [NonAction]
         private void CategoryIDError()
         {
             TempData["error"] = "invalid category id specified, please use the navigation provided";

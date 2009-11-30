@@ -15,7 +15,7 @@
         <fieldset class="messages">
             <legend><i class="success"></i>report</legend>
             <% foreach(string message in Model) { %>
-                <div><%= message %></div>
+                <div><%= Html.Encode(message) %></div>
             <% } %>
         </fieldset>
         <% } %>

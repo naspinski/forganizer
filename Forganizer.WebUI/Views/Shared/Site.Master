@@ -18,9 +18,9 @@
                 <%= Html.NavMenu(Url, ViewContext.RouteData.Values, NavHelper.MenuType.MainNavigation) %>
                 </ul>
                 <div id="messages">
-                    <% if (TempData["error"] != null){ %> <div class="error"><i></i><%= TempData["error"]%></div> <% } %>
-                    <% if (TempData["success"] != null){ %> <div class="success"><i></i><%= TempData["success"]%></div> <% } %>
-                    <% if (TempData["warning"] != null){ %> <div class="warning"><i></i><%= TempData["warning"]%></div> <% } %>
+                    <% if (TempData["error"] != null){ %> <div class="error"><i></i><%= Html.Encode(TempData["error"]) %></div> <% } %>
+                    <% if (TempData["success"] != null){ %> <div class="success"><i></i><%= Html.Encode(TempData["success"]) %></div> <% } %>
+                    <% if (TempData["warning"] != null){ %> <div class="warning"><i></i><%= Html.Encode(TempData["warning"]) %></div> <% } %>
                 </div>
             </div>
         </div>

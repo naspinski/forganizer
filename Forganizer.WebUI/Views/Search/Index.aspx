@@ -14,29 +14,29 @@
                     </li>
                     <% int count = 1; foreach (var fileObject in Model.PageOfFileObjects) { %>
                     <li>
-                        <a class="name" title="<%= fileObject.FilePath %>">
-                            <i class="<%= fileObject.FileInfo.Extension.Replace(".","") %>"></i>
-                            <%= fileObject.FileInfo.Name%>
+                        <a class="name" title="<%= Html.Encode(fileObject.FilePath) %>">
+                            <i class="<%= Html.Encode(fileObject.FileInfo.Extension.Replace(".","")) %>"></i>
+                            <%= Html.Encode(fileObject.FileInfo.Name) %>
                         </a>    
                         <span class="actions">
                             <%= Html.ActionLink(" ", "Delete", 
                                 new { fileObject.Id, returnTo = ViewContext.HttpContext.Request.Url.LocalPath.ToString() }, 
                                 new { @class = "delete", title = "delete" })%>
-                            <a target="_blank" href="<%= fileObject.FileInfo.DirectoryName %>" class="folder" title="folder"> </a>
+                            <a target="_blank" href="<%= Html.Encode(fileObject.FileInfo.DirectoryName) %>" class="folder" title="folder"> </a>
                             <%= Html.ActionLink(" ", "Download", new { filePath = fileObject.FilePath }, 
-                                new { @class = "download", title = "download" })%>
+                                new { @class = "download", title = "download" }) %>
                         </span>
                         <span class="tags">
                             <span class="add_tag"><%= Html.TextBox("AddTagsTo" + fileObject.Id, null, new { tabindex = count++ })%></span>
                             <% foreach (var tag in fileObject.Tags) { %>
                             <span class="tag">
-                                <%= tag%><%= Html.ActionLink("[delete]", "DeleteTag", 
+                                <%= Html.Encode(tag) %><%= Html.ActionLink("[delete]", "DeleteTag", 
                                     new { fileObject.Id, tag, returnTo = ViewContext.HttpContext.Request.Url.LocalPath.ToString() }, 
                                     new { title = "delete" })%></span>
                             <% } %>
                         </span>
                         <%-- uncomment if you would like the full path to show on rollover --%>
-                        <%--<div class="full_address"><%= fileObject.FileInfo.DirectoryName %></div>--%>
+                        <%--<div class="full_address"><%= Html.Encode(fileObject.FileInfo.DirectoryName) %></div>--%>
                     </li>
                 <% } %>
                 </ul>

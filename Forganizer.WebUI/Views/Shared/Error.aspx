@@ -5,24 +5,24 @@
     <div id="content">
         <fieldset>
             <legend><i class="error"></i><%= Model.Exception.GetType().ToString() %></legend>
-            <div>sorry, there was an error that wasn't handled correctly; if this persists, please open a new <a href="http://forganizer.codeplex.com/WorkItem/List.aspx">work item</a> </div>
+            <div>you clever/unlucky bastard, you found an error; if this persists, please open a new <a href="http://forganizer.codeplex.com/WorkItem/List.aspx">work item</a> </div>
             <div>
                 <label>controller</label>
-                <%= Model.ControllerName %>
+                <%= Html.Encode(Model.ControllerName) %>
             </div>
             <div>
                 <label>action</label>
-                <%= Model.ActionName %>
+                <%= Html.Encode(Model.ActionName) %>
             </div>
             <div>
                 <label>message</label>
-                <%= Model.Exception.Message %>
-                <% if (Model.Exception.InnerException != null) { %> - <%= Model.Exception.InnerException.Message%><% } %>
+                <%= Html.Encode(Model.Exception.Message) %>
+                <% if (Model.Exception.InnerException != null) { %> - <%= Html.Encode(Model.Exception.InnerException.Message) %><% } %>
             </div>
         </fieldset>    
     </div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadTitle" runat="server">
-    unhandled error
+    welcome to error town
 </asp:Content>

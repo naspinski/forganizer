@@ -1,6 +1,6 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<string>" %>
                 <legend>
-                    <i class="<% if(Model == "delete files") { %>delete<% } else { %>edit<% } %>"></i><%= Model %>
+                    <i class="<% if(Model == "delete files") { %>delete<% } else { %>edit<% } %>"></i><%= Html.Encode(Model) %>
                 </legend>
                 <div>
                     <label for="Folder"><%= Html.ValidationMessage("Path") %>from folder</label>
