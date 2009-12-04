@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Forganizer.DomainModel")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MNF-I")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Forganizer.DomainModel")]
-[assembly: AssemblyCopyright("Copyright © MNF-I 2009")]
+[assembly: AssemblyCopyright("Copyright © Stan Naspinski 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
