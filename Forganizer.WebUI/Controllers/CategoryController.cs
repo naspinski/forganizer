@@ -2,10 +2,12 @@ using System;
 using System.Web.Mvc;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
+using Naspinski.MVC.Performance;
 
 namespace Forganizer.WebUI.Controllers
 {
     [HandleError]
+    [EnableCompression]
     public class CategoryController : Controller
     {
         private ICategoryRepository categoryRepository;

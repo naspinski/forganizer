@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using System.Net;
+using Naspinski.MVC.Performance;
 
 namespace Forganizer.WebUI.Controllers
 {
+    [EnableCompression]
     public class ErrorController : Controller
     {
         [AcceptVerbs(HttpVerbs.Get)]

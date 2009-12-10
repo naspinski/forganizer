@@ -12,3 +12,5 @@ C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\bin
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.dll
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\obj\Debug\Forganizer.WebUI.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\bin\Naspinski.MVC.dll
+C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.WebUI\bin\Naspinski.MVC.pdb

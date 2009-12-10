@@ -7,10 +7,12 @@ using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.WebUI.Models;
 using System.IO;
+using Naspinski.MVC.Performance;
 
 namespace Forganizer.WebUI.Controllers
 {
     [HandleError]
+    [EnableCompression]
     public class ManageController : Controller
     {
         private IFileObjectRepository fileObjectRepository;

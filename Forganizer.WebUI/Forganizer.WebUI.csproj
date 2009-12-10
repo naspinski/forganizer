@@ -94,6 +94,8 @@
     <Content Include="bin\Forganizer.DomainModel.dll" />
     <Content Include="bin\Forganizer.DomainModel.pdb" />
     <Content Include="bin\Microsoft.Web.Mvc.dll" />
+    <Content Include="bin\Naspinski.MVC.dll" />
+    <Content Include="bin\Naspinski.MVC.pdb" />
     <Content Include="Content\iconize.css" />
     <Content Include="Content\Images\bg-body.jpg" />
     <Content Include="Content\Images\sprites.png" />
@@ -128,6 +130,10 @@
     <ProjectReference Include="..\Forganizer.DomainModel\Forganizer.DomainModel.csproj">
       <Project>{7B66D6E7-740F-4F1A-ADE2-A87A945DA499}</Project>
       <Name>Forganizer.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVC.Performance\Naspinski.MVC.csproj">
+      <Project>{5C1AFD25-22EA-45E1-9B4E-38535EDA3F1F}</Project>
+      <Name>Naspinski.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

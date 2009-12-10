@@ -4,6 +4,8 @@ using System.Linq;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
+using System.IO;
+using System.Web;
 
 namespace Forganizer.DomainModel.Concrete
 {
@@ -12,7 +14,7 @@ namespace Forganizer.DomainModel.Concrete
         private Table<Category> categoryTable;
         public CategoryRepository(string connectionString)
         {
-            categoryTable = (new DataContext(connectionString)).GetTable<Category>();
+            categoryTable = new Repository(connectionString).DataContext.GetTable<Category>();
         }
 
         public IQueryable<Category> Categories

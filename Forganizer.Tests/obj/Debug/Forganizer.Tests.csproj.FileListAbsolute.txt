@@ -32,3 +32,5 @@ C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\obj\Debug\Forganizer.Tests.dll
 C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\obj\Debug\Forganizer.Tests.pdb
+C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Naspinski.MVC.dll
+C:\Documents and Settings\stan.naspinski\Desktop\forganizer\Forganizer.Tests\bin\Debug\Naspinski.MVC.pdb

@@ -8,7 +8,7 @@ using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
 using Forganizer.DomainModel.Extensions;
 using Forganizer.WebUI.Models;
-using System.Web.Routing;
+using Naspinski.MVC.Performance;
 
 namespace Forganizer.WebUI.Controllers
 {
@@ -68,6 +68,7 @@ namespace Forganizer.WebUI.Controllers
             return View(fileAndTagCollection);
         }
 
+        [EnableCompression]
         public RedirectResult Delete(int Id, string returnTo)
         {
             try
@@ -81,6 +82,7 @@ namespace Forganizer.WebUI.Controllers
             return Redirect("~/" + returnTo);
         }
 
+        [EnableCompression]
         public RedirectResult DeleteTag(int Id, string tag, string returnTo)
         {
             try
@@ -95,6 +97,7 @@ namespace Forganizer.WebUI.Controllers
             return Redirect("~/" + returnTo);
         }
 
+        [EnableCompression]
         [AcceptVerbs(HttpVerbs.Post)]
         public RedirectResult AddTags(string returnTo)
         {
@@ -117,6 +120,7 @@ namespace Forganizer.WebUI.Controllers
             return Redirect("~" + returnTo);
         }
 
+        [EnableCompression]
         public FileResult Download(string filePath)
         {
             return File(filePath, "application/octetstream", Path.GetFileName(filePath));

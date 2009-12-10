@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Forganizer.DomainModel.Abstract;
 using Forganizer.DomainModel.Entities;
+using System.Web;
 
 namespace Forganizer.DomainModel.Concrete
 {
@@ -13,7 +14,8 @@ namespace Forganizer.DomainModel.Concrete
         private Table<FileObject> fileObjectTable;
         public FileObjectRepository(string connectionString)
         {
-            fileObjectTable = (new DataContext(connectionString)).GetTable<FileObject>();
+            var v = new Repository(connectionString);
+            fileObjectTable = new Repository(connectionString).DataContext.GetTable<FileObject>();
         }
 
         public IQueryable<FileObject> FileObjects
